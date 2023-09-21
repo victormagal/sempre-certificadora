@@ -12,7 +12,7 @@ import {
   ServiceData,
   SummaryData
 } from './FormSteps';
-import validationSchema from './FormValidation/validationSchema';
+import schema from './FormValidation/schema';
 import { Form, Formik } from 'formik';
 
 export default function Checkout() {
@@ -25,7 +25,7 @@ export default function Checkout() {
   ];
 
   const [activeStep, setActiveStep] = useState(0);
-  const currentValidationSchema = validationSchema[activeStep];
+  const currentSchema = schema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
   const renderStepContent = (step) => {
@@ -155,7 +155,7 @@ export default function Checkout() {
         onSubmit={handleSubmit}
         validateOnBlur={true}
         validateOnChange={false}
-        validationSchema={currentValidationSchema}
+        validationSchema={currentSchema}
       >
         <Form>
           {renderStepContent(activeStep)}

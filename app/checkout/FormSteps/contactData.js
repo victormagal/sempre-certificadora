@@ -20,6 +20,7 @@ export default function ContactData() {
             </Text>
             <Field
               className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+              maxLength="18"
               name="document"
               style={{
                 background: neutralLight[200],
@@ -85,6 +86,7 @@ export default function ContactData() {
             </Text>
             <Field
               className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+              maxLength="13"
               name="phone"
               style={{
                 background: neutralLight[200],
