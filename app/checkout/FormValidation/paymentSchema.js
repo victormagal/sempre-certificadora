@@ -1,7 +1,9 @@
 import {
   CARD_MIN_LENGTH,
   CARD_CODE_MIN_LENGTH,
+  CEP_MIN_LENGTH,
   EXPIRATION_DATE_MIN_LENGTH,
+  LOGRADOURO_MIN_LENGTH,
   NAME_REGEX
 } from '@/app/base/Constants';
 import * as Yup from 'yup';
@@ -41,11 +43,15 @@ export default Yup.object({
   }),
   cep: Yup.string().when('forma_pagamento', {
     is: 'boleto',
-    then: () => Yup.string().required('Obrigatório')
+    then: () =>
+      Yup.string().required('Obrigatório').min(CEP_MIN_LENGTH, 'CEP inválido')
   }),
   logradouro: Yup.string().when('forma_pagamento', {
     is: 'boleto',
-    then: () => Yup.string().required('Obrigatório')
+    then: () =>
+      Yup.string()
+        .required('Obrigatório')
+        .min(LOGRADOURO_MIN_LENGTH, 'Endereço inválido')
   }),
   address_number: Yup.string().when('forma_pagamento', {
     is: 'boleto',
@@ -61,6 +67,7 @@ export default Yup.object({
   }),
   bairro: Yup.string().when('forma_pagamento', {
     is: 'boleto',
-    then: () => Yup.string().required('Obrigatório')
+    then: () =>
+      Yup.string().required('Obrigatório').min(CEP_MIN_LENGTH, 'CEP inválido')
   })
 });

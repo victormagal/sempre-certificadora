@@ -8,13 +8,16 @@ import {
   red
 } from '@/app/base/Colors';
 import {
+  ADDRESS_NUMBER_MAX_LENGTH,
   CARD_MIN_LENGTH,
   CARD_CODE_MIN_LENGTH,
+  CEP_MIN_LENGTH,
   EXPIRATION_DATE_MIN_LENGTH,
+  LOGRADOURO_MAX_LENGTH,
   NAME_MAX_LENGTH
 } from '@/app/base/Constants';
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
-import { toCardNumber, toExpirationDate } from '@/app/base/Masks';
+import { toCardNumber, toCEP, toExpirationDate } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 import { removeLetters } from '@/app/base/Utils';
 import { Container } from '@/app/components/Elements';
@@ -26,6 +29,8 @@ export default function PaymentData() {
   const { errors, setFieldValue, values } = useFormikContext();
   const [states, setStates] = useState([]);
   const [stories, setStories] = useState([]);
+
+  console.log(errors);
 
   useQuery(getAllStates, {
     onCompleted: ({ estados: { data } }) => {
@@ -448,6 +453,7 @@ export default function PaymentData() {
                         </Text>
                         <Field
                           className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                          maxLength={CEP_MIN_LENGTH}
                           name="cep"
                           style={{
                             background: neutralLight[200],
@@ -457,7 +463,7 @@ export default function PaymentData() {
                             color: neutralMid[500]
                           }}
                           type="text"
-                          value={values.cep}
+                          value={toCEP(values.cep)}
                         />
                         {errors.cep && (
                           <Text
@@ -497,6 +503,7 @@ export default function PaymentData() {
                         </Text>
                         <Field
                           className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                          maxLength={LOGRADOURO_MAX_LENGTH}
                           name="logradouro"
                           style={{
                             background: neutralLight[200],
@@ -528,6 +535,7 @@ export default function PaymentData() {
                         </Text>
                         <Field
                           className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                          maxLength={ADDRESS_NUMBER_MAX_LENGTH}
                           name="address_number"
                           style={{
                             background: neutralLight[200],
@@ -537,7 +545,7 @@ export default function PaymentData() {
                             color: neutralMid[500]
                           }}
                           type="text"
-                          value={values.address_number}
+                          value={removeLetters(values.address_number)}
                         />
                         {errors.address_number && (
                           <Text
@@ -687,6 +695,7 @@ export default function PaymentData() {
                         </Text>
                         <Field
                           className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                          maxLength={LOGRADOURO_MAX_LENGTH}
                           name="bairro"
                           style={{
                             background: neutralLight[200],
