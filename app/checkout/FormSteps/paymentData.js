@@ -7,8 +7,16 @@ import {
   neutralMid,
   red
 } from '@/app/base/Colors';
+import {
+  CARD_MIN_LENGTH,
+  CARD_CODE_MIN_LENGTH,
+  EXPIRATION_DATE_MIN_LENGTH,
+  NAME_MAX_LENGTH
+} from '@/app/base/Constants';
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
+import { toCardNumber, toExpirationDate } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
+import { removeLetters } from '@/app/base/Utils';
 import { Container } from '@/app/components/Elements';
 import { getAllBranches, getAllStates } from '@/app/graphql/queries';
 import { useQuery } from '@apollo/client';
@@ -226,6 +234,7 @@ export default function PaymentData() {
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      maxLength={CARD_MIN_LENGTH}
                       name="card_number"
                       style={{
                         background: neutralLight[200],
@@ -235,7 +244,7 @@ export default function PaymentData() {
                         color: neutralMid[500]
                       }}
                       type="text"
-                      value={values.card_number}
+                      value={toCardNumber(values.card_number)}
                     />
                     {errors.card_number && (
                       <Text appearance="p4" className="mt-2" color={red[900]}>
@@ -255,6 +264,7 @@ export default function PaymentData() {
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      maxLength={NAME_MAX_LENGTH}
                       name="card_name"
                       style={{
                         background: neutralLight[200],
@@ -284,6 +294,7 @@ export default function PaymentData() {
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      maxLength={EXPIRATION_DATE_MIN_LENGTH}
                       name="card_expiration_date"
                       style={{
                         background: neutralLight[200],
@@ -293,7 +304,7 @@ export default function PaymentData() {
                         color: neutralMid[500]
                       }}
                       type="text"
-                      value={values.card_expiration_date}
+                      value={toExpirationDate(values.card_expiration_date)}
                     />
                     {errors.card_expiration_date && (
                       <Text appearance="p4" className="mt-2" color={red[900]}>
@@ -311,6 +322,7 @@ export default function PaymentData() {
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      maxLength={CARD_CODE_MIN_LENGTH}
                       name="card_code"
                       style={{
                         background: neutralLight[200],
@@ -320,7 +332,7 @@ export default function PaymentData() {
                         color: neutralMid[500]
                       }}
                       type="text"
-                      value={values.card_code}
+                      value={removeLetters(values.card_code)}
                     />
                     {errors.card_code && (
                       <Text appearance="p4" className="mt-2" color={red[900]}>
