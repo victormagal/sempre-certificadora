@@ -8,6 +8,7 @@ import HeroPage from './HeroPage';
 import Locations from './Locations';
 import ModalForm from './ModalForm';
 import Slideshow from './Slideshow';
+import Testimonies from './Testimonies';
 
 export {
   Analytics,
@@ -19,5 +20,6 @@ export {
   HeroPage,
   Locations,
   ModalForm,
-  Slideshow
+  Slideshow,
+  Testimonies
 };

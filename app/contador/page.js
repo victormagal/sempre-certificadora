@@ -2,181 +2,207 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import styles from './page.module.css';
-import { ContactForm, MicroCard } from '../components/Elements';
 import {
-  BackgroundContainer,
-  Container,
-  HeroPage,
-  ModalForm
-} from '../components/Foundation';
-import {
-  faFacebookSquare,
-  faInstagram,
-  faLinkedin
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  creamAssistant,
+  emissor,
+  neutralDark,
+  neutralLight,
+  neutralMid,
+  red
+} from '../base/Colors';
+import SolidIcon from '../base/SolidIcon';
+import { Overline, Text, Title } from '../base/Typography';
+import { CardFeature, ContactForm } from '../components/Elements';
+import { Container, HeroPage, ModalForm } from '../components/Foundation';
 
 export default function Contador() {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <main>
+    <main className="pt-24">
       <ModalForm open={openModal} onClose={() => setOpenModal(false)} />
-      <HeroPage
-        arrow={false}
-        cta={false}
-        description="Conheça nosso programa de parceria para Contadores e aproveite as vantagens exclusivas."
-        title="Programa de parceria para Contadores"
-        uri="/bg-contador.jpg"
-      />
-      <Container newClasses="py-12 lg:py-24">
-        <div className="col-span-4 lg:col-span-5 flex flex-col justify-center">
-          <h1 className="font-serif font-bold text-4xl text-dark-blue text-center lg:text-left">
-            Simplifique sua rotina e ganhe tempo e produtividade
-          </h1>
-          <p className="font-sans mt-6 text-soft-gray text-center lg:text-left">
-            Nosso programa de parceria para contadores oferece recursos que vão
-            otimizar a rotina do seu escritório. Assim você terá mais tempo para
-            se dedicar aos seus clientes.
-          </p>
-        </div>
-        <div
-          className={`${styles.gradientBlue} col-span-4 lg:col-span-6 lg:col-end-13 flex flex-col items-center lg:items-start justify-center p-12 lg:p-16`}
-        >
-          <Image
-            alt="Sempre mensalidade"
-            height={18}
-            quality={100}
-            src="/icon-white.svg"
-            width={45}
-          />
-          <h1 className="font-serif font-bold mt-6 text-white text-3xl text-center lg:text-left">
-            Ficou interessado?
-          </h1>
-          <p className="font-sans mt-6 text-white text-center lg:text-left">
-            Temos vários benefícios exclusivos para contadores parceiros. Venha
-            ser um Contador Sempre Tecnologia.
-          </p>
-          <button
-            className={`${styles.gradientYellow} font-sans font-bold mt-6 py-4 rounded text-sm text-white w-4/5`}
-            onClick={() => setOpenModal(true)}
-            type="button"
-          >
-            QUERO SER PARCEIRO
-          </button>
-        </div>
-      </Container>
-      <Container newClasses="pb-12 lg:pb-24">
-        <MicroCard
-          description="Você recebe todas as informações fiscais do seu cliente por meio de nossas soluções."
-          imageSource="/icon-contador-1.svg"
-          title="Integração contábil"
-        />
-        <MicroCard
-          description="Conte com nosso apoio tanto para seu escritório quanto para seus clientes. Estamos #SemprePresente"
-          imageSource="/icon-contador-2.svg"
-          title="Atendimento diferenciado"
-        />
-        <MicroCard
-          description="Plataforma para administrar as indicações de certificados digitais."
-          imageSource="/icon-contador-3.svg"
-          title="Portal Sempre Contador"
-        />
-        <MicroCard
-          description="Emita notas fiscais eletrônicas para seus clientes e gere renda adicional para seu escritório."
-          imageSource="/icon-contador-4.svg"
-          title="Solução Multiempresas"
-        />
-        <MicroCard
-          description="Gerencie a validade dos certificados digitais de seus clientes por meio do Portal Sempre Contador."
-          imageSource="/icon-contador-5.svg"
-          title="Certificados digitais em dia"
-        />
-        <MicroCard
-          description="Conte com nossas soluções web e facilite a vida do seu cliente e também da sua contabilidade."
-          imageSource="/icon-contador-6.svg"
-          title="Soluções web"
-        />
-      </Container>
-      <BackgroundContainer uri="/bg-contador-1.svg">
-        <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center">
-          <Image
-            alt="Portal Sempre Contador"
-            height={99}
-            quality={100}
-            src="/icon-portal-contador-ballon.svg"
-            width={93}
-          />
-          <h1 className="font-serif font-semibold text-white text-4xl my-8 text-center lg:text-left">
-            Portal Sempre Contador
-          </h1>
-          <p className="font-sans text-white mb-8 text-center lg:text-left">
-            O Portal Sempre Contador é uma plataforma exclusiva para contadores,
-            feita para administrar indicações de soluções Sempre e gerenciar a
-            validade dos certificados digitais de clientes.
-          </p>
-          <Link
-            className="bg-transparent border border-white font-bold px-20 py-5 text-white rounded"
-            href="https://scd.semprecertificadora.com.br/app_login/"
-            target="_blank"
-          >
-            Cadastre-se no portal
+      <HeroPage bgColor={red[1100]} gradient={false} className="py-10">
+        <div className="col-span-12 lg:col-span-5 flex flex-col space-y-10">
+          <Title appearance="h1" color={neutralLight[100]} extra>
+            Programa de parceria com contadores
+          </Title>
+          <Text appearance="p3" color={neutralLight[100]}>
+            Conheça nosso programa de parceria para Contadores e tenha vantagens
+            exclusivas com a Sempre Tecnologia!
+          </Text>
+          <Link href="/">
+            <button
+              className="w-full lg:w-auto py-4 px-8 rounded"
+              style={{ background: neutralLight[100] }}
+              type="button"
+            >
+              <Text appearance="p4" color={neutralDark[500]}>
+                Quero ser um parceiro
+              </Text>
+            </button>
           </Link>
         </div>
-      </BackgroundContainer>
-      <Container newClasses="py-12 lg:py-24">
-        <div className="col-span-4 lg:col-span-5">
-          <h2 className="font-sans font-semibold mb-2 text-gray-600 uppercase text-center lg:text-left">
-            Seja um sempre parceiro
-          </h2>
-          <h1 className="font-sans font-bold mb-10 text-dark-blue text-5xl text-center lg:text-left">
-            Venha fazer parte da nossa equipe
-          </h1>
-          <p className="font-sans mb-10 text-gray-600 text-lg text-center lg:text-left">
-            Seja nosso parceiro e aproveite nossos benefícios. Deixe seus dados
-            que entraremos em contato.
-          </p>
-          <p className="font-sans font-bold mb-4 text-gray-600 text-lg text-center lg:text-left">
-            Acompanhe nas redes sociais
-          </p>
-          <ul className="flex space-x-4 justify-center lg:justify-start">
-            <li>
-              <Link
-                href="https://www.facebook.com/sempretecnologia/"
-                target="_blank"
-              >
-                <FontAwesomeIcon
-                  className="h-6 text-custom-orange"
-                  icon={faFacebookSquare}
-                />
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://www.linkedin.com/company/sempre-tecnologia/"
-                target="_blank"
-              >
-                <FontAwesomeIcon
-                  className="h-6 text-custom-orange"
-                  icon={faLinkedin}
-                />
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://www.instagram.com/sempretecnologia/"
-                target="_blank"
-              >
-                <FontAwesomeIcon
-                  className="h-6 text-custom-orange"
-                  icon={faInstagram}
-                />
-              </Link>
-            </li>
-          </ul>
+        <div className="flex lg:col-end-13 lg:col-span-6 lg:justify-end md:py-16">
+          <Image
+            className="h-screen-sm max-w-screen-lg  "
+            alt="Certificado Digital - Emita o seu de onde estiver"
+            height={352}
+            src="/hero-contadores.png"
+            width={560}
+          />
         </div>
-        <div className="col-span-4 lg:col-span-6 lg:col-end-13">
+      </HeroPage>
+      <Container bgColor={neutralLight[200]} newClasses="py-16">
+        <div className="col-span-12 lg:col-span-6 lg:col-start-4 flex flex-col md:space-y-6 text-center">
+          <Overline appearance="o1" color={red[700]}>
+            Parceria para contadores
+          </Overline>
+          <Title appearance="h2" color={neutralDark[500]} extra>
+            Simplifique sua rotina e ganhe tempo e produtividade
+          </Title>
+          <Text appearance="p1" color={neutralMid[500]}>
+            Nosso programa de parceria para contadores oferece recursos que vão
+            otimizar a rotina do seu escritório. Assim, você terá mais tempo
+            para se dedicar aos seus clientes.
+          </Text>
+        </div>
+      </Container>
+      <Container bgColor={neutralLight[200]} newClasses="pb-16 col-span-12">
+        <CardFeature
+          className="col-span-12"
+          third={true}
+          bgColor={neutralLight[100]}
+          description="Você recebe todas as informações fiscais do seu cliente por meio de nossas soluções."
+          icon="faBuilding"
+          iconColor={red[600]}
+          iconSize="h-10"
+          title="Integração contábil"
+        />
+        <CardFeature
+          third={true}
+          bgColor={neutralLight[100]}
+          description="Conte com nosso apoio tanto para seu escritório quanto para seus clientes. Estamos #SemprePresente"
+          icon="faComments"
+          iconColor={red[600]}
+          iconSize="h-10"
+          title="Atendimento diferenciado"
+        />
+        <CardFeature
+          third={true}
+          bgColor={neutralLight[100]}
+          description="Plataforma para administrar as indicações de certificados digitais."
+          icon="faGem"
+          iconColor={red[600]}
+          iconSize="h-10"
+          title="Portal Sempre Contador"
+        />
+        <CardFeature
+          third={true}
+          bgColor={neutralLight[100]}
+          description="Emita notas fiscais eletrônicas para seus clientes e gere renda adicional para seu escritório."
+          icon="faLightbulb"
+          iconColor={red[600]}
+          iconSize="h-10"
+          title="Solução Multiempresas"
+        />
+        <CardFeature
+          third={true}
+          bgColor={neutralLight[100]}
+          description="Gerencie a validade dos certificados digitais de seus clientes por meio do Portal Sempre Contador."
+          icon="faLightbulb"
+          iconColor={red[600]}
+          iconSize="h-10"
+          title="Certificados digitais em dia"
+        />
+        <CardFeature
+          third={true}
+          bgColor={neutralLight[100]}
+          description="Conte com nossas soluções web e facilite a vida do seu cliente e também da sua contabilidade."
+          icon="faLightbulb"
+          iconColor={red[600]}
+          iconSize="h-10"
+          title="Soluções web"
+        />
+        <div className="col-span-12 lg:col-span-2 lg:col-start-6">
+          <Link href="/">
+            <button
+              className="py-4 rounded-md w-full"
+              onClick={() => setOpenModal(true)}
+              style={{ background: red[1000] }}
+              type="button"
+            >
+              <Text appearance="p4" color={neutralLight[100]}>
+                Quero ser um parceiro
+              </Text>
+            </button>
+          </Link>
+        </div>
+      </Container>
+      <Container
+        bgContainer={creamAssistant[200]}
+        newClasses="flex rounded-2xl w-full lg:py-auto py-8 pb-0 w-auto"
+      >
+        <div className="col-span-12 lg:col-span-6 lg:col-start-2">
+          <Image
+            className="mb-6 w-48 lg:w-auto"
+            alt="Portal Sempre Contador"
+            height={85}
+            width={288}
+            src="/logo-portal-sempre-contador.png"
+          />
+          <Text className="mb-6" appearance="p1" color={neutralDark[100]}>
+            Você já é um parceiro? Acesse o Portal Sempre Contador e cadastre-se
+            par receber vantagens exclusivas.
+          </Text>
+          <Link href="/">
+            <button
+              className="flex p-4 rounded-md space-x-3 w-full lg:w-auto justify-center"
+              style={{ background: emissor[500] }}
+            >
+              <Text appearance="p4" color={neutralLight[100]}>
+                Acessar plataforma
+              </Text>
+              <SolidIcon
+                icon="faChevronRight"
+                iconColor={neutralLight[100]}
+                newClasses="h-4 mt-0.5"
+              />
+            </button>
+          </Link>
+        </div>
+        <div className="col-span-12 lg:col-end-12 lg:col-span-4">
+          <Image
+            alt="Portal Sempre Contador"
+            height={373}
+            width={470}
+            quality={100}
+            src="/avatar-portal-sempre-contador.png"
+          />
+        </div>
+      </Container>
+      <Container>
+        <div className="col-span-12  lg:col-span-5 lg:col-start-2 mt-24 lg:order-first order-last">
+          <Image
+            className=""
+            alt="Portal Sempre Contador"
+            height={674}
+            width={466}
+            src="/img-ficou-interessado-esq.png"
+          />
+        </div>
+        <div className="lg:col-span-5 col-span-12 mt-24">
+          <Title
+            appearance="h2"
+            className="mb-4"
+            color={neutralDark[600]}
+            extra
+          >
+            Ficou interessado?
+          </Title>
+          <Text appearance="p4" className="mb-8" color={neutralDark[100]}>
+            Temos vários benefícios exclusivos especialmente para a sua
+            necessidade. Venha ser um parceiro!
+          </Text>
           <ContactForm />
         </div>
       </Container>

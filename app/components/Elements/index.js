@@ -1,5 +1,6 @@
 import Button from './Button';
 import Card from './Card';
+import CardFeature from './CardFeature';
 import ColoredCard from './ColoredCard';
 import ContactForm from './ContactForm';
 import Doubts from './Doubts';
@@ -17,6 +18,7 @@ import TransparentCard from './TransparentCard';
 export {
   Button,
   Card,
+  CardFeature,
   ColoredCard,
   ContactForm,
   Doubts,

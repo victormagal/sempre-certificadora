@@ -1,12 +1,8 @@
-.orange {
-	border: 2px solid #F07E26;
-	color: #F07E26;
-}
-
-.gradientYellow {
-	background: linear-gradient(190deg, #F8B44C 14%, #F07E26 89%) !important;
-}
-
-.gradientBlue {
-	background: linear-gradient(66.45deg, #213667 -13.37%, #506eb3 129.91%) !important;
+.red {
+	font-size: 12px;
+	background: #CC0008;
+	width: 184px;
+	height: 48px;
+	margin-bottom: 20px;
+	line-height: 10px;
 }

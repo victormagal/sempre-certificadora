@@ -1,5 +1,41 @@
 import { gql } from '@apollo/client';
 
+const getAllBranches = gql`
+  query {
+    filiais {
+      data {
+        attributes {
+          label
+          telefones
+          endereco
+          mapa
+          estado {
+            data {
+              attributes {
+                label
+                uf
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const getAllCategories = gql`
+  query {
+    categories {
+      data {
+        attributes {
+          name
+          slug
+        }
+      }
+    }
+  }
+`;
+
 const getAllPosts = gql`
   query ($page: Int!, $pageSize: Int!) {
     blogPosts(
@@ -40,19 +76,6 @@ const getAllPosts = gql`
   }
 `;
 
-const getAllCategories = gql`
-  query {
-    categories {
-      data {
-        attributes {
-          name
-          slug
-        }
-      }
-    }
-  }
-`;
-
 const getAllSlides = gql`
   query {
     slideshows {
@@ -73,6 +96,19 @@ const getAllSlides = gql`
             }
           }
           link
+        }
+      }
+    }
+  }
+`;
+
+const getAllStates = gql`
+  query {
+    estados {
+      data {
+        attributes {
+          uf
+          label
         }
       }
     }
@@ -141,10 +177,28 @@ const getPostsByCategory = gql`
   }
 `;
 
+const getTestimonies = gql`
+  query {
+    depoimentos {
+      data {
+        id
+        attributes {
+          name
+          rule
+          description
+        }
+      }
+    }
+  }
+`;
+
 export {
-  getAllPosts,
+  getAllBranches,
   getAllCategories,
+  getAllPosts,
   getAllSlides,
+  getAllStates,
   getPost,
-  getPostsByCategory
+  getPostsByCategory,
+  getTestimonies
 };

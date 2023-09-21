@@ -1,8 +1,10 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
-import styles from './styles.module.css';
 import { maskPhoneNumber } from '@/app/utils/masks';
+import { neutralDark, neutralLight, neutralMid, red } from '@/app/base/Colors';
+import SolidIcon from '@/app/base/SolidIcon';
+import { Text } from '@/app/base/Typography';
 import { sendMail } from '@/app/graphql/mutations';
 import { useMutation } from '@apollo/client';
 import { Field, Form, Formik } from 'formik';
@@ -51,12 +53,19 @@ export default function ContactForm() {
           <Form>
             <ul className="flex flex-col space-y-4">
               <li>
+                <Text className="mb-2" appearance="p4" color={neutralDark[500]}>
+                  Nome completo
+                </Text>
                 <Field
-                  className="bg-transparent border border-gray-300 font-sans px-8 py-4 placeholder:text-gray-600 text-gray-600 rounded w-full"
+                  className="border text-sm font-sans p-3 placeholder:text-gray-600 text-gray-600 rounded w-full"
                   name="name"
-                  placeholder="Nome"
                   type="text"
                   value={values.name}
+                  style={{
+                    background: neutralLight[200],
+                    border: `1px solid ${neutralLight[400]}`,
+                    color: neutralMid[500]
+                  }}
                 />
                 {errors.name && (
                   <p className="ml-2 mt-1 text-red-600 text-sm">
@@ -65,12 +74,19 @@ export default function ContactForm() {
                 )}
               </li>
               <li>
+                <Text className="mb-2" appearance="p4" color={neutralDark[500]}>
+                  E-mail
+                </Text>
                 <Field
-                  className="bg-transparent border border-gray-300 font-sans px-8 py-4 placeholder:text-gray-600 text-gray-600 rounded w-full"
+                  className="border text-sm font-sans p-3 placeholder:text-gray-600 text-gray-600 rounded w-full"
                   name="mail"
-                  placeholder="E-mail"
                   type="email"
                   value={values.mail}
+                  style={{
+                    background: neutralLight[200],
+                    border: `1px solid ${neutralLight[400]}`,
+                    color: neutralMid[500]
+                  }}
                 />
                 {errors.name && (
                   <span className="ml-2 mt-1 text-red-600 text-sm">
@@ -79,12 +95,19 @@ export default function ContactForm() {
                 )}
               </li>
               <li>
+                <Text className="mb-2" appearance="p4" color={neutralDark[500]}>
+                  Telefone
+                </Text>
                 <Field
-                  className="bg-transparent border border-gray-300 font-sans px-8 py-4 placeholder:text-gray-600 text-gray-600 rounded w-full"
+                  className="border text-sm font-sans p-3 placeholder:text-gray-600 text-gray-600 rounded w-full"
                   name="phone"
-                  placeholder="Telefone com DDD"
                   type="text"
                   value={maskPhoneNumber(values.phone)}
+                  style={{
+                    background: neutralLight[200],
+                    border: `1px solid ${neutralLight[400]}`,
+                    color: neutralMid[500]
+                  }}
                 />
                 {errors.name && (
                   <span className="ml-2 mt-1 text-red-600 text-sm">
@@ -93,19 +116,112 @@ export default function ContactForm() {
                 )}
               </li>
               <li>
+                <Text className="mb-2" appearance="p4" color={neutralDark[500]}>
+                  Nome da empresa
+                </Text>
                 <Field
-                  as="textarea"
-                  className="bg-transparent border border-gray-300 font-sans px-8 py-4 placeholder:text-gray-600 text-gray-600 rounded w-full"
-                  name="message"
-                  placeholder="Mensagem"
+                  className="border text-sm font-sans p-3 placeholder:text-gray-600 text-gray-600 rounded w-full"
+                  name="name"
                   type="text"
-                  value={values.message}
+                  // value={values.name}
+                  style={{
+                    background: neutralLight[200],
+                    border: `1px solid ${neutralLight[400]}`,
+                    color: neutralMid[500]
+                  }}
                 />
                 {errors.name && (
-                  <span className="ml-2 mt-1 text-red-600 text-sm">
-                    {errors.message}
-                  </span>
+                  <p className="ml-2 mt-1 text-red-600 text-sm">
+                    {errors.name}
+                  </p>
                 )}
+              </li>
+              <li className="grid grid-cols-12 col-span-12 gap-2">
+                <div className="col-span-6">
+                  <Text
+                    appearance="p4"
+                    className="mb-2"
+                    color={neutralDark[500]}
+                  >
+                    Estado
+                  </Text>
+                  <div className="flex items-center">
+                    <select
+                      className="appearance-none text-sm p-3 rounded w-full"
+                      // onClick={getCities}
+                      style={{
+                        background: neutralLight[200],
+                        border: `1px solid ${neutralLight[400]}`,
+                        color: neutralMid[500]
+                      }}
+                    >
+                      <option defaultValue="default">UF</option>
+                      {/* {states.map(({ label, value }) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))} */}
+                    </select>
+                    <SolidIcon
+                      icon="faChevronDown"
+                      iconColor={neutralMid[500]}
+                      newClasses="h-4 -ml-10"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-6">
+                  <Text
+                    appearance="p4"
+                    className="mb-2"
+                    color={neutralDark[500]}
+                  >
+                    Unidade
+                  </Text>
+                  <div className="flex items-center">
+                    <select
+                      className="appearance-none text-sm p-3 rounded w-full"
+                      // onChange={getDetails}
+                      style={{
+                        background: neutralLight[200],
+                        border: `1px solid ${neutralLight[400]}`,
+                        color: neutralMid[500]
+                      }}
+                    >
+                      <option defaultValue="default">Cidade</option>
+                      {/* {stores.map(({ id, map, name, phones, whatsapp }) => (
+                      <option
+                        data-location={map}
+                        data-phones={phones}
+                        data-whatsapp={whatsapp}
+                        key={id}
+                        value={name}
+                      >
+                        {name}
+                      </option>
+                    ))} */}
+                    </select>
+                    <SolidIcon
+                      icon="faChevronDown"
+                      iconColor={neutralMid[500]}
+                      newClasses="h-4 -ml-10"
+                    />
+                  </div>
+                </div>
+              </li>
+              <li>
+                <Text appearance="p4" className="" color={neutralDark[500]}>
+                  <Field
+                    className="mr-2"
+                    type="checkbox"
+                    name="checked"
+                    value="Aceito"
+                  />
+                  Li e aceito a{' '}
+                  <a className="border-b-2 hover:border-b-0 leading-4">
+                    política de privacidade
+                  </a>
+                  .
+                </Text>
               </li>
               {loading && (
                 <Image
@@ -123,8 +239,9 @@ export default function ContactForm() {
               )}
               <li>
                 <button
-                  className={`${styles.gradientYellow} font-sans font-semibold py-4 text-white rounded w-full`}
+                  className="font-sans font-semibold py-4 text-white rounded w-full"
                   type="submit"
+                  style={{ background: red[1000] }}
                 >
                   Enviar
                 </button>

@@ -1,109 +1,53 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { neutralDark, neutralLight, neutralMid, red } from '../base/Colors';
+import { Overline, Text, Title } from '../base/Typography';
 import { ContactForm } from '../components/Elements';
-import { Container, HeroPage, ModalForm } from '../components/Foundation';
-import {
-  faEnvelope,
-  faPhone,
-  faArrowRight
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Container } from '../components/Foundation';
 
 export default function Contato() {
-  const [openModal, setOpenModal] = useState(false);
-
   return (
     <main>
-      <ModalForm open={openModal} onClose={() => setOpenModal(false)} />
-      <HeroPage arrow={false} cta={false} mini={true} uri="/bg-blog.svg" />
-      <Container newClasses="py-24">
-        <div className="col-span-4 lg:col-span-6 flex flex-col">
-          <h2 className="font-serif font-semibold mb-2 text-gray-600 uppercase text-center lg:text-left">
-            Fale conosco
-          </h2>
-          <h1 className="font-serif font-bold mb-6 text-dark-blue text-4xl text-center lg:text-left">
-            Sempre disponível para você
-          </h1>
-          <p className="font-sans mb-10 text-gray-600 text-lg text-center lg:text-left">
-            Envie para nós suas críticas, dúvidas ou sugestões.
-          </p>
-          <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-            <li className="bg-overlay-gray rounded p-6 lg:w-5/12">
-              <Link
-                className="flex flex-col items-center lg:items-start"
-                href=""
-              >
-                <FontAwesomeIcon className="h-5 text-red-600" icon={faPhone} />
-                <h1 className="font-serif font-semibold mt-2 text-gray-600 uppercase">
-                  Central de atendimento
-                </h1>
-                <h2 className="font-serif font-semibold text-gray-900">
-                  0800 941 6260
-                </h2>
-              </Link>
-            </li>
-            <li className="bg-overlay-gray rounded p-6 lg:w-7/12">
-              <Link
-                className="flex flex-col items-center lg:items-start"
-                href=""
-              >
-                <FontAwesomeIcon
-                  className="h-5 text-red-600"
-                  icon={faEnvelope}
-                />
-                <h1 className="font-serif font-semibold mt-2 text-gray-600 uppercase">
-                  E-mail
-                </h1>
-                <h2 className="break-all font-serif font-semibold text-gray-900 uppercase">
-                  contato@sempretecnologia.com.br
-                </h2>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="col-span-4 lg:col-span-6">
-          <ContactForm />
+      <Container bgColor={neutralLight[100]} newClasses="py-16">
+        <div className="col-span-12 lg:col-span-6 lg:col-start-4 flex flex-col md:space-y-6 text-center px-8 mt-32 mb-12">
+          <Overline appearance="o1" color={red[700]}>
+            FALE CONOSCO
+          </Overline>
+          <Title appearance="h2" color={neutralDark[500]} extra>
+            Nós adoraríamos ouvir de você
+          </Title>
+          <Text appearance="p1" color={neutralMid[500]}>
+            A nossa equipe está sempre à disposição para conversar com você!
+          </Text>
         </div>
       </Container>
-      <section className="bg-overlay-gray py-24">
-        <Container>
-          <div className="col-span-4 lg:col-span-12 flex justify-center mb-8">
-            <h1 className="font-serif font-semibold text-dark-blue text-4xl text-center lg:text-left">
-              Um pouco mais sobre a Sempre
-            </h1>
-          </div>
+      <Container>
+        <div className="flex flex-col lg:flex-row lg:space-x-12 col-span-12 justify-center border-b-2 pb-24">
           <Link
             href="/sobre"
-            className="col-span-4 flex flex-col items-center space-y-4"
+            className="col-span-3 flex flex-col items-center lg:space-y-4"
           >
             <Image
               alt="Background Image"
               className="cursor-pointer object-cover object-center"
               height={20}
               quality={100}
-              src="/icon-quem-somos.svg"
-              width={50}
+              src="/icon-email.svg"
+              width={40}
             />
-            <h1 className="font-serif font-semibold text-dark-blue text-2xl">
-              Quem Somos
+            <h1 className="font-serif font-semibold text-dark-blue text-xl">
+              Email
             </h1>
-            <p className="font-sans text-soft-gray text-center">
-              Conheça a história da Sempre e venhar trabalhar conosco
+            <p className="font-sans text-soft-gray text-center text-sm">
+              Estamos aqui para atender você <br /> e tirar suas dúvidas.
             </p>
             <p className="font-sans font-bold text-red-600 text-sm">
-              Saiba mais
-              <span>
-                <FontAwesomeIcon
-                  className="h-3 ml-2 text-red-600"
-                  icon={faArrowRight}
-                />
-              </span>
+              contato@sempretecnologia.com.br
             </p>
           </Link>
           <Link
-            className="col-span-4 flex flex-col items-center my-6 lg:my-0 space-y-4"
+            className="col-span-3 flex flex-col items-center my-6 lg:my-0 lg:space-y-4"
             href="https://api.whatsapp.com/send?phone=556130839390"
             target="_blank"
           >
@@ -112,55 +56,95 @@ export default function Contato() {
               className="object-cover object-center"
               height={20}
               quality={100}
-              src="/icon-whatsapp-red.svg"
-              width={20}
+              src="/icon-atendimento.svg"
+              width={40}
             />
-            <h1 className="font-serif font-semibold text-dark-blue text-2xl">
-              Chat WhatsApp
+            <h1 className="font-serif font-semibold text-dark-blue text-xl">
+              Central de atendimetno
             </h1>
-            <p className="font-sans text-soft-gray text-center">
-              Fale com nossos atendentes através do WhatsApp.
+            <p className="font-sans text-soft-gray text-center text-sm">
+              De segunda a sexta (8h às 18h)
             </p>
             <p className="font-sans font-bold text-red-600 text-sm">
-              Entre em contato
-              <span>
-                <FontAwesomeIcon
-                  className="h-3 ml-2 text-red-600"
-                  icon={faArrowRight}
-                />
-              </span>
+              0800 941 6260
             </p>
           </Link>
-          <div
-            className="col-span-4 cursor-pointer flex flex-col items-center space-y-4"
-            onClick={() => setOpenModal(true)}
+          <Link
+            className="col-span-3 flex flex-col items-center my-6 lg:my-0 lg:space-y-4"
+            href="https://api.whatsapp.com/send?phone=556130839390"
+            target="_blank"
           >
             <Image
               alt="Background Image"
               className="object-cover object-center"
               height={20}
               quality={100}
-              src="/icon-agendar-horario.svg"
-              width={20}
+              src="/icon-whatsapp.svg"
+              width={40}
             />
-            <h1 className="font-serif font-semibold text-dark-blue text-2xl">
-              Agende um horário
+            <h1 className="font-serif font-semibold text-dark-blue text-xl">
+              Whatsapp
             </h1>
-            <p className="font-sans text-soft-gray text-center">
-              Agende uma ligação com nossos atendentes
+            <p className="font-sans text-soft-gray text-center text-sm">
+              De segunda a sexta (8h às 18h)
             </p>
             <p className="font-sans font-bold text-red-600 text-sm">
-              Agendar ligação
-              <span>
-                <FontAwesomeIcon
-                  className="h-3 ml-2 text-red-600"
-                  icon={faArrowRight}
-                />
-              </span>
+              Mandar mensagem
             </p>
-          </div>
-        </Container>
-      </section>
+          </Link>
+          <Link
+            className="col-span-3 flex flex-col items-center my-6 lg:my-0 lg:space-y-4"
+            href="https://api.whatsapp.com/send?phone=556130839390"
+            target="_blank"
+          >
+            <Image
+              alt="Background Image"
+              className="object-cover object-center"
+              height={20}
+              quality={100}
+              src="/icon-contato.svg"
+              width={40}
+            />
+            <h1 className="font-serif font-semibold text-dark-blue text-xl">
+              Ligamos para você
+            </h1>
+            <p className="font-sans text-soft-gray text-center text-sm">
+              De segunda a sexta (8h às 18h)
+            </p>
+            <p className="font-sans font-bold text-red-600 text-sm">
+              Agendar ligacão
+            </p>
+          </Link>
+        </div>
+      </Container>
+      <Container>
+        <div className="col-span-12 lg:col-span-4 lg:col-start-7 mt-24 lg:order-last">
+          <Image
+            className="justify-end"
+            alt="Portal Sempre Contador"
+            height={674}
+            width={466}
+            src="/img-contato.png"
+          />
+        </div>
+        <div className="lg:col-start-2 lg:col-span-4 col-span-12 mt-24">
+          <Overline appearance="o1" color={red[700]}>
+            FALE CONOSCO
+          </Overline>
+          <Title
+            appearance="h2"
+            className="mb-4"
+            color={neutralDark[600]}
+            extra
+          >
+            Entrar em contato
+          </Title>
+          <Text appearance="p4" className="mb-8" color={neutralDark[100]}>
+            Por favor, preencha o formulário e entraremos em contato.
+          </Text>
+          <ContactForm />
+        </div>
+      </Container>
     </main>
   );
 }
