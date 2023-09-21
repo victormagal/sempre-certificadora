@@ -1,59 +1,52 @@
 'use client';
-import Image from 'next/image';
 import styles from './styles.module.css';
-import { Container } from '../../Foundation';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { neutralDark, neutralLight, neutralMid, red } from '@/app/base/Colors';
+import { SolidIcon } from '@/app/base/Icons';
+import { Overline, Title, Text } from '@/app/base/Typography';
+import { Container } from '@/app/components/Elements';
 
-export default function Doubts({ doubts, image, theme, title }) {
-  const changeTitleColor = (e) => {
-    const element = [...e.currentTarget.getElementsByTagName('h2')];
-
-    if (e.currentTarget.parentNode.hasAttribute('open')) {
-      element[0].setAttribute('style', 'color: #70738A;');
-    } else {
-      element[0].setAttribute('style', `color: ${theme};`);
-    }
-  };
-
+export default function Doubts({ doubts }) {
   return (
-    <Container newClasses="py-12 lg:py-24">
-      <div className="hidden lg:block lg:col-span-5">
-        <Image
-          alt="Apple story"
-          className="ml-4"
-          height={748}
-          quality={100}
-          src={image}
-          width={635}
-        />
-      </div>
-      <div className="col-span-4 lg:col-span-7">
-        <h1 className="font-serif font-semibold mb-12 lg:pr-48 text-2xl lg:text-5xl text-dark-blue text-center lg:text-left">
-          {title}
-        </h1>
+    <Container bgColor={neutralLight[200]} newClasses="py-12 lg:py-24">
+      <div className="col-span-8 col-start-3">
+        <div className="flex flex-col items-center mb-12 space-y-2">
+          <Overline appearance="o1" color={red[700]}>
+            Suporte
+          </Overline>
+          <Title appearance="h2" color={neutralDark[500]} extra>
+            Perguntas frequentes
+          </Title>
+          <Text appearance="p3" color={neutralMid[500]}>
+            Ainda tem dúvidas sobre o Certificado Digital?
+          </Text>
+        </div>
         <div>
           {doubts.map(({ question, answer }) => (
             <details
               key={question}
-              className="border border-gray-300 mb-6 p-6 rounded"
+              className="border-b mb-6 pb-6"
+              style={{ borderColor: neutralLight[400] }}
             >
               <summary
                 className={`cursor-pointer flex items-center justify-between ${styles.noMarker}`}
-                onClick={changeTitleColor}
               >
-                <h2 className="font-serif mr-10 text-soft-gray text-base lg:text-xl">
+                <Title appearance="h6" color={neutralDark[500]}>
                   {question}
-                </h2>
-                <FontAwesomeIcon
-                  className="h-5 w-5"
-                  icon={faChevronDown}
-                  style={{ color: `${theme}` }}
-                />
+                </Title>
+                <div
+                  className="border flex h-5 items-center justify-center rounded-full w-5"
+                  style={{ borderColor: neutralMid[400] }}
+                >
+                  <SolidIcon
+                    icon="faMinus"
+                    iconColor={neutralMid[400]}
+                    newClasses="h-2"
+                  />
+                </div>
               </summary>
-              <p className="font-sans mt-6 text-soft-gray text-sm lg:text-base">
+              <Text appearance="p3" color={neutralMid[500]}>
                 {answer}
-              </p>
+              </Text>
             </details>
           ))}
         </div>

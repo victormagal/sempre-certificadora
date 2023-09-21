@@ -1,7 +1,7 @@
 import { neutralDark, neutralLight, red, neutralMid } from '@/app/base/Colors';
 import { toCpfOrCnpj, toTel } from '@/app/base/Masks';
 import { Text, Title } from '@/app/base/Typography';
-import { Container } from '@/app/components/Foundation';
+import { Container } from '@/app/components/Elements';
 import { Field, useFormikContext } from 'formik';
 
 export default function ContactData() {

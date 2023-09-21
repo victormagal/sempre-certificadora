@@ -6,7 +6,7 @@ import {
   Header,
   Locations,
   ModalForm
-} from './components/Foundation';
+} from './components/Partials';
 import { client } from './graphql/config';
 import StyledComponentsRegistry from '@/lib/registry';
 import { ApolloProvider } from '@apollo/client';

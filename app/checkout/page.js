@@ -2,9 +2,9 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { neutralDark, neutralLight, neutralMid, success } from '../base/Colors';
-import SolidIcon from '../base/SolidIcon';
+import { SolidIcon } from '../base/Icons';
 import { Overline, Text, Title } from '../base/Typography';
-import { Container } from '../components/Foundation';
+import { Container } from '../components/Elements';
 import FormStepper from './FormStepper';
 import {
   ContactData,

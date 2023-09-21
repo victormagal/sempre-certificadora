@@ -1,6 +1,6 @@
 import { neutralDark, neutralMid } from '@/app/base/Colors';
 import { Overline, Text, Title } from '@/app/base/Typography';
-import { Container } from '@/app/components/Foundation';
+import { Container } from '@/app/components/Elements';
 import { useFormikContext } from 'formik';
 
 export default function SummaryData() {

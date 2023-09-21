@@ -1,4 +1,4 @@
-import removeNonDigits from './removeNonDigits';
+import { removeNonDigits } from '../Utils';
 import toCNPJ from './toCNPJ';
 import toCPF from './toCPF';
 

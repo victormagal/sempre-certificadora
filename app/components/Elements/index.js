@@ -1,35 +1,6 @@
-import Button from './Button';
-import Card from './Card';
 import CardFeature from './CardFeature';
-import ColoredCard from './ColoredCard';
-import ContactForm from './ContactForm';
+import Container from './Container';
 import Doubts from './Doubts';
-import LastPosts from './LastPosts';
-import MicroCard from './MicroCard';
-import ModalVimeo from './ModalVimeo';
-import PlayCard from './PlayCard';
-import SideBar from './SideBar';
-import Tabs from './Tabs';
-import TabsDistribuidor from './TabsDistribuidor';
-import TabsGestao from './TabsGestao';
-import Testimony from './Testimony';
-import TransparentCard from './TransparentCard';
+import HeroPage from './HeroPage';
 
-export {
-  Button,
-  Card,
-  CardFeature,
-  ColoredCard,
-  ContactForm,
-  Doubts,
-  LastPosts,
-  MicroCard,
-  ModalVimeo,
-  PlayCard,
-  SideBar,
-  Tabs,
-  TabsDistribuidor,
-  TabsGestao,
-  Testimony,
-  TransparentCard
-};
+export { CardFeature, Container, Doubts, HeroPage };

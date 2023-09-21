@@ -1,5 +1,4 @@
-import removeNonDigits from './removeNonDigits';
-import restrainSize from './retrainSize';
+import { removeNonDigits, restrainSize } from '../Utils';
 
 function toTel(value, withoutDDD) {
   if (typeof value !== 'string') {

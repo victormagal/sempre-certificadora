@@ -1,7 +1,7 @@
 import { red, neutralLight, success, neutralMid } from '@/app/base/Colors';
-import SolidIcon from '@/app/base/SolidIcon';
+import { SolidIcon } from '@/app/base/Icons';
 import { Title } from '@/app/base/Typography';
-import { Container } from '@/app/components/Foundation';
+import { Container } from '@/app/components/Elements';
 
 export default function FormStepper({ step }) {
   return (

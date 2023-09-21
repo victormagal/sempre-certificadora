@@ -1,5 +1,5 @@
 import { neutralDark, neutralMid } from '@/app/base/Colors';
-import RegularIcon from '@/app/base/RegularIcon';
+import RegularIcon from '@/app/base/Icons/RegularIcon';
 import { Text, Title } from '@/app/base/Typography';
 import { Card } from '@/app/base/Wrappers';
 

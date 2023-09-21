@@ -1,5 +1,4 @@
-import removeNonDigits from './removeNonDigits';
-import restrainSize from './retrainSize';
+import { removeNonDigits, restrainSize } from '../Utils';
 
 function toCPF(value) {
   if (typeof value !== 'string') {

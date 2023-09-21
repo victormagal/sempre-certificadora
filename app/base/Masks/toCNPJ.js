@@ -1,5 +1,4 @@
-import removeNonDigits from './removeNonDigits';
-import restrainSize from './retrainSize';
+import { removeNonDigits, restrainSize } from '../Utils';
 
 function toCNPJ(value) {
   if (typeof value !== 'string') {
