@@ -30,8 +30,6 @@ export default function PaymentData() {
   const [states, setStates] = useState([]);
   const [stories, setStories] = useState([]);
 
-  console.log(errors);
-
   useQuery(getAllStates, {
     onCompleted: ({ estados: { data } }) => {
       data.map(({ attributes: { label, uf } }) => {
