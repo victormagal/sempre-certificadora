@@ -1,11 +1,22 @@
 'use client';
 import Link from 'next/link';
+import { useState } from 'react';
 import { Container } from '../../Elements';
 import { neutralDark, neutralLight, neutralMid, red } from '@/app/base/Colors';
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { Overline, Text, Title } from '@/app/base/Typography';
+import { getProductsByType } from '@/app/graphql/queries';
+import { useQuery } from '@apollo/client';
 
 export default function CertificadoPJ() {
+  const [products, setProducts] = useState([]);
+
+  useQuery(getProductsByType, {
+    variables: { tipo: 'pessoa_juridica' },
+    onCompleted: ({ produtos: { data } }) => {
+      setProducts(data);
+    }
+  });
   return (
     <Container newClasses="pb-16">
       <div className="col-span-4 col-start-2 flex flex-col space-y-8">
@@ -59,134 +70,75 @@ export default function CertificadoPJ() {
           </li>
         </ul>
       </div>
-      <div
-        className="border col-span-3 flex flex-col space-y-8 py-8 px-6 rounded-2xl"
-        style={{
-          background: neutralLight[100],
-          borderColor: neutralLight[400]
-        }}
-      >
-        <header className="flex flex-col space-y-1">
+      {products &&
+        products?.map((product) => (
           <div
-            className="flex justify-center py-2 rounded w-1/4"
-            style={{ background: '#E6F8F2' }}
+            className="border col-span-3 flex flex-col space-y-8 py-8 px-6 rounded-2xl"
+            key={product?.attributes?.id_produto}
+            style={{
+              background: neutralLight[100],
+              borderColor: neutralLight[400]
+            }}
           >
-            <Overline appearance="o1" color="#076E4F">
-              25% off
-            </Overline>
-          </div>
-          <div>
-            <Title appearance="h4" color={neutralDark[400]} extra>
-              e-CPF A1
-            </Title>
-          </div>
-        </header>
-        <main className="flex flex-col space-y-1">
-          <Text appearance="p3" color={neutralMid[600]}>
-            A partir
-          </Text>
-          <Text
-            appearance="p3"
-            color={neutralMid[600]}
-            className="line-through"
-          >
-            De R$242 por
-          </Text>
-          <Title appearance="h2" color={neutralDark[500]} extra>
-            R$ 179,90
-          </Title>
-          <Text appearance="p3" color={neutralMid[600]}>
-            3x de R$59,97 no crédito
-          </Text>
-        </main>
-        <footer className="flex flex-col items-center space-y-4">
-          <Text appearance="p4" color={neutralDark[500]}>
-            Validade de 12 meses
-          </Text>
-          <button
-            className="py-4 rounded-md w-full"
-            style={{ background: red[1000] }}
-          >
-            <Link
-              className="flex items-center justify-center space-x-3"
-              href="/checkout"
-            >
-              <Text appearance="p4" color={neutralLight[100]}>
-                Comprar agora
+            <header className="flex flex-col space-y-1">
+              <div
+                className="flex justify-center py-2 rounded w-1/4"
+                style={{ background: '#E6F8F2' }}
+              >
+                <Overline appearance="o1" color="#076E4F">
+                  {product?.attributes?.percentual_desconto}% OFF
+                </Overline>
+              </div>
+              <div>
+                <Title appearance="h4" color={neutralDark[400]} extra>
+                  {product?.attributes?.nome}
+                </Title>
+              </div>
+            </header>
+            <main className="flex flex-col space-y-1">
+              <Text appearance="p3" color={neutralMid[600]}>
+                A partir
               </Text>
-              <SolidIcon
-                icon="faChevronRight"
-                iconColor={neutralLight[100]}
-                newClasses="h-3"
-              />
-            </Link>
-          </button>
-        </footer>
-      </div>
-      <div
-        className="border col-span-3 flex flex-col space-y-8 py-8 px-6 rounded-2xl"
-        style={{
-          background: neutralLight[100],
-          borderColor: neutralLight[400]
-        }}
-      >
-        <header className="flex flex-col space-y-1">
-          <div
-            className="flex justify-center py-2 rounded w-1/4"
-            style={{ background: '#E6F8F2' }}
-          >
-            <Overline appearance="o1" color="#076E4F">
-              25% off
-            </Overline>
-          </div>
-          <div>
-            <Title appearance="h4" color={neutralDark[400]} extra>
-              e-CPF A3
-            </Title>
-          </div>
-        </header>
-        <main className="flex flex-col space-y-1">
-          <Text appearance="p3" color={neutralMid[600]}>
-            A partir
-          </Text>
-          <Text
-            appearance="p3"
-            color={neutralMid[600]}
-            className="line-through"
-          >
-            De R$339 por
-          </Text>
-          <Title appearance="h2" color={neutralDark[500]} extra>
-            R$ 254,25
-          </Title>
-          <Text appearance="p3" color={neutralMid[600]}>
-            3x de R$84,75 no crédito
-          </Text>
-        </main>
-        <footer className="flex flex-col items-center space-y-4">
-          <Text appearance="p4" color={neutralDark[500]}>
-            Validade de 36 meses
-          </Text>
-          <button
-            className="py-4 rounded-md w-full"
-            style={{ background: red[1000] }}
-          >
-            <Link
-              className="flex items-center justify-center space-x-3"
-              href="/checkout"
-            >
-              <Text appearance="p4" color={neutralLight[100]}>
-                Comprar agora
+              <Text
+                appearance="p3"
+                color={neutralMid[600]}
+                className="line-through"
+              >
+                De R$ {product?.attributes?.valor} por
               </Text>
-              <SolidIcon
-                icon="faChevronRight"
-                iconColor={neutralLight[100]}
-                newClasses="h-3"
-              />
-            </Link>
-          </button>
-        </footer>
-      </div>
+              <Title appearance="h2" color={neutralDark[500]} extra>
+                R$ {product?.attributes?.valor_com_desconto}
+              </Title>
+              <Text appearance="p3" color={neutralMid[600]}>
+                3x de R$ {product?.attributes?.valor_com_desconto / 3} no
+                crédito
+              </Text>
+            </main>
+            <footer className="flex flex-col items-center space-y-4">
+              <Text appearance="p4" color={neutralDark[500]}>
+                Validade de 12 meses
+              </Text>
+              <button
+                className="py-4 rounded-md w-full"
+                style={{ background: red[1000] }}
+              >
+                <Link
+                  className="flex items-center justify-center space-x-3"
+                  href={`/checkout?product=${product?.attributes?.id_produto}`}
+                >
+                  <Text appearance="p4" color={neutralLight[100]}>
+                    Comprar agora
+                  </Text>
+                  <SolidIcon
+                    icon="faChevronRight"
+                    iconColor={neutralLight[100]}
+                    newClasses="h-3"
+                  />
+                </Link>
+              </button>
+            </footer>
+          </div>
+        ))}
     </Container>
   );
 }

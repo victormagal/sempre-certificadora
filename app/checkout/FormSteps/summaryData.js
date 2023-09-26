@@ -3,8 +3,15 @@ import { Overline, Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
 import { useFormikContext } from 'formik';
 
-export default function SummaryData() {
+export default function SummaryData({
+  desconto,
+  description,
+  valor,
+  valor_desconto,
+  valor_final
+}) {
   const { values } = useFormikContext();
+  const date = new Date();
 
   return (
     <Container>
@@ -65,7 +72,7 @@ export default function SummaryData() {
                 Data da emissão
               </Text>
               <Title appearance="h6" color={neutralDark[500]}>
-                {values.name}
+                {date.toLocaleDateString('pt-br')}
               </Title>
             </li>
             <li className="w-1/3">
@@ -73,7 +80,7 @@ export default function SummaryData() {
                 Descrição
               </Text>
               <Title appearance="h6" color={neutralDark[500]}>
-                {values.document}
+                {description}
               </Title>
             </li>
             <li className="w-1/3"></li>
@@ -84,7 +91,7 @@ export default function SummaryData() {
                 Forma de pagamento
               </Text>
               <Title appearance="h6" color={neutralDark[500]}>
-                {values.phone}
+                {values.forma_pagamento}
               </Title>
             </li>
             <li className="w-1/3">
@@ -92,15 +99,19 @@ export default function SummaryData() {
                 Valor total
               </Text>
               <Title appearance="h6" color={neutralDark[500]}>
-                {values.mail}
+                R$ {valor_final}
               </Title>
             </li>
-            <li className="w-1/3">
+            <li
+              className={`w-1/3 ${
+                values.parcelas === '' ? 'invisible' : 'visible'
+              }`}
+            >
               <Text appearance="p3" color={neutralMid[600]}>
                 Parcelas
               </Text>
               <Title appearance="h6" color={neutralDark[500]}>
-                {values.document}
+                {values.parcelas}
               </Title>
             </li>
           </ul>
@@ -111,7 +122,7 @@ export default function SummaryData() {
               Subtotal
             </Title>
             <Title appearance="h6" color={neutralDark[500]}>
-              R$ 242,00
+              R$ {valor}
             </Title>
           </li>
           <li className="flex justify-between">
@@ -124,11 +135,11 @@ export default function SummaryData() {
                 style={{ background: '#E6F8F2' }}
               >
                 <Overline appearance="o1" className="px-4" color="#076E4F">
-                  25% off
+                  {desconto}% off
                 </Overline>
               </div>
               <Title appearance="h6" color={neutralDark[500]}>
-                R$ 62,10
+                R$ {valor_desconto}
               </Title>
             </div>
           </li>
@@ -137,7 +148,7 @@ export default function SummaryData() {
               Total
             </Title>
             <Title appearance="h3" color={neutralDark[500]}>
-              R$ 179,90
+              R$ {valor_final}
             </Title>
           </li>
         </ul>

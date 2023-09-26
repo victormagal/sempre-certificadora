@@ -23,9 +23,15 @@ import { removeLetters } from '@/app/base/Utils';
 import { Container } from '@/app/components/Elements';
 import { getAllBranches, getAllStates } from '@/app/graphql/queries';
 import { useQuery } from '@apollo/client';
+import axios from 'axios';
 import { Field, useFormikContext } from 'formik';
 
-export default function PaymentData() {
+export default function PaymentData({
+  desconto,
+  valor,
+  valor_desconto,
+  valor_final
+}) {
   const { errors, setFieldValue, values } = useFormikContext();
   const [states, setStates] = useState([]);
   const [stories, setStories] = useState([]);
@@ -79,6 +85,21 @@ export default function PaymentData() {
       }
     });
     setFieldValue('filtered_stories_payment', selectedStories);
+  };
+
+  const findCep = () => {
+    axios
+      .get(`http://viacep.com.br/ws/${removeLetters(values.cep)}/json/`)
+      .then(({ data, status }) => {
+        if (status === 200) {
+          setFieldValue('address_number', '');
+          setFieldValue('address_state', data.uf);
+          setFieldValue('address_story', data.localidade);
+          setFieldValue('bairro', data.bairro);
+          setFieldValue('complemento', data.complemento);
+          setFieldValue('logradouro', data.logradouro);
+        }
+      });
   };
 
   return (
@@ -371,9 +392,9 @@ export default function PaymentData() {
                         value={values.parcelas}
                       >
                         <option value="">Selecione</option>
-                        <option key="1">1x de R$ 179.90</option>
-                        <option key="2">2x de R$ 179.90</option>
-                        <option key="3">3x de R$ 179.90</option>
+                        <option value="1">1x de R$ {valor / 1}</option>
+                        <option value="2">2x de R$ {valor / 2}</option>
+                        <option value="3">3x de R$ {valor / 3}</option>
                       </Field>
                       <SolidIcon
                         icon="faChevronDown"
@@ -404,7 +425,7 @@ export default function PaymentData() {
                       Subtotal
                     </Title>
                     <Title appearance="h6" color={neutralDark[500]}>
-                      R$ 242,00
+                      R$ {valor}
                     </Title>
                   </li>
                   <li className="flex justify-between">
@@ -421,11 +442,11 @@ export default function PaymentData() {
                           className="px-4"
                           color="#076E4F"
                         >
-                          25% off
+                          {desconto}% off
                         </Overline>
                       </div>
                       <Title appearance="h6" color={neutralDark[500]}>
-                        R$ 62,10
+                        R$ {valor_desconto}
                       </Title>
                     </div>
                   </li>
@@ -434,7 +455,7 @@ export default function PaymentData() {
                       Total
                     </Title>
                     <Title appearance="h5" color={neutralDark[500]}>
-                      R$ 179,90
+                      R$ {valor_final}
                     </Title>
                   </li>
                 </ul>
@@ -453,6 +474,7 @@ export default function PaymentData() {
                           className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
                           maxLength={CEP_MIN_LENGTH}
                           name="cep"
+                          onBlur={findCep}
                           style={{
                             background: neutralLight[200],
                             borderColor: errors.cep
@@ -482,7 +504,10 @@ export default function PaymentData() {
                           Não sei o meu CEP
                         </Text>
                         <div className="flex flex-1 items-center">
-                          <Link href="/">
+                          <Link
+                            href="https://buscacepinter.correios.com.br/app/endereco/index.php?t"
+                            target="_blank"
+                          >
                             <Text appearance="p1" color={blue[800]}>
                               Não sei o meu CEP
                             </Text>
@@ -634,7 +659,7 @@ export default function PaymentData() {
                           className="mb-2"
                           color={neutralDark[500]}
                         >
-                          Unidade
+                          Cidade
                         </Text>
                         <div className="flex items-center">
                           <Field
