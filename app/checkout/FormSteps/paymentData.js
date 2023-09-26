@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import {
   blue,
   neutralDark,
@@ -19,10 +19,8 @@ import {
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { toCardNumber, toCEP, toExpirationDate } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
-import { removeLetters } from '@/app/base/Utils';
+import { estados, cidades, removeLetters } from '@/app/base/Utils';
 import { Container } from '@/app/components/Elements';
-import { getAllBranches, getAllStates } from '@/app/graphql/queries';
-import { useQuery } from '@apollo/client';
 import axios from 'axios';
 import { Field, useFormikContext } from 'formik';
 
@@ -33,58 +31,15 @@ export default function PaymentData({
   valor_final
 }) {
   const { errors, setFieldValue, values } = useFormikContext();
-  const [states, setStates] = useState([]);
-  const [stories, setStories] = useState([]);
 
-  useQuery(getAllStates, {
-    onCompleted: ({ estados: { data } }) => {
-      data.map(({ attributes: { label, uf } }) => {
-        const node = {
-          estado: label,
-          uf: uf
-        };
-        setStates((prevState) => [...prevState, node]);
-      });
-    }
-  });
-  useQuery(getAllBranches, {
-    onCompleted: ({ filiais: { data } }) => {
-      data.map(
-        ({
-          attributes: {
-            label,
-            telefones,
-            endereco,
-            mapa,
-            estado: {
-              data: {
-                attributes: { label: labelState, uf }
-              }
-            }
-          }
-        }) => {
-          const node = {
-            endereco: endereco,
-            estado: labelState,
-            cidade: label,
-            mapa: mapa,
-            telefones: telefones,
-            uf: uf
-          };
-          setStories((prevState) => [...prevState, node]);
-        }
-      );
-    }
-  });
-
-  const filterStories = (value) => {
-    const selectedStories = [];
-    stories.map((story) => {
-      if (story.uf === value) {
-        selectedStories.push(story);
+  const filterCities = (value) => {
+    const selectedCities = [];
+    cidades.map((cidade) => {
+      if (cidade.estado === value) {
+        selectedCities.push(cidade);
       }
     });
-    setFieldValue('filtered_stories_payment', selectedStories);
+    setFieldValue('cities', selectedCities);
   };
 
   const findCep = () => {
@@ -101,6 +56,10 @@ export default function PaymentData({
         }
       });
   };
+
+  useEffect(() => {
+    filterCities(values.address_state);
+  }, [values.address_state]);
 
   return (
     <Container>
@@ -619,7 +578,7 @@ export default function PaymentData({
                             name="address_state"
                             onChange={(e) => {
                               setFieldValue('address_state', e.target.value);
-                              filterStories(e.target.value);
+                              filterCities(e.target.value);
                             }}
                             style={{
                               background: neutralLight[200],
@@ -631,9 +590,9 @@ export default function PaymentData({
                             value={values.address_state}
                           >
                             <option value="">Selecione</option>
-                            {states?.map((state) => (
-                              <option key={state?.uf} value={state?.uf}>
-                                {state?.estado}
+                            {estados?.map((estado) => (
+                              <option key={estado?.sigla} value={estado?.sigla}>
+                                {estado?.nome}
                               </option>
                             ))}
                           </Field>
@@ -679,16 +638,11 @@ export default function PaymentData({
                             value={values.address_story}
                           >
                             <option value="">Selecione</option>
-                            {values?.filtered_stories_payment?.map(
-                              (filteredStory) => (
-                                <option
-                                  key={filteredStory?.cidade}
-                                  value={filteredStory?.cidade}
-                                >
-                                  {filteredStory?.cidade}
-                                </option>
-                              )
-                            )}
+                            {values?.cities?.map((city) => (
+                              <option key={city?.name} value={city?.name}>
+                                {city?.name}
+                              </option>
+                            ))}
                           </Field>
                           <SolidIcon
                             icon="faChevronDown"

@@ -199,7 +199,7 @@ export default function Checkout() {
         initialValues={{
           address_number: '',
           address_state: '',
-          address_story: '',
+          address_city: '',
           bairro: '',
           card_code: '',
           card_expiration_date: '',
@@ -207,6 +207,7 @@ export default function Checkout() {
           card_number: '',
           cep: '',
           cidade: '',
+          cities: [],
           complemento: '',
           detailed_story: {},
           document: '',
