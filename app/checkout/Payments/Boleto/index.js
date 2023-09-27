@@ -3,7 +3,8 @@ import {
   neutralDark,
   neutralMid,
   neutralLight,
-  success
+  success,
+  warning
 } from '@/app/base/Colors';
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { Text, Title } from '@/app/base/Typography';
@@ -16,6 +17,26 @@ export default function Boleto(data) {
 
   return (
     <Container>
+      <div
+        className="col-span-10 col-start-2 flex items-center mt-6 py-8 px-12 rounded space-x-8"
+        style={{ backgroundColor: warning[200] }}
+      >
+        <SolidIcon
+          icon="faTriangleExclamation"
+          iconColor={warning[500]}
+          newClasses="h-12"
+        />
+        <div>
+          <Title appearance="h4" color={warning[1100]} extra>
+            Você tem até o dia {due_date} para pagar
+          </Title>
+          <Title appearance="h6" color={warning[1100]}>
+            Para efetivar a compra, basta efetuar o pagamento do seu boleto.
+            Lembre-se: um de nossos especialistas entrará em contato após a
+            confirmação de pagamento.
+          </Title>
+        </div>
+      </div>
       <div className="border col-span-10 col-start-2 flex flex-col my-6 py-8 px-12 rounded space-y-6">
         <div>
           <Text appearance="p3" color={neutralMid[600]}>

@@ -1,5 +1,10 @@
-import { neutralDark, neutralMid, neutralLight } from '@/app/base/Colors';
-import { RegularIcon } from '@/app/base/Icons';
+import {
+  neutralDark,
+  neutralMid,
+  neutralLight,
+  warning
+} from '@/app/base/Colors';
+import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
 
@@ -9,14 +14,26 @@ export default function Pix(data) {
 
   return (
     <Container>
-      <div className="border col-span-10 col-start-2 flex justify-between my-6 py-8 px-12 rounded">
-        <div className="flex flex-col space-y-6">
-          <Title appearance="h4" color={neutralDark[500]}>
-            Após a compra, enviaremos um e-mail de confirmação do pagamento
-          </Title>
-          <Title appearance="h6" color={neutralDark[500]}>
+      <div
+        className="col-span-10 col-start-2 flex items-center mt-6 py-8 px-12 rounded space-x-8"
+        style={{ backgroundColor: warning[200] }}
+      >
+        <SolidIcon
+          icon="faTriangleExclamation"
+          iconColor={warning[500]}
+          newClasses="h-12"
+        />
+        <div>
+          <Title appearance="h4" color={warning[1100]} extra>
             Escaneie o código para pagar
           </Title>
+          <Title appearance="h6" color={warning[1100]}>
+            Após a compra, enviaremos um e-mail de confirmação do pagamento
+          </Title>
+        </div>
+      </div>
+      <div className="border col-span-10 col-start-2 flex justify-between my-6 py-8 px-12 rounded">
+        <div className="flex flex-col space-y-6">
           <ol className="list-decimal ml-6">
             <li>
               <Text appearance="p4" color={neutralMid[500]}>

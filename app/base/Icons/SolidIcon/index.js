@@ -13,7 +13,8 @@ export default function SolidIcon({ icon, iconColor, newClasses }) {
     faMinus: Icon.faMinus,
     faPhone: Icon.faPhone,
     faPrint: Icon.faPrint,
-    faStar: Icon.faStar
+    faStar: Icon.faStar,
+    faTriangleExclamation: Icon.faTriangleExclamation
   };
 
   return (
