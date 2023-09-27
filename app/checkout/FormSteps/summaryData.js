@@ -1,12 +1,15 @@
+import Skeleton from 'react-loading-skeleton';
 import { neutralDark, neutralMid } from '@/app/base/Colors';
 import { formatCurrency } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
 import { useFormikContext } from 'formik';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function SummaryData({
   desconto,
   description,
+  loading,
   valor,
   valor_desconto,
   valor_final
@@ -29,17 +32,25 @@ export default function SummaryData({
               <Text appearance="p3" color={neutralMid[600]}>
                 Cliente
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {values.name}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {values.name}
+                </Title>
+              )}
             </li>
             <li className="w-1/3">
               <Text appearance="p3" color={neutralMid[600]}>
                 CPF/CNPJ
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {values.document}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {values.document}
+                </Title>
+              )}
             </li>
             <li className="w-1/3"></li>
           </ul>
@@ -48,17 +59,25 @@ export default function SummaryData({
               <Text appearance="p3" color={neutralMid[600]}>
                 Telefone
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {values.phone}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {values.phone}
+                </Title>
+              )}
             </li>
             <li className="w-1/3">
               <Text appearance="p3" color={neutralMid[600]}>
                 Email
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {values.mail}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {values.mail}
+                </Title>
+              )}
             </li>
             <li className="w-1/3"></li>
           </ul>
@@ -72,17 +91,25 @@ export default function SummaryData({
               <Text appearance="p3" color={neutralMid[600]}>
                 Data da emissão
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {date.toLocaleDateString('pt-br')}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {date.toLocaleDateString('pt-br')}
+                </Title>
+              )}
             </li>
             <li className="w-1/3">
               <Text appearance="p3" color={neutralMid[600]}>
                 Descrição
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {description}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {description}
+                </Title>
+              )}
             </li>
             <li className="w-1/3"></li>
           </ul>
@@ -91,17 +118,25 @@ export default function SummaryData({
               <Text appearance="p3" color={neutralMid[600]}>
                 Forma de pagamento
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {values.forma_pagamento}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {values.forma_pagamento}
+                </Title>
+              )}
             </li>
             <li className="w-1/3">
               <Text appearance="p3" color={neutralMid[600]}>
                 Valor total
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {formatCurrency(valor_final, 'BRL', 'pt-BR')}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {formatCurrency(valor_final, 'BRL', 'pt-BR')}
+                </Title>
+              )}
             </li>
             <li
               className={`w-1/3 ${
@@ -111,9 +146,13 @@ export default function SummaryData({
               <Text appearance="p3" color={neutralMid[600]}>
                 Parcelas
               </Text>
-              <Title appearance="h6" color={neutralDark[500]}>
-                {values.parcelas}
-              </Title>
+              {loading ? (
+                <Skeleton />
+              ) : (
+                <Title appearance="h6" color={neutralDark[500]}>
+                  {values.parcelas}
+                </Title>
+              )}
             </li>
           </ul>
         </div>

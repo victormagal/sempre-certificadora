@@ -26,6 +26,7 @@ export default function Checkout() {
   const [dataIugu, setDataIugu] = useState({});
   const [responseIugu, setResponseIugu] = useState(false);
   const [typePayment, setYypePayment] = useState('');
+  const [loadingIugu, setLoadingIugu] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedProduct = searchParams.get('product');
@@ -68,6 +69,7 @@ export default function Checkout() {
           <SummaryData
             desconto={productDetails?.attributes?.percentual_desconto}
             description={productDetails?.attributes?.nome}
+            loading={loadingIugu}
             valor={productDetails?.attributes?.valor}
             valor_desconto={productDetails?.attributes?.valor_desconto}
             valor_final={productDetails?.attributes?.valor_com_desconto}
@@ -83,6 +85,7 @@ export default function Checkout() {
   };
 
   const submitForm = (actions, values) => {
+    setLoadingIugu(true);
     const config = {
       headers: {
         'mz-integration': 'sempre',
@@ -119,6 +122,7 @@ export default function Checkout() {
         config
       )
       .then(({ data, status }) => {
+        setLoadingIugu(false);
         if (status === 200) {
           setResponseIugu(true);
           const { payable_with } = data;
@@ -140,6 +144,7 @@ export default function Checkout() {
             });
           }
         } else {
+          setLoadingIugu(false);
           console.log(status);
         }
       });
