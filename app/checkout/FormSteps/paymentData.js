@@ -60,6 +60,8 @@ export default function PaymentData({
           setFieldValue('bairro', data.bairro);
           setFieldValue('complemento', data.complemento);
           setFieldValue('logradouro', data.logradouro);
+        } else {
+          console.log(200);
         }
       });
   };
