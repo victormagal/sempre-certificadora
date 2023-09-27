@@ -43,8 +43,14 @@ export default function PaymentData({
   };
 
   const findCep = () => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
     axios
-      .get(`http://viacep.com.br/ws/${removeLetters(values.cep)}/json/`)
+      .get(`http://viacep.com.br/ws/${removeLetters(values.cep)}/json/`, config)
       .then(({ data, status }) => {
         if (status === 200) {
           setFieldValue('address_number', '');
