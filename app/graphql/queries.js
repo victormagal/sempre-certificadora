@@ -6,7 +6,8 @@ const getAllBranches = gql`
       data {
         attributes {
           label
-          telefones
+          telefone
+          celular
           endereco
           mapa
           estado {

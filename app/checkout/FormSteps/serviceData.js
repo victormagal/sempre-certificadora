@@ -36,7 +36,8 @@ export default function ServiceData() {
         ({
           attributes: {
             label,
-            telefones,
+            telefone,
+            celular,
             endereco,
             mapa,
             estado: {
@@ -51,7 +52,8 @@ export default function ServiceData() {
             estado: labelState,
             cidade: label,
             mapa: mapa,
-            telefones: telefones,
+            telefone: telefone,
+            celular: celular,
             uf: uf
           };
           setStories((prevState) => [...prevState, node]);
@@ -375,7 +377,9 @@ export default function ServiceData() {
                           {values?.detailed_story?.cidade}
                         </Title>
                         <Text appearance="p4" color={neutralDark[500]}>
-                          {values?.detailed_story?.telefones}
+                          {values?.detailed_story?.telefone}
+                          {' / '}
+                          {values?.detailed_story?.celular}
                         </Text>
                         <Text appearance="p3" color={neutralMid[500]}>
                           {values?.detailed_story?.endereco}
