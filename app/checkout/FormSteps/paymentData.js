@@ -222,6 +222,7 @@ export default function PaymentData({
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      data-iugu="number"
                       maxLength={CARD_MIN_LENGTH}
                       name="card_number"
                       style={{
@@ -252,6 +253,7 @@ export default function PaymentData({
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      data-iugu="full_name"
                       maxLength={NAME_MAX_LENGTH}
                       name="card_name"
                       style={{
@@ -282,6 +284,7 @@ export default function PaymentData({
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      data-iugu="expiration"
                       maxLength={EXPIRATION_DATE_MIN_LENGTH}
                       name="card_expiration_date"
                       style={{
@@ -306,10 +309,11 @@ export default function PaymentData({
                       appearance="p4"
                       color={neutralDark[500]}
                     >
-                      CVC
+                      CVV
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      data-iugu="verification_value"
                       maxLength={CARD_CODE_MIN_LENGTH}
                       name="card_code"
                       style={{
