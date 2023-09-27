@@ -18,7 +18,7 @@ import {
 } from '@/app/base/Constants';
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import {
-  floatToMoney,
+  formatCurrency,
   toCardNumber,
   toCEP,
   toExpirationDate
@@ -357,13 +357,13 @@ export default function PaymentData({
                       >
                         <option value="">Selecione</option>
                         <option value="1">
-                          1x de R$ {floatToMoney(valor / 1)}
+                          1x de {formatCurrency(valor / 1, 'BRL', 'pt-BR')}
                         </option>
                         <option value="2">
-                          2x de R$ {floatToMoney(valor / 2)}
+                          2x de {formatCurrency(valor / 2, 'BRL', 'pt-BR')}
                         </option>
                         <option value="3">
-                          3x de R$ {floatToMoney(valor / 3)}
+                          3x de {formatCurrency(valor / 3, 'BRL', 'pt-BR')}
                         </option>
                       </Field>
                       <SolidIcon
@@ -395,7 +395,7 @@ export default function PaymentData({
                       Subtotal
                     </Title>
                     <Title appearance="h6" color={neutralDark[500]}>
-                      R$ {floatToMoney(valor)}
+                      {formatCurrency(valor, 'BRL', 'pt-BR')}
                     </Title>
                   </li>
                   <li className="flex justify-between">
@@ -416,7 +416,7 @@ export default function PaymentData({
                         </Overline>
                       </div>
                       <Title appearance="h6" color={neutralDark[500]}>
-                        R$ {floatToMoney(valor_desconto)}
+                        {formatCurrency(valor_desconto, 'BRL', 'pt-BR')}
                       </Title>
                     </div>
                   </li>
@@ -425,7 +425,7 @@ export default function PaymentData({
                       Total
                     </Title>
                     <Title appearance="h5" color={neutralDark[500]}>
-                      R$ {floatToMoney(valor_final)}
+                      {formatCurrency(valor_final, 'BRL', 'pt-BR')}
                     </Title>
                   </li>
                 </ul>

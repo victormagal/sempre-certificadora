@@ -1,4 +1,4 @@
-import floatToMoney from './floatToMoney';
+import formatCurrency from './formatCurrency';
 import toCardNumber from './toCardNumber';
 import toCEP from './toCEP';
 import toCNPJ from './toCNPJ';
@@ -8,7 +8,7 @@ import toExpirationDate from './toExpirationDate';
 import toTel from './toTel';
 
 export {
-  floatToMoney,
+  formatCurrency,
   toCardNumber,
   toCEP,
   toCNPJ,

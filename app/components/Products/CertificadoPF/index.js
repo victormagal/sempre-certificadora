@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Container } from '../../Elements';
 import { neutralDark, neutralLight, neutralMid, red } from '@/app/base/Colors';
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
-import { floatToMoney } from '@/app/base/Masks';
+import { formatCurrency } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 import { getProductsByType } from '@/app/graphql/queries';
 import { useQuery } from '@apollo/client';
@@ -102,15 +102,24 @@ export default function CertificadoPF() {
                 color={neutralMid[600]}
                 className="line-through"
               >
-                De R$ {floatToMoney(product?.attributes?.valor)} por
+                De {formatCurrency(product?.attributes?.valor, 'BRL', 'pt-BR')}{' '}
+                por
               </Text>
               <Title appearance="h2" color={neutralDark[500]} extra>
-                R$ {floatToMoney(product?.attributes?.valor_com_desconto)}
+                {formatCurrency(
+                  product?.attributes?.valor_com_desconto,
+                  'BRL',
+                  'pt-BR'
+                )}
               </Title>
               <Text appearance="p3" color={neutralMid[600]}>
-                3x de R${' '}
-                {floatToMoney(product?.attributes?.valor_com_desconto / 3)} no
-                crédito
+                3x de{' '}
+                {formatCurrency(
+                  product?.attributes?.valor_com_desconto / 3,
+                  'BRL',
+                  'pt-BR'
+                )}{' '}
+                no crédito
               </Text>
             </main>
             <footer className="flex flex-col items-center space-y-4">
