@@ -12,6 +12,7 @@ export default function SolidIcon({ icon, iconColor, newClasses }) {
     faLocationDot: Icon.faLocationDot,
     faMinus: Icon.faMinus,
     faPhone: Icon.faPhone,
+    faPrint: Icon.faPrint,
     faStar: Icon.faStar
   };
 

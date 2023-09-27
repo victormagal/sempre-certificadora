@@ -1,9 +1,9 @@
 'use client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { neutralDark, neutralLight, neutralMid, success } from '../base/Colors';
+import { neutralDark, neutralLight, success } from '../base/Colors';
 import { SolidIcon } from '../base/Icons';
-import { Text, Title } from '../base/Typography';
+import { Text } from '../base/Typography';
 import { removeNonDigits } from '../base/Utils';
 import { Container } from '../components/Elements';
 import { getProductsById } from '../graphql/queries';
@@ -15,6 +15,7 @@ import {
   SummaryData
 } from './FormSteps';
 import schema from './FormValidation/schema';
+import { Boleto, Pix } from './Payments';
 import SelectedProduct from './SelectedProduct';
 import { useQuery } from '@apollo/client';
 import axios from 'axios';
@@ -23,6 +24,8 @@ import { Form, Formik } from 'formik';
 export default function Checkout() {
   const [productDetails, setProductDetails] = useState({});
   const [dataIugu, setDataIugu] = useState({});
+  const [responseIugu, setResponseIugu] = useState(false);
+  const [typePayment, setYypePayment] = useState('');
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedProduct = searchParams.get('product');
@@ -117,14 +120,23 @@ export default function Checkout() {
       )
       .then(({ data, status }) => {
         if (status === 200) {
+          setResponseIugu(true);
           const { payable_with } = data;
           if (payable_with === 'bank_slip') {
+            setYypePayment('boleto');
             setDataIugu({
               codeImage: data.bank_slip.barcode,
               codeLine: data.bank_slip.digitable_line,
               email: data.payer_email,
               url: data.secure_url,
-              value: data.total
+              value: data.total,
+              vencimento: data.due_date
+            });
+          } else if (payable_with === 'pix') {
+            setYypePayment('pix');
+            setDataIugu({
+              codeImage: data.pix.qrcode,
+              codeLine: data.pix.qrcode_text
             });
           }
         } else {
@@ -149,43 +161,8 @@ export default function Checkout() {
     <main className="pt-24">
       <FormStepper step={activeStep} />
       <SelectedProduct values={productDetails?.attributes} />
-      <Container>
-        <div className="border col-span-10 col-start-2 flex flex-col my-6 py-8 px-12 rounded space-y-6">
-          <div>
-            <Text appearance="p3" color={neutralMid[600]}>
-              Em breve você receberá uma confirmação com todos os detalhes do
-              pedido em:{' '}
-              <span style={{ color: neutralDark[500], fontWeight: 'bold' }}>
-                {dataIugu.email}
-              </span>
-            </Text>
-          </div>
-          <div className="flex justify-between">
-            <div className="flex space-x-2">
-              <Text appearance="p1" color={neutralMid[600]}>
-                Valor da cobrança:
-              </Text>
-              <Title appearance="h5" color={neutralDark[500]}>
-                {dataIugu.value}
-              </Title>
-            </div>
-            <div className="flex space-x-2">
-              <Text appearance="p1" color={neutralMid[600]}>
-                Data de vencimento:
-              </Text>
-              <Title appearance="h5" color={neutralDark[500]}>
-                {dataIugu.value}
-              </Title>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <img alt="Código de barras" src={dataIugu.codeImage} width="60%" />
-            <Text appearance="p1" color={neutralMid[600]}>
-              {dataIugu.codeLine}
-            </Text>
-          </div>
-        </div>
-      </Container>
+      {responseIugu && typePayment === 'boleto' && <Boleto data={dataIugu} />}
+      {responseIugu && typePayment === 'pix' && <Pix data={dataIugu} />}
       <Formik
         initialValues={{
           address_number: '',
