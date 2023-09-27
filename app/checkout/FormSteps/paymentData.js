@@ -21,7 +21,6 @@ import { toCardNumber, toCEP, toExpirationDate } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 import { estados, cidades, removeLetters } from '@/app/base/Utils';
 import { Container } from '@/app/components/Elements';
-import axios from 'axios';
 import { Field, useFormikContext } from 'formik';
 
 export default function PaymentData({
@@ -43,26 +42,15 @@ export default function PaymentData({
   };
 
   const findCep = () => {
-    const config = {
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      }
-    };
-
-    axios
-      .get(`http://viacep.com.br/ws/${removeLetters(values.cep)}/json/`, config)
-      .then(({ data, status }) => {
-        if (status === 200) {
-          setFieldValue('address_number', '');
-          setFieldValue('address_state', data.uf);
-          setFieldValue('address_story', data.localidade);
-          setFieldValue('bairro', data.bairro);
-          setFieldValue('complemento', data.complemento);
-          setFieldValue('logradouro', data.logradouro);
-        } else {
-          console.log(200);
-        }
+    fetch(`http://viacep.com.br/ws/${removeLetters(values.cep)}/json/`)
+      .then((res) => res.json())
+      .then((data) => {
+        setFieldValue('address_number', '');
+        setFieldValue('address_state', data.uf);
+        setFieldValue('address_story', data.localidade);
+        setFieldValue('bairro', data.bairro);
+        setFieldValue('complemento', data.complemento);
+        setFieldValue('logradouro', data.logradouro);
       });
   };
 
