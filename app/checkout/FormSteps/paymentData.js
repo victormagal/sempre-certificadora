@@ -42,7 +42,7 @@ export default function PaymentData({
   };
 
   const findCep = () => {
-    fetch(`http://viacep.com.br/ws/${removeLetters(values.cep)}/json/`)
+    fetch(`https://viacep.com.br/ws/${removeLetters(values.cep)}/json/`)
       .then((res) => res.json())
       .then((data) => {
         setFieldValue('address_number', '');
