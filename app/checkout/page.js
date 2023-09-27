@@ -3,6 +3,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { neutralDark, neutralLight, neutralMid, success } from '../base/Colors';
 import { SolidIcon } from '../base/Icons';
+import { floatToMoney } from '../base/Masks';
 import { Overline, Text, Title } from '../base/Typography';
 import { removeNonDigits } from '../base/Utils';
 import { Container } from '../components/Elements';
@@ -167,14 +168,15 @@ export default function Checkout() {
               color={neutralMid[600]}
               className="line-through"
             >
-              De R$ {productDetails?.attributes?.valor} por
+              De R$ {floatToMoney(productDetails?.attributes?.valor)} por
             </Text>
             <Title appearance="h2" color={neutralDark[500]} extra>
-              R$ {productDetails?.attributes?.valor_com_desconto}
+              R$ {floatToMoney(productDetails?.attributes?.valor_com_desconto)}
             </Title>
             <Text appearance="p3" color={neutralMid[600]}>
-              3x de R$ {productDetails?.attributes?.valor_com_desconto / 3} no
-              crédito
+              3x de R${' '}
+              {floatToMoney(productDetails?.attributes?.valor_com_desconto / 3)}{' '}
+              no crédito
             </Text>
             <Text appearance="p4" color={neutralDark[500]}>
               Validade de 12 meses

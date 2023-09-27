@@ -1,4 +1,5 @@
 import { neutralDark, neutralMid } from '@/app/base/Colors';
+import { floatToMoney } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
 import { useFormikContext } from 'formik';
@@ -99,7 +100,7 @@ export default function SummaryData({
                 Valor total
               </Text>
               <Title appearance="h6" color={neutralDark[500]}>
-                R$ {valor_final}
+                R$ {floatToMoney(valor_final)}
               </Title>
             </li>
             <li
@@ -122,7 +123,7 @@ export default function SummaryData({
               Subtotal
             </Title>
             <Title appearance="h6" color={neutralDark[500]}>
-              R$ {valor}
+              R$ {floatToMoney(valor)}
             </Title>
           </li>
           <li className="flex justify-between">
@@ -139,7 +140,7 @@ export default function SummaryData({
                 </Overline>
               </div>
               <Title appearance="h6" color={neutralDark[500]}>
-                R$ {valor_desconto}
+                R$ {floatToMoney(valor_desconto)}
               </Title>
             </div>
           </li>
@@ -148,7 +149,7 @@ export default function SummaryData({
               Total
             </Title>
             <Title appearance="h3" color={neutralDark[500]}>
-              R$ {valor_final}
+              R$ {floatToMoney(valor_final)}
             </Title>
           </li>
         </ul>

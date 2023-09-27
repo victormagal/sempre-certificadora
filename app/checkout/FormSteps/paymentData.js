@@ -17,7 +17,12 @@ import {
   NAME_MAX_LENGTH
 } from '@/app/base/Constants';
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
-import { toCardNumber, toCEP, toExpirationDate } from '@/app/base/Masks';
+import {
+  floatToMoney,
+  toCardNumber,
+  toCEP,
+  toExpirationDate
+} from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 import { estados, cidades, removeLetters } from '@/app/base/Utils';
 import { Container } from '@/app/components/Elements';
@@ -351,9 +356,15 @@ export default function PaymentData({
                         value={values.parcelas}
                       >
                         <option value="">Selecione</option>
-                        <option value="1">1x de R$ {valor / 1}</option>
-                        <option value="2">2x de R$ {valor / 2}</option>
-                        <option value="3">3x de R$ {valor / 3}</option>
+                        <option value="1">
+                          1x de R$ {floatToMoney(valor / 1)}
+                        </option>
+                        <option value="2">
+                          2x de R$ {floatToMoney(valor / 2)}
+                        </option>
+                        <option value="3">
+                          3x de R$ {floatToMoney(valor / 3)}
+                        </option>
                       </Field>
                       <SolidIcon
                         icon="faChevronDown"
@@ -384,7 +395,7 @@ export default function PaymentData({
                       Subtotal
                     </Title>
                     <Title appearance="h6" color={neutralDark[500]}>
-                      R$ {valor}
+                      R$ {floatToMoney(valor)}
                     </Title>
                   </li>
                   <li className="flex justify-between">
@@ -405,7 +416,7 @@ export default function PaymentData({
                         </Overline>
                       </div>
                       <Title appearance="h6" color={neutralDark[500]}>
-                        R$ {valor_desconto}
+                        R$ {floatToMoney(valor_desconto)}
                       </Title>
                     </div>
                   </li>
@@ -414,7 +425,7 @@ export default function PaymentData({
                       Total
                     </Title>
                     <Title appearance="h5" color={neutralDark[500]}>
-                      R$ {valor_final}
+                      R$ {floatToMoney(valor_final)}
                     </Title>
                   </li>
                 </ul>
