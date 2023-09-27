@@ -45,6 +45,7 @@ export default function PaymentData({
   const findCep = () => {
     const config = {
       headers: {
+        Accept: 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       }
     };
