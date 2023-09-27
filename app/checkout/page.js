@@ -160,9 +160,13 @@ export default function Checkout() {
   return (
     <main className="pt-24">
       <FormStepper step={activeStep} />
-      <SelectedProduct values={productDetails?.attributes} />
-      {responseIugu && typePayment === 'boleto' && <Boleto data={dataIugu} />}
-      {responseIugu && typePayment === 'pix' && <Pix data={dataIugu} />}
+      {!isLastStep && <SelectedProduct values={productDetails?.attributes} />}
+      {isLastStep && responseIugu && typePayment === 'boleto' && (
+        <Boleto data={dataIugu} />
+      )}
+      {isLastStep && responseIugu && typePayment === 'pix' && (
+        <Pix data={dataIugu} />
+      )}
       <Formik
         initialValues={{
           address_number: '',
