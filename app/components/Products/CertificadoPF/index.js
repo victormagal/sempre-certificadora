@@ -21,7 +21,7 @@ export default function CertificadoPF() {
 
   return (
     <Container newClasses="pb-16">
-      <div className="col-span-4 col-start-2 flex flex-col space-y-8">
+      <div className="col-span-4 xl:col-start-2 flex flex-col space-y-8">
         <div
           className="h-14 flex items-center justify-center rounded-full w-14"
           style={{ background: red[100] }}
@@ -71,7 +71,7 @@ export default function CertificadoPF() {
       {products &&
         products?.map((product) => (
           <div
-            className="border col-span-3 flex flex-col space-y-8 py-8 px-6 rounded-2xl"
+            className="border col-span-4 xl:col-span-3 flex flex-col space-y-8 py-8 px-6 rounded-2xl"
             key={product?.attributes?.id_produto}
             style={{
               background: neutralLight[100],

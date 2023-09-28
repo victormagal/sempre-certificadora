@@ -7,7 +7,7 @@ export default function Container({
   return (
     <section style={{ background: bgColor ? bgColor : 'transparent' }}>
       <div
-        className={`container grid lg:grid-cols-12 grid-cols-4 gap-6 mx-auto px-4 ${
+        className={`container grid grid-cols-4 lg:grid-cols-12 gap-6 mx-auto px-6 ${
           newClasses && newClasses
         }`}
         style={{ background: bgContainer ? bgContainer : 'transparent' }}

@@ -26,8 +26,8 @@ export default function Certificadora() {
         initGradient="#3A1078"
         newClasses="items-center"
       >
-        <div className="col-span-5 flex flex-col space-y-10">
-          <Title appearance="h1" color={neutralLight[100]} extra>
+        <div className="col-span-4 lg:col-span-5 flex flex-col pt-8 lg:pt-0 space-y-10">
+          <Title appearance="h2" color={neutralLight[100]} extra>
             Certificado Digital: adquira um perfeito para você.
           </Title>
           <Text appearance="p3" color={neutralLight[100]}>
@@ -35,7 +35,7 @@ export default function Certificadora() {
           </Text>
           <Link href="/">
             <button
-              className="py-4 px-8 rounded"
+              className="py-4 px-8 rounded w-full lg:w-2/4"
               style={{ background: red[1000] }}
               type="button"
             >
@@ -45,7 +45,7 @@ export default function Certificadora() {
             </button>
           </Link>
         </div>
-        <div className="col-end-13 col-span-6 flex justify-end">
+        <div className="lg:col-end-13 col-span-4 lg:col-span-6 flex justify-end">
           <Image
             alt="Certificado Digital - Emita o seu de onde estiver"
             height={606}
@@ -55,23 +55,33 @@ export default function Certificadora() {
         </div>
       </HeroPage>
       <Container newClasses="my-16">
-        <div className="col-span-6 col-start-4 flex flex-col items-center space-y-4">
+        <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-4">
           <Image
             alt="Certificado Digital - Emita o seu de onde estiver"
             height={33}
             src="/logos/certificadora.svg"
             width={172}
           />
-          <Title appearance="h1" color={red[1000]} extra>
+          <Title
+            appearance="h1"
+            className="text-center"
+            color={red[1000]}
+            extra
+          >
             Certificado Digital:
           </Title>
-          <Title appearance="h1" color={neutralDark[500]} extra>
+          <Title
+            appearance="h1"
+            className="text-center"
+            color={neutralDark[500]}
+            extra
+          >
             adquira o ideal pra você
           </Title>
         </div>
       </Container>
       <Container newClasses="pb-16">
-        <nav className="col-span-4 col-start-5 flex justify-center">
+        <nav className="col-span-4 lg:col-span-6 lg:col-start-4 flex justify-center">
           <ul
             className="border flex p-2 rounded space-x-4"
             style={{
@@ -82,7 +92,7 @@ export default function Certificadora() {
             <li
               className={`cursor-pointer ${
                 showPF && 'drop-shadow'
-              } py-4 px-8 rounded`}
+              } py-4 px-4 lg:px-8 rounded`}
               onClick={() => setShowPF(true)}
               style={{ background: showPF ? neutralLight[100] : 'transparent' }}
             >
@@ -114,9 +124,9 @@ export default function Certificadora() {
       </Container>
       {showPF ? <CertificadoPF /> : <CertificadoPJ />}
       <Container newClasses="border-b border-t py-12">
-        <div className="col-span-12 flex justify-between px-16">
+        <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
           <div className="flex flex-col justify-center items-center">
-            <Title appearance="h3" color={neutralDark[500]}>
+            <Title appearance="h3" color={neutralDark[500]} extra>
               +200 mil
             </Title>
             <Title appearance="h6" color={neutralMid[600]}>
@@ -124,7 +134,7 @@ export default function Certificadora() {
             </Title>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <Title appearance="h3" color={neutralDark[500]}>
+            <Title appearance="h3" color={neutralDark[500]} extra>
               +25
             </Title>
             <Title appearance="h6" color={neutralMid[600]}>
@@ -132,7 +142,7 @@ export default function Certificadora() {
             </Title>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <Title appearance="h3" color={neutralDark[500]}>
+            <Title appearance="h3" color={neutralDark[500]} extra>
               +10
             </Title>
             <Title appearance="h6" color={neutralMid[600]}>
@@ -140,7 +150,7 @@ export default function Certificadora() {
             </Title>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <Title appearance="h3" color={neutralDark[500]}>
+            <Title appearance="h3" color={neutralDark[500]} extra>
               85%
             </Title>
             <Title appearance="h6" color={neutralMid[600]}>
@@ -148,7 +158,7 @@ export default function Certificadora() {
             </Title>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <Title appearance="h3" color={neutralDark[500]}>
+            <Title appearance="h3" color={neutralDark[500]} extra>
               95%
             </Title>
             <Title appearance="h6" color={neutralMid[600]}>
@@ -158,7 +168,7 @@ export default function Certificadora() {
         </div>
       </Container>
       <Container newClasses="py-16">
-        <div className="col-span-6 col-start-4 flex flex-col items-center space-y-4">
+        <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-4">
           <Overline appearance="o1" color={red[700]}>
             Nossas Vantagens
           </Overline>
@@ -170,7 +180,7 @@ export default function Certificadora() {
           >
             O que eu só encontro na Sempre Tecnologia?
           </Title>
-          <Text appearance="p1" color={neutralMid[500]}>
+          <Text className="text-center" appearance="p1" color={neutralMid[500]}>
             Soluções com tecnologia própria e entendimento diferenciado perto de
             você.
           </Text>
@@ -214,8 +224,8 @@ export default function Certificadora() {
         bgContainer={neutralDark[600]}
         newClasses="items-center py-16 rounded-xl"
       >
-        <div className="col-span-4 col-start-2">
-          <Title appearance="h1" color={neutralLight[200]} extra>
+        <div className="col-span-4 lg:col-start-2">
+          <Title appearance="h2" color={neutralLight[200]} extra>
             Precisa de ajuda? Conte com a gente.
           </Title>
           <Text
@@ -225,10 +235,10 @@ export default function Certificadora() {
           >
             Confira o passo a passo para instalação do seu Certificado Digital.
           </Text>
-          <ul className="flex space-x-6">
+          <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-4 lg:space-y-0">
             <Link href="/">
               <li
-                className="flex p-4 rounded-md space-x-3"
+                className="flex items-center justify-center p-4 rounded-md space-x-3"
                 style={{ background: red[1000] }}
               >
                 <Text appearance="p4" color={neutralLight[100]}>
@@ -243,7 +253,7 @@ export default function Certificadora() {
             </Link>
             <Link href="/">
               <li
-                className="border flex p-4 rounded-md space-x-3"
+                className="border flex items-center justify-center p-4 rounded-md space-x-3"
                 style={{ borderColor: neutralLight[600] }}
               >
                 <Text appearance="p4" color={neutralLight[100]}>
@@ -258,7 +268,7 @@ export default function Certificadora() {
             </Link>
           </ul>
         </div>
-        <div className="col-end-12 col-span-5 flex justify-end">
+        <div className="lg:col-end-12 col-span-4 lg:col-span-5 flex justify-center lg:justify-end">
           <Image
             alt="Precisa de ajuda? Conte com a gente."
             height={360}
@@ -268,8 +278,8 @@ export default function Certificadora() {
         </div>
       </Container>
       <Testimonies />
-      <Container newClasses="py-8">
-        <ul className="col-span-12 flex justify-between">
+      <Container newClasses="py-16">
+        <ul className="col-span-4 lg:col-span-12 flex flex-col md:flex-row items-center md:justify-between space-y-8 md:space-y-0">
           <li>
             <Image
               alt="Litoral"

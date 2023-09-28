@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import styles from './styles.module.css';
 import {
   neutralDark,
   neutralLight,
@@ -46,9 +45,9 @@ export default function Locations() {
   };
 
   return (
-    <div id="mapLocations" className={styles.container}>
-      <Container newClasses="pb-12 pt-24">
-        <div className="col-span-6 col-start-4 text-center">
+    <div className="py-16">
+      <Container>
+        <div className="col-span-4 lg:col-span-6 lg:col-start-4 text-center">
           <Overline appearance="o1" color={red[700]}>
             Unidades
           </Overline>
@@ -61,12 +60,12 @@ export default function Locations() {
             Temos uma unidade perto de você.
           </Title>
           <Text appearance="p1" color={neutralMid[500]}>
-            São + de 25 unidades para atendimento.
+            São mais de 20 unidades para atendimento.
           </Text>
         </div>
       </Container>
-      <Container newClasses="pb-24">
-        <div className="col-span-4 lg:col-span-3 lg:col-start-4 flex flex-col mb-12">
+      <Container newClasses="pt-16">
+        <div className="col-span-4 md:col-span-2 lg:col-span-3 lg:col-start-4 flex flex-col lg:mb-12">
           <Text appearance="p4" className="mb-2" color={neutralDark[500]}>
             Estado
           </Text>
@@ -94,7 +93,7 @@ export default function Locations() {
             />
           </div>
         </div>
-        <div className="col-span-4 lg:col-span-3 flex flex-col mb-12">
+        <div className="col-span-4 md:col-span-2 lg:col-span-3 flex flex-col mb-12">
           <Text appearance="p4" className="mb-2" color={neutralDark[500]}>
             Unidade
           </Text>
@@ -128,7 +127,7 @@ export default function Locations() {
             />
           </div>
         </div>
-        <div className="col-span-3 col-start-4 flex flex-col items-center">
+        <div className="col-span-4 md:col-span-2 lg:col-span-3 lg:col-start-4 flex flex-col items-center mb-4 lg:mb-0">
           <div
             className="flex h-10 items-center justify-center mb-4 rounded-full w-10"
             style={{
@@ -141,15 +140,21 @@ export default function Locations() {
               newClasses="h-5"
             />
           </div>
-          <Title appearance="h5">Endereço</Title>
-          <Text appearance="p4" className="my-2">
+          <Title appearance="h5" color={neutralDark[500]}>
+            Endereço
+          </Title>
+          <Text
+            appearance="p4"
+            className="my-4 text-center"
+            color={neutralMid[500]}
+          >
             Venha nos fazer uma visita
           </Text>
           <Title appearance="h7" className="text-center" color={red[1000]}>
             Endereço aqui
           </Title>
         </div>
-        <div className="col-span-3 flex flex-col items-center">
+        <div className="col-span-4 md:col-span-2 lg:col-span-3 flex flex-col items-center">
           <div
             className="flex h-10 items-center justify-center mb-4 rounded-full w-10"
             style={{
@@ -158,8 +163,14 @@ export default function Locations() {
           >
             <SolidIcon icon="faPhone" iconColor={red[700]} newClasses="h-5" />
           </div>
-          <Title appearance="h5">Telefone</Title>
-          <Text appearance="p4" className="my-2">
+          <Title appearance="h5" color={neutralDark[500]}>
+            Telefone
+          </Title>
+          <Text
+            appearance="p4"
+            className="my-4 text-center"
+            color={neutralMid[500]}
+          >
             Nosso time está aqui para te ajudar
           </Text>
           <ul className="flex flex-col space-y-1 text-center">

@@ -8,8 +8,8 @@ import { Text, Title } from '@/app/base/Typography';
 export default function Footer() {
   return (
     <>
-      <Container bgColor={neutralLight[200]} newClasses="border-b mt-12 py-12">
-        <div className="lg:col-span-4 col-span-12">
+      <Container bgColor={neutralLight[200]} newClasses="border-b py-12">
+        <div className="col-span-4">
           <Link href="/">
             <Image
               alt="Sempre Tecnologia"
@@ -52,7 +52,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className=" col-span-6 lg:col-span-2">
+        <div className="col-span-2">
           <ul className="flex flex-col space-y-2">
             <li>
               <Title appearance="h8" color={neutralMid[500]}>
@@ -89,7 +89,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className=" col-span-6 lg:col-span-2">
+        <div className="col-span-2">
           <ul className="flex flex-col space-y-2">
             <li>
               <Title appearance="h8" color={neutralMid[500]}>
@@ -140,7 +140,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className=" col-span-6 lg:col-span-2">
+        <div className="col-span-2">
           <ul className="flex flex-col space-y-2">
             <li>
               <Title appearance="h8" color={neutralMid[500]}>
@@ -163,7 +163,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className=" col-span-6 lg:col-span-2">
+        <div className="col-span-2">
           <ul className="flex flex-col space-y-2">
             <li>
               <Title appearance="h8" color={neutralMid[500]}>
