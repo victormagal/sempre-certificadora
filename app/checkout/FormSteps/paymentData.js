@@ -24,7 +24,12 @@ import {
   toExpirationDate
 } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
-import { estados, cidades, removeLetters } from '@/app/base/Utils';
+import {
+  estados,
+  cidades,
+  removeLetters,
+  removeNonDigits
+} from '@/app/base/Utils';
 import { Container } from '@/app/components/Elements';
 import axios from 'axios';
 import { Field, useFormikContext } from 'formik';
@@ -35,7 +40,10 @@ export default function PaymentData({
   valor_desconto,
   valor_final
 }) {
+  const Iugu = window.Iugu;
   const { errors, setFieldValue, values } = useFormikContext();
+
+  Iugu.setAccountID('3F2271FB480A40FD8F3ED24ED250A627');
 
   const filterCities = (value) => {
     const selectedCities = [];
@@ -60,6 +68,31 @@ export default function PaymentData({
           setFieldValue('logradouro', data.logradouro);
         }
       });
+  };
+
+  const createToken = () => {
+    const number = removeNonDigits(values.card_number);
+    const expiration = values.card_expiration_date.split('/');
+    const full_name = values.card_name.split(' ');
+    const nome = full_name[0];
+    const sobrenome = full_name[full_name.length - 1];
+
+    const cc = Iugu.CreditCard(
+      number,
+      expiration[0],
+      expiration[1],
+      nome,
+      sobrenome,
+      values.card_code
+    );
+
+    Iugu.createPaymentToken(cc, function (response) {
+      if (response.errors) {
+        console.log(response.errors);
+      } else {
+        console.log(response.id);
+      }
+    });
   };
 
   useEffect(() => {
@@ -222,7 +255,6 @@ export default function PaymentData({
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      data-iugu="number"
                       maxLength={CARD_MIN_LENGTH}
                       name="card_number"
                       style={{
@@ -253,7 +285,6 @@ export default function PaymentData({
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      data-iugu="full_name"
                       maxLength={NAME_MAX_LENGTH}
                       name="card_name"
                       style={{
@@ -284,7 +315,6 @@ export default function PaymentData({
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      data-iugu="expiration"
                       maxLength={EXPIRATION_DATE_MIN_LENGTH}
                       name="card_expiration_date"
                       style={{
@@ -313,9 +343,9 @@ export default function PaymentData({
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      data-iugu="verification_value"
                       maxLength={CARD_CODE_MIN_LENGTH}
                       name="card_code"
+                      onBlur={createToken}
                       style={{
                         background: neutralLight[200],
                         borderColor: errors.card_code

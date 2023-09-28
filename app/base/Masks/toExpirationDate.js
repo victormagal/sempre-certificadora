@@ -6,7 +6,7 @@ function toExpirationDate(value) {
   }
 
   return restrainSize(removeNonDigits(value), 6).replace(
-    /^(\d{2})(\d{1,2})?/,
+    /^(\d{2})(\d{1,4})?/,
     (match, firstPartOfString, secondPartOfString) => {
       const dots = [firstPartOfString, secondPartOfString];
       return dots.reduce((first, rest) => first + (rest ? `/${rest}` : ''));
