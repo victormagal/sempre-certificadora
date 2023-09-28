@@ -82,7 +82,7 @@ export default function ServiceData() {
 
   return (
     <Container>
-      <div className="border col-span-10 col-start-2 flex flex-col my-6 py-8 px-12 rounded space-y-6">
+      <div className="border col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col my-6 py-8 px-6 lg:px-12 rounded space-y-6">
         <Title appearance="h3" color={neutralDark[500]} extra>
           Modelo de atendimento
         </Title>
@@ -111,10 +111,10 @@ export default function ServiceData() {
             </Text>
           </div>
         )}
-        <div className="flex space-x-16 w-full">
-          <ul className="flex flex-col space-y-4 w-2/5" role="group">
+        <div className="flex flex-col lg:flex-row lg:space-x-16 w-full">
+          <ul className="flex flex-col space-y-4 w-full lg:w-2/5" role="group">
             <li
-              className="border cursor-pointer flex space-x-6 p-6 rounded"
+              className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
               onClick={() => {
                 setFieldValue('has_atendimento', false);
                 setFieldValue('tipo_atendimento', 'videoconferencia');
@@ -159,7 +159,7 @@ export default function ServiceData() {
               />
             </li>
             <li
-              className="border cursor-pointer flex space-x-6 p-6 rounded"
+              className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
               onClick={() => {
                 setFieldValue('has_atendimento', true);
                 setFieldValue('tipo_atendimento', 'presencial');
@@ -204,7 +204,7 @@ export default function ServiceData() {
               />
             </li>
             <li
-              className="border cursor-pointer flex space-x-6 p-6 rounded"
+              className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
               onClick={() => {
                 setFieldValue('has_atendimento', true);
                 setFieldValue('tipo_atendimento', 'express');
@@ -249,7 +249,7 @@ export default function ServiceData() {
               />
             </li>
           </ul>
-          <div className="w-3/5">
+          <div className="mt-6 lg:mt-0 w-full lg:w-3/5">
             {values.tipo_atendimento === 'videoconferencia' && (
               <ul className="flex flex-col space-y-4">
                 <li>
@@ -270,7 +270,7 @@ export default function ServiceData() {
             {(values.tipo_atendimento === 'presencial' ||
               values.tipo_atendimento === 'express') && (
               <>
-                <ul className="flex mb-6 space-x-6">
+                <ul className="flex flex-col lg:flex-row mb-6 lg:space-x-6 space-y-6 lg:space-y-0">
                   <li className="flex-1">
                     <Text
                       appearance="p4"

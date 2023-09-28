@@ -18,7 +18,7 @@ export default function Boleto(data) {
   return (
     <Container>
       <div
-        className="col-span-10 col-start-2 flex items-center mt-6 py-8 px-12 rounded space-x-8"
+        className="col-span-4 lg:col-span-10 lg:col-start-2 flex items-center mt-6 py-8 px-6 lg:px-12 rounded space-x-8"
         style={{ backgroundColor: warning[200] }}
       >
         <SolidIcon
@@ -37,7 +37,7 @@ export default function Boleto(data) {
           </Title>
         </div>
       </div>
-      <div className="border col-span-10 col-start-2 flex flex-col my-6 py-8 px-12 rounded space-y-6">
+      <div className="border col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col my-6 py-8 px-6 lg:px-12 rounded space-y-6">
         <div>
           <Text appearance="p3" color={neutralMid[600]}>
             Em breve você receberá uma confirmação com todos os detalhes do
@@ -47,8 +47,8 @@ export default function Boleto(data) {
             </span>
           </Text>
         </div>
-        <div className="flex justify-between">
-          <div className="flex space-x-2">
+        <div className="flex flex-col lg:flex-row justify-between space-y-4 lg:space-y-0">
+          <div className="flex flex-col lg:flex-row lg:space-x-2">
             <Text appearance="p1" color={neutralMid[600]}>
               Valor da cobrança:
             </Text>
@@ -56,7 +56,7 @@ export default function Boleto(data) {
               {iugu.value}
             </Title>
           </div>
-          <div className="flex space-x-2">
+          <div className="flex flex-col lg:flex-row lg:space-x-2">
             <Text appearance="p1" color={neutralMid[600]}>
               Data de vencimento:
             </Text>
@@ -66,16 +66,24 @@ export default function Boleto(data) {
           </div>
         </div>
         <div className="flex flex-col items-center">
-          <img alt="Código de barras" src={iugu.codeImage} width="60%" />
-          <Text appearance="p1" color={neutralMid[600]}>
+          <img
+            alt="Código de barras"
+            className="lg:w-3/4"
+            src={iugu.codeImage}
+          />
+          <Text
+            appearance="p1"
+            className="break-all text-center"
+            color={neutralMid[600]}
+          >
             {iugu.codeLine}
           </Text>
         </div>
-        <ul className="flex justify-center space-x-4">
-          <li>
+        <ul className="flex flex-col md:flex-row justify-center md:space-x-4 space-y-4 md:space-y-0">
+          <li className="border justify-center px-8 py-4 rounded">
             <Link href={iugu.url || '/'} target="_blank">
               <button
-                className="border flex items-center px-8 py-4 rounded space-x-2"
+                className="flex items-center space-x-2"
                 style={{ borderColor: neutralLight[500] }}
                 type="button"
               >
@@ -90,11 +98,13 @@ export default function Boleto(data) {
               </button>
             </Link>
           </li>
-          <li>
+          <li
+            className="justify-center px-8 py-4 rounded"
+            style={{ backgroundColor: success[900] }}
+          >
             <button
-              className="flex items-center px-8 py-4 rounded space-x-2"
+              className="flex items-center space-x-2"
               onClick={() => navigator.clipboard.writeText(iugu.codeLine)}
-              style={{ backgroundColor: success[900] }}
               type="button"
             >
               <RegularIcon

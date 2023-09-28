@@ -210,7 +210,7 @@ export default function Checkout() {
         <Form>
           {renderStepContent(activeStep)}
           <Container>
-            <div className="col-span-10 col-start-2 flex justify-between py-6">
+            <div className="col-span-4 lg:col-span-10 lg:col-start-2 flex justify-between py-6">
               {activeStep !== 0 ? (
                 <button
                   className="border flex items-center py-3 px-4 rounded space-x-2"
@@ -257,7 +257,7 @@ export default function Checkout() {
                   type="submit"
                 >
                   <Text appearance="p4" color={neutralLight[100]}>
-                    {isLastStep ? 'Ir para a home' : 'Continuar'}
+                    {isLastStep ? 'Finalizar' : 'Continuar'}
                   </Text>
                   <SolidIcon
                     icon="faChevronRight"

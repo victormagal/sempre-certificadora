@@ -15,7 +15,7 @@ export default function Pix(data) {
   return (
     <Container>
       <div
-        className="col-span-10 col-start-2 flex items-center mt-6 py-8 px-12 rounded space-x-8"
+        className="col-span-4 lg:col-span-10 lg:col-start-2 flex items-center mt-6 py-8 px-6 lg:px-12 rounded space-x-8"
         style={{ backgroundColor: warning[200] }}
       >
         <SolidIcon
@@ -32,7 +32,7 @@ export default function Pix(data) {
           </Title>
         </div>
       </div>
-      <div className="border col-span-10 col-start-2 flex justify-between my-6 py-8 px-12 rounded">
+      <div className="border col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col lg:flex-row items-center lg:items-start justify-between my-6 py-8 px-6 lg:px-12 rounded space-y-4 lg:space-y-0">
         <div className="flex flex-col space-y-6">
           <ol className="list-decimal ml-6">
             <li>

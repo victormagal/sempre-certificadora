@@ -19,7 +19,7 @@ export default function SummaryData({
 
   return (
     <Container>
-      <div className="border col-span-10 col-start-2 flex flex-col my-6 py-8 px-12 rounded space-y-6">
+      <div className="border col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col my-6 py-8 px-6 lg:px-12 rounded space-y-6">
         <Title appearance="h3" color={neutralDark[500]} extra>
           Resumo da compra
         </Title>
@@ -27,8 +27,8 @@ export default function SummaryData({
           <Title appearance="h4" color={neutralDark[500]}>
             Dados do cliente
           </Title>
-          <ul className="flex space-x-6">
-            <li className="w-1/3">
+          <ul className="flex flex-col md:flex-row mb-6 lg:space-x-6 space-y-6 md:space-y-0">
+            <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
                 Cliente
               </Text>
@@ -40,7 +40,7 @@ export default function SummaryData({
                 </Title>
               )}
             </li>
-            <li className="w-1/3">
+            <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
                 CPF/CNPJ
               </Text>
@@ -52,10 +52,9 @@ export default function SummaryData({
                 </Title>
               )}
             </li>
-            <li className="w-1/3"></li>
           </ul>
-          <ul className="flex space-x-6">
-            <li className="w-1/3">
+          <ul className="flex flex-col md:flex-row mb-6 lg:space-x-6 space-y-6 md:space-y-0">
+            <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
                 Telefone
               </Text>
@@ -67,7 +66,7 @@ export default function SummaryData({
                 </Title>
               )}
             </li>
-            <li className="w-1/3">
+            <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
                 Email
               </Text>
@@ -79,15 +78,14 @@ export default function SummaryData({
                 </Title>
               )}
             </li>
-            <li className="w-1/3"></li>
           </ul>
         </div>
         <div className="border-b flex flex-col mb-6 pb-6 space-y-6">
           <Title appearance="h4" color={neutralDark[500]}>
             Dados da compra
           </Title>
-          <ul className="flex space-x-6">
-            <li className="w-1/3">
+          <ul className="flex flex-col md:flex-row mb-6 lg:space-x-6 space-y-6 md:space-y-0">
+            <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
                 Data da emissão
               </Text>
@@ -99,7 +97,7 @@ export default function SummaryData({
                 </Title>
               )}
             </li>
-            <li className="w-1/3">
+            <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
                 Descrição
               </Text>
@@ -111,10 +109,9 @@ export default function SummaryData({
                 </Title>
               )}
             </li>
-            <li className="w-1/3"></li>
           </ul>
-          <ul className="flex space-x-6">
-            <li className="w-1/3">
+          <ul className="flex flex-col md:flex-row mb-6 lg:space-x-6 space-y-6 md:space-y-0">
+            <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
                 Forma de pagamento
               </Text>
@@ -126,7 +123,7 @@ export default function SummaryData({
                 </Title>
               )}
             </li>
-            <li className="w-1/3">
+            <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
                 Valor total
               </Text>
@@ -138,22 +135,20 @@ export default function SummaryData({
                 </Title>
               )}
             </li>
-            <li
-              className={`w-1/3 ${
-                values.parcelas === '' ? 'invisible' : 'visible'
-              }`}
-            >
-              <Text appearance="p3" color={neutralMid[600]}>
-                Parcelas
-              </Text>
-              {loading ? (
-                <Skeleton />
-              ) : (
-                <Title appearance="h6" color={neutralDark[500]}>
-                  {values.parcelas}
-                </Title>
-              )}
-            </li>
+            {values.parcelas !== '' && (
+              <li className="flex-1">
+                <Text appearance="p3" color={neutralMid[600]}>
+                  Parcelas
+                </Text>
+                {loading ? (
+                  <Skeleton />
+                ) : (
+                  <Title appearance="h6" color={neutralDark[500]}>
+                    {values.parcelas}
+                  </Title>
+                )}
+              </li>
+            )}
           </ul>
         </div>
         <ul className="flex flex-col space-y-6">

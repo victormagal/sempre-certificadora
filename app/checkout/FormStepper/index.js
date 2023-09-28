@@ -6,7 +6,7 @@ import { Container } from '@/app/components/Elements';
 export default function FormStepper({ step }) {
   return (
     <Container newClasses="py-12">
-      <ul className="col-span-8 col-start-3 flex items-center justify-between">
+      <ul className="col-span-4 lg:col-span-8 lg:col-start-3 flex items-center justify-between">
         <li>
           <div
             className="border flex h-8 items-center justify-center rounded-full w-8"

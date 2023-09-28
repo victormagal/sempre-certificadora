@@ -68,7 +68,7 @@ export default function PaymentData({
 
   return (
     <Container>
-      <div className="border col-span-10 col-start-2 flex flex-col my-6 py-8 px-12 rounded space-y-6">
+      <div className="border col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col my-6 py-8 px-6 lg:px-12 rounded space-y-6">
         <Title appearance="h3" color={neutralDark[500]} extra>
           Formas de pagamento
         </Title>
@@ -88,8 +88,8 @@ export default function PaymentData({
             </Text>
           </div>
         )}
-        <div className="flex space-x-16 w-full">
-          <ul className="flex flex-col space-y-4 w-2/5" role="group">
+        <div className="flex flex-col lg:flex-row lg:space-x-16 w-full">
+          <ul className="flex flex-col space-y-4 w-full lg:w-2/5" role="group">
             <li
               className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
               onClick={() => setFieldValue('forma_pagamento', 'cartao')}
@@ -208,7 +208,7 @@ export default function PaymentData({
               />
             </li>
           </ul>
-          <div className="w-3/5">
+          <div className="mt-6 lg:mt-0 w-full lg:w-3/5">
             {values.forma_pagamento === 'cartao' && (
               <>
                 <ul className="flex mb-6">
@@ -388,7 +388,7 @@ export default function PaymentData({
             {(values.forma_pagamento === 'boleto' ||
               values.forma_pagamento === 'pix') && (
               <>
-                <ul className="border-b flex flex-col mb-6 pb-6 space-y-2">
+                <ul className="border-b flex flex-col mb-6 pb-6 space-y-6 lg:space-y-3">
                   <li>
                     <Title appearance="h4" color={neutralDark[500]}>
                       Dados da compra
@@ -482,14 +482,14 @@ export default function PaymentData({
                             href="https://buscacepinter.correios.com.br/app/endereco/index.php?t"
                             target="_blank"
                           >
-                            <Text appearance="p1" color={blue[800]}>
+                            <Text appearance="p3" color={blue[800]}>
                               Não sei o meu CEP
                             </Text>
                           </Link>
                         </div>
                       </li>
                     </ul>
-                    <ul className="flex flex-wrap mb-6 space-x-8">
+                    <ul className="flex flex-col lg:flex-row mb-6 lg:space-x-6 space-y-6 lg:space-y-0">
                       <li className="flex-1">
                         <Text
                           className="mb-2"
@@ -577,7 +577,7 @@ export default function PaymentData({
                         />
                       </li>
                     </ul>
-                    <ul className="flex mb-6 space-x-6">
+                    <ul className="flex flex-col lg:flex-row mb-6 lg:space-x-6 space-y-6 lg:space-y-0">
                       <li className="flex-1">
                         <Text
                           appearance="p4"

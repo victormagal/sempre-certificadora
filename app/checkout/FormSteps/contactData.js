@@ -9,11 +9,11 @@ export default function ContactData() {
 
   return (
     <Container>
-      <div className="border col-span-10 col-start-2 flex flex-col my-6 py-8 px-12 rounded space-y-6">
+      <div className="border col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col my-6 py-8 px-6 lg:px-12 rounded space-y-6">
         <Title appearance="h3" color={neutralDark[500]} extra>
           Dados de contato
         </Title>
-        <ul className="flex flex-wrap space-x-8">
+        <ul className="flex flex-col lg:flex-row mb-6 lg:space-x-6 space-y-6 lg:space-y-0">
           <li className="flex-1">
             <Text className="mb-2" appearance="p4" color={neutralDark[500]}>
               CPF/CNPJ
@@ -58,7 +58,7 @@ export default function ContactData() {
             )}
           </li>
         </ul>
-        <ul className="flex flex-wrap space-x-8">
+        <ul className="flex flex-col lg:flex-row mb-6 lg:space-x-6 space-y-6 lg:space-y-0">
           <li className="flex-1">
             <Text className="mb-2" appearance="p4" color={neutralDark[500]}>
               Email
