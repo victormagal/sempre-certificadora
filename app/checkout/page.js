@@ -162,6 +162,10 @@ export default function Checkout() {
     }
   };
 
+  const Iugu = window.Iugu;
+  Iugu.setAccountID('3F2271FB480A40FD8F3ED24ED250A627');
+  console.log(Iugu);
+
   return (
     <main className="pt-24">
       <FormStepper step={activeStep} />

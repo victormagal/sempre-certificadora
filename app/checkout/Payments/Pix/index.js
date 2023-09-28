@@ -10,7 +10,6 @@ import { Container } from '@/app/components/Elements';
 
 export default function Pix(data) {
   const { data: iugu } = data;
-  console.log(iugu);
 
   return (
     <Container>

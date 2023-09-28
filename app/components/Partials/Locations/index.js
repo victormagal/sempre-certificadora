@@ -17,7 +17,6 @@ export default function Locations() {
   const [stories, setStories] = useState([]);
   const [storiesFiltered, setStoriesFiltered] = useState([]);
   const [storySelected, setStorySelected] = useState({});
-  console.log(storySelected);
 
   useQuery(getAllStates, {
     onCompleted: ({ estados: { data } }) => {

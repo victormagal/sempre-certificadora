@@ -4,6 +4,7 @@ import {
   Analytics,
   Footer,
   Header,
+  Iugu,
   Locations,
   ModalForm
 } from './components/Partials';
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
         <ApolloProvider client={client}>
           <StyledComponentsRegistry>
             <Analytics />
+            <Iugu />
             <main>
               <ModalForm open={openModal} onClose={() => setOpenModal(false)} />
               <Header />
