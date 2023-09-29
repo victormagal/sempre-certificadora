@@ -12,6 +12,7 @@ import { useQuery } from '@apollo/client';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import styles from './styles.module.css';
 
 export default function Testimonies() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -136,7 +137,7 @@ export default function Testimonies() {
               <SolidIcon icon="faStar" iconColor="#FEC84B" newClasses="h-4" />
               <SolidIcon icon="faStar" iconColor="#FEC84B" newClasses="h-4" />
             </div>
-            <div id="app">
+            <div className={styles.swiperContainer}>
               <Swiper
                 modules={[Pagination]}
                 pagination={true}
