@@ -2,6 +2,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import styles from './styles.module.css';
 import { Pagination } from 'swiper/modules';
 import Container from '../../Elements/Container';
 import { neutralDark, neutralLight, neutralMid } from '@/app/base/Colors';
@@ -12,7 +13,6 @@ import { useQuery } from '@apollo/client';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import styles from './styles.module.css';
 
 export default function Testimonies() {
   const [currentIndex, setCurrentIndex] = useState(0);
