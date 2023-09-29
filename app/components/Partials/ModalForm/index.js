@@ -1,6 +1,15 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import {
+  neutralDark,
+  neutralLight,
+  neutralMid,
+  red,
+  success
+} from '@/app/base/Colors';
+import { toTel } from '@/app/base/Masks';
+import { Text, Title } from '@/app/base/Typography';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
@@ -19,185 +28,222 @@ export default function ModalForm({ open, onClose }) {
       className="bg-overlay-black fixed h-screen w-screen z-60"
     >
       <div
-        className="absolute flex left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] h-auto w-10/12 lg:w-8/12"
+        className="absolute flex left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] h-auto w-[500px]"
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <div
-          className="hidden lg:flex flex-col space-y-8 p-10 w-1/2"
-          style={{
-            background: 'linear-gradient(265deg, #CF2932 0%, #77335F 100%)'
-          }}
-        >
-          <div className="bg-white drop-shadow flex justify-center items-center h-20 w-20 rounded-full">
-            <Image
-              alt="Sempre mensalidade"
-              height={22}
-              quality={100}
-              src="/icon-call-5.svg"
-              width={22}
-            />
-          </div>
-          <h1 className="font-serif font-bold text-white text-4xl">
-            Ligamos para você
-          </h1>
-          <p className="font-sans text-white">
-            Preencha os seus dados e em seguida clique em ME LIGUE AGORA.
-          </p>
-          <p className="font-sans text-white">
-            Entraremos em contato em até 30 segundos se estivermos em horário
-            comercial.
-          </p>
-        </div>
-        <div className="bg-white p-6 w-full lg:w-1/2">
-          <div className="flex justify-end">
+        <div className="bg-white p-8 rounded-lg">
+          <header className="flex justify-between">
+            <div className="flex flex-col space-y-2">
+              <Title appearance="h4" color={neutralDark[500]} extra>
+                Ligamos para você
+              </Title>
+              <Text appearance="p4" color={neutralMid[600]}>
+                Preencha os dados abaixo e entraremos em contato em breve.
+              </Text>
+            </div>
             <FontAwesomeIcon
-              className="cursor-pointer h-8 w-8 text-custom-orange"
+              className="cursor-pointer h-6 w-6"
+              color={neutralMid[500]}
               icon={faXmark}
               onClick={onClose}
             />
-          </div>
-          <div className="p-10">
-            <Formik
-              initialValues={{ mail: '', name: '', phone: '' }}
-              onSubmit={(values) => {
-                setLoading(true);
-                const config = {
-                  headers: {
-                    'mz-integration': 'sempre',
-                    'Content-Type': 'application/json'
+          </header>
+          <Formik
+            initialValues={{ mail: '', name: '', phone: '', subject: '' }}
+            onSubmit={(values) => {
+              setLoading(true);
+              const config = {
+                headers: {
+                  'mz-integration': 'sempre',
+                  'Content-Type': 'application/json'
+                }
+              };
+
+              const body = JSON.stringify({
+                contato_nome: values.name,
+                contato_email: values.mail,
+                contato_telefone: values.phone,
+                contato_origem: 'site_st'
+              });
+
+              axios
+                .post(
+                  'https://bot.sempretecnologia.com.br/index.php/fila/criaMensagem',
+                  body,
+                  config
+                )
+                .then(({ status }) => {
+                  setLoading(false);
+                  if (status === 200) {
+                    setMessageMail(
+                      'Enviado com sucesso! Em breve entraremos em contato.'
+                    );
+                  } else {
+                    setMessageMail(
+                      'Não foi possível no momento. Tente novamente mais tarde.'
+                    );
                   }
-                };
-
-                const body = JSON.stringify({
-                  contato_nome: values.name,
-                  contato_email: values.mail,
-                  contato_telefone: values.phone,
-                  contato_origem: 'site_st'
                 });
-
-                axios
-                  .post(
-                    'https://bot.sempretecnologia.com.br/index.php/fila/criaMensagem',
-                    body,
-                    config
-                  )
-                  .then(({ status }) => {
-                    setLoading(false);
-                    if (status === 200) {
-                      setMessageMail(
-                        'Enviado com sucesso! Em breve entraremos em contato.'
-                      );
-                    } else {
-                      setMessageMail(
-                        'Não foi possível no momento. Tente novamente mais tarde.'
-                      );
-                    }
-                  });
-              }}
-              validationSchema={Yup.object({
-                mail: Yup.string()
-                  .email('E-mail inválido')
-                  .required('Obrigatório'),
-                name: Yup.string().required('Obrigatório'),
-                phone: Yup.string().required('Obrigatório')
-              })}
-            >
-              {({ errors, values }) => (
-                <Form>
-                  <ul className="flex flex-col space-y-6">
-                    <li className="flex flex-col space-y-2">
-                      <label
-                        htmlFor="name"
-                        className="font-sans font-semibold text-custom-purple"
-                      >
-                        Nome
-                      </label>
-                      <Field
-                        className="bg-transparent border border-custom-purple font-sans px-4 py-2 placeholder:text-soft-gray text-soft-gray rounded w-full"
-                        name="name"
-                        placeholder="Insira seu nome"
-                        type="text"
-                        value={values.name}
-                      />
-                      {errors.name && (
-                        <span className="text-red-600 text-sm">
-                          {errors.name}
-                        </span>
-                      )}
-                    </li>
-                    <li className="flex flex-col space-y-2">
-                      <label
-                        htmlFor="mail"
-                        className="font-sans font-semibold text-custom-purple"
-                      >
-                        E-mail
-                      </label>
-                      <Field
-                        className="bg-transparent border border-custom-purple font-sans px-4 py-2 placeholder:text-soft-gray text-soft-gray rounded w-full"
-                        name="mail"
-                        placeholder="Insira seu e-mail"
-                        type="email"
-                        value={values.mail}
-                      />
-                      {errors.name && (
-                        <span className="text-red-600 text-sm">
-                          {errors.mail}
-                        </span>
-                      )}
-                    </li>
-                    <li className="flex flex-col space-y-2">
-                      <label
-                        htmlFor="phone"
-                        className="font-sans font-semibold text-custom-purple"
-                      >
-                        Celular ou Whatsapp
-                      </label>
-                      <Field
-                        className="bg-transparent border border-custom-purple font-sans px-4 py-2 placeholder:text-soft-gray text-soft-gray rounded w-full"
-                        name="phone"
-                        placeholder="Insira seu número"
-                        type="text"
-                        value={values.phone}
-                      />
-                      {errors.name && (
-                        <span className="text-red-600 text-sm">
-                          {errors.phone}
-                        </span>
-                      )}
-                    </li>
-                    {loading && (
-                      <Image
-                        alt="Sempre Tecnologia"
-                        height={50}
-                        quality={100}
-                        src="/loading.svg"
-                        width={50}
-                      />
+            }}
+            validationSchema={Yup.object({
+              mail: Yup.string()
+                .email('E-mail inválido')
+                .required('Obrigatório'),
+              name: Yup.string().required('Obrigatório'),
+              phone: Yup.string()
+                .required('Obrigatório')
+                .min(12, 'Telefone inválido'),
+              subject: Yup.string().required('Obrigatório')
+            })}
+            validateOnBlur={false}
+            validateOnChange={false}
+          >
+            {({ errors, values }) => (
+              <Form>
+                <ul className="flex flex-col mt-8 space-y-6">
+                  <li className="flex flex-col space-y-2">
+                    <Text appearance="p4" color={neutralDark[500]}>
+                      Assunto
+                    </Text>
+                    <Field
+                      className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      name="subject"
+                      style={{
+                        background: neutralLight[200],
+                        borderColor: errors.subject
+                          ? red[900]
+                          : neutralLight[400],
+                        color: neutralMid[500]
+                      }}
+                      type="text"
+                      value={values.subject}
+                    />
+                    {errors.subject && (
+                      <Text appearance="p4" color={red[900]}>
+                        {errors.subject}
+                      </Text>
                     )}
-                    {messageMail && (
-                      <p className="font-serif font-bold text-2xl text-gray-600">
-                        {messageMail}
-                      </p>
+                  </li>
+                  <li className="flex flex-col space-y-2">
+                    <Text appearance="p4" color={neutralDark[500]}>
+                      Nome
+                    </Text>
+                    <Field
+                      className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      name="name"
+                      style={{
+                        background: neutralLight[200],
+                        borderColor: errors.name ? red[900] : neutralLight[400],
+                        color: neutralMid[500]
+                      }}
+                      type="text"
+                      value={values.name}
+                    />
+                    {errors.name && (
+                      <Text appearance="p4" color={red[900]}>
+                        {errors.name}
+                      </Text>
                     )}
-                    <li>
-                      <button
-                        className="bg-white font-sans font-bold py-4 text-white rounded w-2/3"
-                        style={{
-                          background:
-                            'linear-gradient(190deg, #F8B44C 14%, #F07E26 89%)'
-                        }}
-                        type="submit"
-                      >
+                  </li>
+                  <li className="flex flex-col space-y-2">
+                    <Text appearance="p4" color={neutralDark[500]}>
+                      E-mail
+                    </Text>
+                    <Field
+                      className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      name="mail"
+                      style={{
+                        background: neutralLight[200],
+                        borderColor: errors.mail ? red[900] : neutralLight[400],
+                        color: neutralMid[500]
+                      }}
+                      type="email"
+                      value={values.mail}
+                    />
+                    {errors.mail && (
+                      <Text appearance="p4" color={red[900]}>
+                        {errors.mail}
+                      </Text>
+                    )}
+                  </li>
+                  <li className="flex flex-col space-y-2">
+                    <Text appearance="p4" color={neutralDark[500]}>
+                      Celular ou Whatsapp
+                    </Text>
+                    <Field
+                      className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                      maxLength="13"
+                      name="phone"
+                      style={{
+                        background: neutralLight[200],
+                        borderColor: errors.phone
+                          ? red[900]
+                          : neutralLight[400],
+                        color: neutralMid[500]
+                      }}
+                      type="text"
+                      value={toTel(values.phone)}
+                    />
+                    {errors.phone && (
+                      <Text appearance="p4" color={red[900]}>
+                        {errors.phone}
+                      </Text>
+                    )}
+                  </li>
+                  {loading && (
+                    <Image
+                      alt="Sempre Tecnologia"
+                      height={50}
+                      quality={100}
+                      src="/loading.svg"
+                      width={50}
+                    />
+                  )}
+                  {messageMail && (
+                    <Title
+                      appearance="h5"
+                      className="text-center"
+                      color={neutralDark[500]}
+                    >
+                      {messageMail}
+                    </Title>
+                  )}
+                </ul>
+                <ul className="flex flex-grow mt-8 space-x-6">
+                  <li className="flex-1">
+                    <button
+                      className="border py-4 rounded-md w-full"
+                      onClick={onClose}
+                      style={{
+                        backgroundColor: neutralLight[100],
+                        borderColor: neutralLight[500]
+                      }}
+                      type="button"
+                    >
+                      <Title appearance="h7" color={neutralDark[500]}>
+                        Cancelar
+                      </Title>
+                    </button>
+                  </li>
+                  <li className="flex-1">
+                    <button
+                      className="py-4 rounded-md w-full"
+                      style={{
+                        backgroundColor: success[800]
+                      }}
+                      type="submit"
+                    >
+                      <Title appearance="h7" color={neutralLight[100]}>
                         Me ligue agora
-                      </button>
-                    </li>
-                  </ul>
-                </Form>
-              )}
-            </Formik>
-          </div>
+                      </Title>
+                    </button>
+                  </li>
+                </ul>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>

@@ -8,6 +8,6 @@ export const EXPIRATION_DATE_MIN_LENGTH = 7;
 export const LOGRADOURO_MAX_LENGTH = 200;
 export const LOGRADOURO_MIN_LENGTH = 3;
 export const NAME_MAX_LENGTH = 150;
-export const PHONE_MIN_LENGTH = 13;
+export const PHONE_MIN_LENGTH = 12;
 
 export const NAME_REGEX = /^\s?[-'.üA-Za-zÀ-ú]+(\s[-'.üA-Za-zÀ-ú]+)+\s?$/;
