@@ -105,13 +105,15 @@ export default function Checkout() {
       dn_certificado: '',
       email: values.mail,
       forma_pagamento: values.forma_pagamento,
-      id_filial: 'c8c3042c-9050-4b4c-b831-937986c44bfd',
-      id_produto: '305ea64e-d928-47a4-a1c8-b245d7fafff8',
+      id_filial: values.filial,
+      id_produto: selectedProduct,
       logradouro_cobranca: values.logradouro,
       nome_cobranca: values.name,
       numero_cobranca: values.address_number,
+      qtd_parcelas: values.parcelas,
       telefone_cobranca: removeNonDigits(values.phone).slice(2),
       tipo_atendimento: values.tipo_atendimento,
+      token: values.token,
       uf_cobranca: values.address_state
     });
 
@@ -194,16 +196,17 @@ export default function Checkout() {
           forma_pagamento: '',
           has_atendimento: false,
           has_pagamento: false,
+          filial: '',
           logradouro: '',
           mail: '',
           name: '',
           parcelas: '',
           phone: '',
           tipo_atendimento: '',
-          valor_final: productDetails?.attributes?.valor_com_desconto
+          token: ''
         }}
         onSubmit={handleSubmit}
-        validateOnBlur={true}
+        validateOnBlur={false}
         validateOnChange={false}
         validationSchema={currentSchema}
       >

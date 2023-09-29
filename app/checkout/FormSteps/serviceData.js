@@ -44,7 +44,8 @@ export default function ServiceData() {
               data: {
                 attributes: { label: labelState, uf }
               }
-            }
+            },
+            id_filial
           }
         }) => {
           const node = {
@@ -54,7 +55,8 @@ export default function ServiceData() {
             mapa: mapa,
             telefone: telefone,
             celular: celular,
-            uf: uf
+            uf: uf,
+            id: id_filial
           };
           setStories((prevState) => [...prevState, node]);
         }
@@ -76,6 +78,7 @@ export default function ServiceData() {
     values.filtered_stories.map((story) => {
       if (story.cidade === value) {
         setFieldValue('detailed_story', story);
+        setFieldValue('filial', story.id);
       }
     });
   };

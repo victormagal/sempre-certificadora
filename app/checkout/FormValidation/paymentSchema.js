@@ -41,6 +41,10 @@ export default Yup.object({
     is: 'cartao',
     then: () => Yup.string().required('Obrigatório')
   }),
+  token: Yup.string().when('forma_pagamento', {
+    is: 'cartao',
+    then: () => Yup.string().required('Os dados do seu cartão estão inválidos')
+  }),
   cep: Yup.string().when('forma_pagamento', {
     is: 'boleto',
     then: () =>

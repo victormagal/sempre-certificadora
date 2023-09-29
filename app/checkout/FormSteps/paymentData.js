@@ -10,7 +10,7 @@ import {
 import {
   ADDRESS_NUMBER_MAX_LENGTH,
   CARD_MIN_LENGTH,
-  CARD_CODE_MIN_LENGTH,
+  CARD_CODE_MAX_LENGTH,
   CEP_MIN_LENGTH,
   EXPIRATION_DATE_MIN_LENGTH,
   LOGRADOURO_MAX_LENGTH,
@@ -89,8 +89,9 @@ export default function PaymentData({
     Iugu.createPaymentToken(cc, function (response) {
       if (response.errors) {
         console.log(response.errors);
+        setFieldValue('token', '');
       } else {
-        console.log(response.id);
+        setFieldValue('token', response.id);
       }
     });
   };
@@ -118,6 +119,22 @@ export default function PaymentData({
             />
             <Text appearance="p4" color={red[1200]}>
               {errors.forma_pagamento}
+            </Text>
+          </div>
+        )}
+        {errors.token && (
+          <div
+            className="flex justify-center p-4 rounded w-full"
+            style={{ background: red[100] }}
+          >
+            <Field
+              className="hidden"
+              name="token"
+              type="hidden"
+              value={values.token}
+            />
+            <Text appearance="p4" color={red[1200]}>
+              {errors.token}
             </Text>
           </div>
         )}
@@ -257,6 +274,7 @@ export default function PaymentData({
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
                       maxLength={CARD_MIN_LENGTH}
                       name="card_number"
+                      onBlur={createToken}
                       style={{
                         background: neutralLight[200],
                         borderColor: errors.card_number
@@ -287,6 +305,7 @@ export default function PaymentData({
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
                       maxLength={NAME_MAX_LENGTH}
                       name="card_name"
+                      onBlur={createToken}
                       style={{
                         background: neutralLight[200],
                         borderColor: errors.card_name
@@ -317,6 +336,7 @@ export default function PaymentData({
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
                       maxLength={EXPIRATION_DATE_MIN_LENGTH}
                       name="card_expiration_date"
+                      onBlur={createToken}
                       style={{
                         background: neutralLight[200],
                         borderColor: errors.card_expiration_date
@@ -343,7 +363,7 @@ export default function PaymentData({
                     </Text>
                     <Field
                       className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      maxLength={CARD_CODE_MIN_LENGTH}
+                      maxLength={CARD_CODE_MAX_LENGTH}
                       name="card_code"
                       onBlur={createToken}
                       style={{

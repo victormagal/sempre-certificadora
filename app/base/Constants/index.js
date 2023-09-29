@@ -1,5 +1,6 @@
 export const ADDRESS_NUMBER_MAX_LENGTH = 5;
-export const CARD_CODE_MIN_LENGTH = 4;
+export const CARD_CODE_MAX_LENGTH = 4;
+export const CARD_CODE_MIN_LENGTH = 3;
 export const CARD_MIN_LENGTH = 19;
 export const CEP_MIN_LENGTH = 9;
 export const DOCUMENT_MAX_LENGTH = 18;
