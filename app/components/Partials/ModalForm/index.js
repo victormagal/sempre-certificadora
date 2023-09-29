@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import {
   neutralDark,
   neutralLight,
@@ -15,6 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function ModalForm({ open, onClose }) {
   const [loading, setLoading] = useState(false);
@@ -107,100 +109,119 @@ export default function ModalForm({ open, onClose }) {
                     <Text appearance="p4" color={neutralDark[500]}>
                       Assunto
                     </Text>
-                    <Field
-                      className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      name="subject"
-                      style={{
-                        background: neutralLight[200],
-                        borderColor: errors.subject
-                          ? red[900]
-                          : neutralLight[400],
-                        color: neutralMid[500]
-                      }}
-                      type="text"
-                      value={values.subject}
-                    />
-                    {errors.subject && (
-                      <Text appearance="p4" color={red[900]}>
-                        {errors.subject}
-                      </Text>
+                    {loading ? (
+                      <Skeleton />
+                    ) : (
+                      <>
+                        <Field
+                          className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                          name="subject"
+                          style={{
+                            background: neutralLight[200],
+                            borderColor: errors.subject
+                              ? red[900]
+                              : neutralLight[400],
+                            color: neutralMid[500]
+                          }}
+                          type="text"
+                          value={values.subject}
+                        />
+                        {errors.subject && (
+                          <Text appearance="p4" color={red[900]}>
+                            {errors.subject}
+                          </Text>
+                        )}
+                      </>
                     )}
                   </li>
                   <li className="flex flex-col space-y-2">
                     <Text appearance="p4" color={neutralDark[500]}>
                       Nome
                     </Text>
-                    <Field
-                      className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      name="name"
-                      style={{
-                        background: neutralLight[200],
-                        borderColor: errors.name ? red[900] : neutralLight[400],
-                        color: neutralMid[500]
-                      }}
-                      type="text"
-                      value={values.name}
-                    />
-                    {errors.name && (
-                      <Text appearance="p4" color={red[900]}>
-                        {errors.name}
-                      </Text>
+                    {loading ? (
+                      <Skeleton />
+                    ) : (
+                      <>
+                        <Field
+                          className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                          name="name"
+                          style={{
+                            background: neutralLight[200],
+                            borderColor: errors.name
+                              ? red[900]
+                              : neutralLight[400],
+                            color: neutralMid[500]
+                          }}
+                          type="text"
+                          value={values.name}
+                        />
+                        {errors.name && (
+                          <Text appearance="p4" color={red[900]}>
+                            {errors.name}
+                          </Text>
+                        )}
+                      </>
                     )}
                   </li>
                   <li className="flex flex-col space-y-2">
                     <Text appearance="p4" color={neutralDark[500]}>
                       E-mail
                     </Text>
-                    <Field
-                      className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      name="mail"
-                      style={{
-                        background: neutralLight[200],
-                        borderColor: errors.mail ? red[900] : neutralLight[400],
-                        color: neutralMid[500]
-                      }}
-                      type="email"
-                      value={values.mail}
-                    />
-                    {errors.mail && (
-                      <Text appearance="p4" color={red[900]}>
-                        {errors.mail}
-                      </Text>
+                    {loading ? (
+                      <Skeleton />
+                    ) : (
+                      <>
+                        <Field
+                          className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                          name="mail"
+                          style={{
+                            background: neutralLight[200],
+                            borderColor: errors.mail
+                              ? red[900]
+                              : neutralLight[400],
+                            color: neutralMid[500]
+                          }}
+                          type="email"
+                          value={values.mail}
+                        />
+                        {errors.mail && (
+                          <Text appearance="p4" color={red[900]}>
+                            {errors.mail}
+                          </Text>
+                        )}
+                      </>
                     )}
                   </li>
                   <li className="flex flex-col space-y-2">
                     <Text appearance="p4" color={neutralDark[500]}>
                       Celular ou Whatsapp
                     </Text>
-                    <Field
-                      className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                      maxLength="13"
-                      name="phone"
-                      style={{
-                        background: neutralLight[200],
-                        borderColor: errors.phone
-                          ? red[900]
-                          : neutralLight[400],
-                        color: neutralMid[500]
-                      }}
-                      type="text"
-                      value={toTel(values.phone)}
-                    />
-                    {errors.phone && (
-                      <Text appearance="p4" color={red[900]}>
-                        {errors.phone}
-                      </Text>
+                    {loading ? (
+                      <Skeleton />
+                    ) : (
+                      <>
+                        <Field
+                          className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                          maxLength="13"
+                          name="phone"
+                          style={{
+                            background: neutralLight[200],
+                            borderColor: errors.phone
+                              ? red[900]
+                              : neutralLight[400],
+                            color: neutralMid[500]
+                          }}
+                          type="text"
+                          value={toTel(values.phone)}
+                        />
+                        {errors.phone && (
+                          <Text appearance="p4" color={red[900]}>
+                            {errors.phone}
+                          </Text>
+                        )}
+                      </>
                     )}
                   </li>
-                  {loading && (
-                    <Image
-                      alt="Sempre Tecnologia"
-                      height={50}
-                      quality={100}
-                      src="/loading.svg"
-                      width={50}
-                    />
-                  )}
                   {messageMail && (
                     <Title
                       appearance="h5"
