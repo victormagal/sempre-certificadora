@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const getAllBranches = gql`
   query {
-    filiais {
+    filiais(pagination: { limit: 30 }) {
       data {
         attributes {
           label
