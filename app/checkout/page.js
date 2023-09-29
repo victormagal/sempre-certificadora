@@ -15,7 +15,7 @@ import {
   SummaryData
 } from './FormSteps';
 import schema from './FormValidation/schema';
-import { Boleto, Pix } from './Payments';
+import { Boleto, Error, Pix } from './Payments';
 import SelectedProduct from './SelectedProduct';
 import { useQuery } from '@apollo/client';
 import axios from 'axios';
@@ -25,7 +25,7 @@ export default function Checkout() {
   const [productDetails, setProductDetails] = useState({});
   const [dataIugu, setDataIugu] = useState({});
   const [responseIugu, setResponseIugu] = useState(false);
-  const [typePayment, setYypePayment] = useState('');
+  const [typePayment, setTypePayment] = useState('');
   const [loadingIugu, setLoadingIugu] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -100,7 +100,7 @@ export default function Checkout() {
       complemento_cobranca: values.complemento,
       cpf_certificado: '',
       cpf_cnpj_cobranca: removeNonDigits(values.document),
-      cupom_desconto: '1432',
+      cupom_desconto: '',
       ddd_telefone_cobranca: removeNonDigits(values.phone).slice(0, 2),
       dn_certificado: '',
       email: values.mail,
@@ -125,11 +125,11 @@ export default function Checkout() {
       )
       .then(({ data, status }) => {
         setLoadingIugu(false);
+        setResponseIugu(true);
         if (status === 200) {
-          setResponseIugu(true);
           const { payable_with } = data;
           if (payable_with === 'bank_slip') {
-            setYypePayment('boleto');
+            setTypePayment('boleto');
             setDataIugu({
               codeImage: data.bank_slip.barcode,
               codeLine: data.bank_slip.digitable_line,
@@ -139,7 +139,7 @@ export default function Checkout() {
               vencimento: data.due_date
             });
           } else if (payable_with === 'pix') {
-            setYypePayment('pix');
+            setTypePayment('pix');
             setDataIugu({
               codeImage: data.pix.qrcode,
               codeLine: data.pix.qrcode_text
@@ -147,8 +147,14 @@ export default function Checkout() {
           }
         } else {
           setLoadingIugu(false);
-          console.log(status);
+          setTypePayment('error');
         }
+      })
+      .catch((error) => {
+        console.log(error.response);
+        setLoadingIugu(false);
+        setResponseIugu(true);
+        setTypePayment('error');
       });
 
     actions.setSubmitting(false);
@@ -174,6 +180,7 @@ export default function Checkout() {
       {isLastStep && responseIugu && typePayment === 'pix' && (
         <Pix data={dataIugu} />
       )}
+      {isLastStep && responseIugu && typePayment === 'error' && <Error />}
       <Formik
         initialValues={{
           address_number: '',
