@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function SolidIcon({ icon, iconColor, newClasses }) {
   const { [icon]: fontIcon } = {
+    faBars: Icon.faBars,
     faCheck: Icon.faCheck,
     faChevronDown: Icon.faChevronDown,
     faChevronLeft: Icon.faChevronLeft,
@@ -16,7 +17,8 @@ export default function SolidIcon({ icon, iconColor, newClasses }) {
     faPhone: Icon.faPhone,
     faPrint: Icon.faPrint,
     faStar: Icon.faStar,
-    faTriangleExclamation: Icon.faTriangleExclamation
+    faTriangleExclamation: Icon.faTriangleExclamation,
+    faXmark: Icon.faXmark
   };
 
   return (

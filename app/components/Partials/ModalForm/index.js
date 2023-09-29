@@ -28,7 +28,7 @@ export default function ModalForm({ open, onClose }) {
       className="bg-overlay-black fixed h-screen w-screen z-60"
     >
       <div
-        className="absolute flex left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] h-auto w-[500px]"
+        className="absolute flex left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] h-auto w-[360px] md:w-[500px]"
         onClick={(e) => {
           e.stopPropagation();
         }}

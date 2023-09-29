@@ -4,6 +4,7 @@ import {
   Analytics,
   Footer,
   Header,
+  HeaderMobile,
   Iugu,
   Locations,
   ModalForm
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
             <main>
               <ModalForm open={openModal} onClose={() => setOpenModal(false)} />
               <Header />
+              <HeaderMobile />
               {children}
               <Locations />
               <Footer />

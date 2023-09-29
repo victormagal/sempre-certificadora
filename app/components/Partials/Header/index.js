@@ -41,7 +41,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full z-60 lg:border-b">
+    <header className="lg:block lg:border-b fixed hidden w-full z-60">
       <ModalForm open={openModal} onClose={() => setOpenModal(false)} />
       <Container bgColor={neutralLight[100]} newClasses="py-7">
         <div className="col-span-2 flex justify-center items-center">
