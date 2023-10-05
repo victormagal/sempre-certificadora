@@ -74,30 +74,22 @@ export default function HeaderMobile() {
                       </Title>
                     </Link>
                   </li>
-                  <li className="relative">
-                    <details className="group">
-                      <summary className="flex items-center justify-between gap-2 font-medium marker:content-none hover:cursor-pointer group-open: mb-0">
+                  <li>
+                    <details className="flex flex-col space-y-6">
+                      <summary className="flex items-center justify-between">
                         <Title appearance="h6" color={neutralDark[500]}>
                           Seja um parceiro
                         </Title>
-                        <svg
-                          className="w-5 h-5 text-gray-500 transition rotate-90 group-open:-rotate-90"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                          ></path>
-                        </svg>
+                        <SolidIcon
+                          icon="faChevronDown"
+                          iconColor={neutralMid[500]}
+                          newClasses="h-4"
+                        />
                       </summary>
-                      <article className="pb-4">
-                        <ul className="flex flex-col gap-0 mt-4 mb-42">
+                      <article>
+                        <ul className="flex flex-col space-y-6">
                           <Link href="/">
-                            <li className="flex items-start mb-4 space-x-4">
+                            <li className="flex space-x-4">
                               <div>
                                 <SolidIcon
                                   icon="faFileLines"
@@ -116,7 +108,7 @@ export default function HeaderMobile() {
                             </li>
                           </Link>
                           <Link href="/">
-                            <li className="flex items-start space-x-4">
+                            <li className="flex space-x-4">
                               <div>
                                 <SolidIcon
                                   icon="faFileLines"

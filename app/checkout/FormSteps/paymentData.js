@@ -44,6 +44,7 @@ export default function PaymentData({
   const { errors, setFieldValue, values } = useFormikContext();
 
   Iugu.setAccountID('3F2271FB480A40FD8F3ED24ED250A627');
+  Iugu.setTestMode(true);
 
   const filterCities = (value) => {
     const selectedCities = [];
@@ -88,7 +89,6 @@ export default function PaymentData({
 
     Iugu.createPaymentToken(cc, function (response) {
       if (response.errors) {
-        console.log(response.errors);
         setFieldValue('token', '');
       } else {
         setFieldValue('token', response.id);

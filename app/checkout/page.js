@@ -15,7 +15,7 @@ import {
   SummaryData
 } from './FormSteps';
 import schema from './FormValidation/schema';
-import { Boleto, Error, Pix } from './Payments';
+import { Boleto, Cartao, Error, Pix } from './Payments';
 import SelectedProduct from './SelectedProduct';
 import { useQuery } from '@apollo/client';
 import axios from 'axios';
@@ -144,6 +144,8 @@ export default function Checkout() {
               codeImage: data.pix.qrcode,
               codeLine: data.pix.qrcode_text
             });
+          } else if (success) {
+            setTypePayment('cartao');
           }
         } else {
           setLoadingIugu(false);
@@ -180,6 +182,7 @@ export default function Checkout() {
       {isLastStep && responseIugu && typePayment === 'pix' && (
         <Pix data={dataIugu} />
       )}
+      {isLastStep && responseIugu && typePayment === 'cartao' && <Cartao />}
       {isLastStep && responseIugu && typePayment === 'error' && <Error />}
       <Formik
         initialValues={{
