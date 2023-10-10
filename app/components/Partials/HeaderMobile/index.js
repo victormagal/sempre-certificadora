@@ -159,7 +159,7 @@ export default function HeaderMobile() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/">
+                    <Link href="https://api.whatsapp.com/send?phone=556130839390">
                       <Title appearance="h6" color={neutralDark[500]}>
                         Suporte
                       </Title>

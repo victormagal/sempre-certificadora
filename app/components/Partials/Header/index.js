@@ -151,7 +151,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="https://api.whatsapp.com/send?phone=556130839390">
                 <Text appearance="p4" color={neutralMid[600]}>
                   Suporte
                 </Text>

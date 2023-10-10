@@ -15,6 +15,7 @@ export default function SolidIcon({ icon, iconColor, newClasses }) {
     faDownload: Icon.faDownload,
     faFaceSmile: Icon.faFaceSmile,
     faFileLines: Icon.faFileLines,
+    faLeaf: Icon.faLeaf,
     faLocationDot: Icon.faLocationDot,
     faMinus: Icon.faMinus,
     faPhone: Icon.faPhone,
