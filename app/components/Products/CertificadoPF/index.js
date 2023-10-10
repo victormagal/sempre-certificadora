@@ -19,6 +19,18 @@ export default function CertificadoPF() {
     }
   });
 
+  const openPopover = (e) => {
+    const element = e.currentTarget.nextElementSibling;
+
+    if (element.classList.contains('hidden')) {
+      element.classList.remove('hidden');
+      element.classList.add('block');
+    } else {
+      element.classList.remove('block');
+      element.classList.add('hidden');
+    }
+  };
+
   return (
     <Container newClasses="pb-16">
       <div className="col-span-4 xl:col-start-2 flex flex-col space-y-8">
@@ -87,10 +99,32 @@ export default function CertificadoPF() {
                   {product?.attributes?.percentual_desconto}% OFF
                 </Overline>
               </div>
-              <div>
+              <div className="flex items-center justify-between">
                 <Title appearance="h4" color={neutralDark[400]} extra>
                   {product?.attributes?.nome}
                 </Title>
+                <div className="relative">
+                  <button
+                    className="relative flex items-center z-10"
+                    onClick={openPopover}
+                  >
+                    <SolidIcon
+                      icon="faCircleInfo"
+                      iconColor={neutralDark[500]}
+                      newClasses="h-6"
+                    />
+                  </button>
+                  <div className="absolute hidden left-[50%] popover translate-x-[-50%] -top-[6rem]">
+                    <div
+                      className="break-words p-4 rounded-xl w-[230px] whitespace-normal z-0"
+                      style={{ backgroundColor: neutralDark[500] }}
+                    >
+                      <Text appearance="p4" color={neutralLight[100]}>
+                        {product?.attributes?.descricao}
+                      </Text>
+                    </div>
+                  </div>
+                </div>
               </div>
             </header>
             <main className="flex flex-col space-y-1">
