@@ -63,7 +63,7 @@ export default function Certificadora() {
         </div>
       </HeroPage>
       <Container newClasses="my-16">
-        <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-4">
+        <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-0">
           <Image
             alt="Certificado Digital - Emita o seu de onde estiver"
             height={33}
