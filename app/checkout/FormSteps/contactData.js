@@ -1,5 +1,5 @@
 import { neutralDark, neutralLight, red, neutralMid } from '@/app/base/Colors';
-import { toCpfOrCnpj, toTel } from '@/app/base/Masks';
+import { maskPhoneNumber, toCpfOrCnpj } from '@/app/base/Masks';
 import { Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
 import { Field, useFormikContext } from 'formik';
@@ -85,8 +85,9 @@ export default function ContactData() {
               Telefone
             </Text>
             <Field
+              autocomplete="off"
               className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-              maxLength="13"
+              maxLength="15"
               name="phone"
               style={{
                 background: neutralLight[200],
@@ -94,7 +95,7 @@ export default function ContactData() {
                 color: neutralMid[500]
               }}
               type="text"
-              value={toTel(values.phone)}
+              value={maskPhoneNumber(values.phone)}
             />
             {errors.phone && (
               <Text appearance="p4" className="mt-2" color={red[900]}>

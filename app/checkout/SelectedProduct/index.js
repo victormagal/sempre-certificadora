@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { neutralDark, neutralLight, neutralMid } from '@/app/base/Colors';
 import { formatCurrency } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
@@ -56,17 +57,19 @@ export default function SelectedProduct(values) {
           </Text>
         </li>
         <li className="flex items-center">
-          <button
-            className="border flex items-center justify-center py-4 px-8 rounded-md space-x-3 w-full"
-            style={{
-              background: neutralLight[100],
-              borderColor: neutralLight[500]
-            }}
-          >
-            <Title appearance="h7" color={neutralDark[500]}>
-              Trocar certificado
-            </Title>
-          </button>
+          <Link href="/">
+            <button
+              className="border flex items-center justify-center py-4 px-8 rounded-md space-x-3 w-full"
+              style={{
+                background: neutralLight[100],
+                borderColor: neutralLight[500]
+              }}
+            >
+              <Title appearance="h7" color={neutralDark[500]}>
+                Trocar certificado
+              </Title>
+            </button>
+          </Link>
         </li>
       </ul>
     </Container>

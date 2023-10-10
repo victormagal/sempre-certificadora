@@ -8,7 +8,7 @@ import {
   red,
   success
 } from '@/app/base/Colors';
-import { toTel } from '@/app/base/Masks';
+import { maskPhoneNumber } from '@/app/base/Masks';
 import { Text, Title } from '@/app/base/Typography';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -211,7 +211,7 @@ export default function ModalForm({ open, onClose }) {
                             color: neutralMid[500]
                           }}
                           type="text"
-                          value={toTel(values.phone)}
+                          value={maskPhoneNumber(values.phone)}
                         />
                         {errors.phone && (
                           <Text appearance="p4" color={red[900]}>

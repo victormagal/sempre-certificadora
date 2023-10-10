@@ -46,7 +46,7 @@ export default function Header() {
       <ModalForm open={openModal} onClose={() => setOpenModal(false)} />
       <Container bgColor={neutralLight[100]} newClasses="py-7">
         <div className="col-span-2 flex justify-center items-center">
-          <Link href="/">
+          <Link href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}`}>
             <Image
               alt="Sempre Tecnologia"
               height={46}

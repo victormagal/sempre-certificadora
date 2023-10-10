@@ -25,7 +25,10 @@ export default function Footer() {
           </Title>
           <ul className="flex mt-4 space-x-3">
             <li>
-              <Link href="/">
+              <Link
+                href="https://www.facebook.com/sempretecnologia/"
+                target="_blank"
+              >
                 <SocialIcon
                   icon="faSquareFacebook"
                   iconColor={neutralLight[600]}
@@ -34,16 +37,22 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href="https://www.linkedin.com/company/sempre-tecnologia/"
+                target="_blank"
+              >
                 <SocialIcon
-                  icon="faTwitter"
+                  icon="faLinkedinIn"
                   iconColor={neutralLight[600]}
                   newClasses="h-6"
                 />
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href="https://www.instagram.com/sempretecnologia/"
+                target="_blank"
+              >
                 <SocialIcon
                   icon="faInstagram"
                   iconColor={neutralLight[600]}

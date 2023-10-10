@@ -31,7 +31,9 @@ export default function HeaderMobile() {
         >
           <Container>
             <div className="col-span-4 flex justify-between items-center">
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}`}
+              >
                 <Image
                   alt="Sempre Tecnologia"
                   height={46}

@@ -19,6 +19,14 @@ import { doubts } from './data';
 export default function Certificadora() {
   const [showPF, setShowPF] = useState(true);
 
+  const scrollTo = (element) => {
+    document.getElementById(element).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    });
+  };
+
   return (
     <main className="pt-24">
       <HeroPage
@@ -34,17 +42,16 @@ export default function Certificadora() {
           <Text appearance="p3" color={neutralLight[100]}>
             Com a comodidade e segurança que você merece sem sair de casa.
           </Text>
-          <Link href="/">
-            <button
-              className="py-4 px-8 rounded w-full lg:w-2/4"
-              style={{ background: red[1000] }}
-              type="button"
-            >
-              <Text appearance="p4" color={neutralLight[100]}>
-                Adquirir o meu
-              </Text>
-            </button>
-          </Link>
+          <button
+            className="py-4 px-8 rounded w-full lg:w-2/4"
+            onClick={() => scrollTo('listProducts')}
+            style={{ background: red[1000] }}
+            type="button"
+          >
+            <Text appearance="p4" color={neutralLight[100]}>
+              Adquirir o meu
+            </Text>
+          </button>
         </div>
         <div className="lg:col-end-13 col-span-4 lg:col-span-6 flex justify-end">
           <Image
@@ -81,48 +88,52 @@ export default function Certificadora() {
           </Title>
         </div>
       </Container>
-      <Container newClasses="pb-16">
-        <nav className="col-span-4 lg:col-span-6 lg:col-start-4 flex justify-center">
-          <ul
-            className="border flex p-2 rounded space-x-4"
-            style={{
-              background: neutralLight[200],
-              borderColor: neutralLight[400]
-            }}
-          >
-            <li
-              className={`cursor-pointer ${
-                showPF && 'drop-shadow'
-              } py-4 px-4 lg:px-8 rounded`}
-              onClick={() => setShowPF(true)}
-              style={{ background: showPF ? neutralLight[100] : 'transparent' }}
-            >
-              <Title
-                appearance="h7"
-                color={showPF ? neutralDark[500] : neutralMid[400]}
-              >
-                Para você
-              </Title>
-            </li>
-            <li
-              className={`cursor-pointer ${
-                !showPF && 'drop-shadow'
-              } py-4 px-8 rounded`}
-              onClick={() => setShowPF(false)}
+      <div id="listProducts">
+        <Container newClasses="pb-16">
+          <nav className="col-span-4 lg:col-span-6 lg:col-start-4 flex justify-center">
+            <ul
+              className="border flex p-2 rounded space-x-4"
               style={{
-                background: !showPF ? neutralLight[100] : 'transparent'
+                background: neutralLight[200],
+                borderColor: neutralLight[400]
               }}
             >
-              <Title
-                appearance="h7"
-                color={!showPF ? neutralDark[500] : neutralMid[400]}
+              <li
+                className={`cursor-pointer ${
+                  showPF && 'drop-shadow'
+                } py-4 px-4 lg:px-8 rounded`}
+                onClick={() => setShowPF(true)}
+                style={{
+                  background: showPF ? neutralLight[100] : 'transparent'
+                }}
               >
-                Para sua empresa
-              </Title>
-            </li>
-          </ul>
-        </nav>
-      </Container>
+                <Title
+                  appearance="h7"
+                  color={showPF ? neutralDark[500] : neutralMid[400]}
+                >
+                  Para você
+                </Title>
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  !showPF && 'drop-shadow'
+                } py-4 px-8 rounded`}
+                onClick={() => setShowPF(false)}
+                style={{
+                  background: !showPF ? neutralLight[100] : 'transparent'
+                }}
+              >
+                <Title
+                  appearance="h7"
+                  color={!showPF ? neutralDark[500] : neutralMid[400]}
+                >
+                  Para sua empresa
+                </Title>
+              </li>
+            </ul>
+          </nav>
+        </Container>
+      </div>
       {showPF ? <CertificadoPF /> : <CertificadoPJ />}
       <Container newClasses="border-b border-t py-12">
         <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
