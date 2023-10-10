@@ -135,6 +135,11 @@ export default function Checkout() {
       .then(({ data, status }) => {
         setLoadingIugu(false);
         setResponseIugu(true);
+        document.getElementById('stepper').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
         if (status === 200) {
           const { payable_with } = data;
           if (payable_with === 'bank_slip') {
@@ -162,6 +167,11 @@ export default function Checkout() {
         }
       })
       .catch((error) => {
+        document.getElementById('stepper').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
         console.log(error.response);
         setLoadingIugu(false);
         setResponseIugu(true);
@@ -182,7 +192,7 @@ export default function Checkout() {
   };
 
   return (
-    <main className="pt-24">
+    <main className="pt-24" id="stepper">
       <FormStepper step={activeStep} />
       {!isLastStep && (
         <SelectedProduct
