@@ -1,6 +1,6 @@
 'use client';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { neutralDark, neutralLight, success } from '../base/Colors';
 import { SolidIcon } from '../base/Icons';
 import { Text } from '../base/Typography';
@@ -17,26 +17,35 @@ import {
 import schema from './FormValidation/schema';
 import { Boleto, Cartao, Error, Pix } from './Payments';
 import SelectedProduct from './SelectedProduct';
-import { useQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
 
 export default function Checkout() {
-  const [productDetails, setProductDetails] = useState({});
   const [dataIugu, setDataIugu] = useState({});
-  const [responseIugu, setResponseIugu] = useState(false);
-  const [typePayment, setTypePayment] = useState('');
   const [loadingIugu, setLoadingIugu] = useState(false);
+  const [productDetails, setProductDetails] = useState({});
+  const [responseIugu, setResponseIugu] = useState(false);
+  const [changedProduct, setChangedProduct] = useState('');
+  const [typePayment, setTypePayment] = useState('');
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedProduct = searchParams.get('product');
 
-  useQuery(getProductsById, {
-    variables: { produto: selectedProduct },
+  const [getProduct] = useLazyQuery(getProductsById, {
     onCompleted: ({ produtos: { data } }) => {
       setProductDetails(data[0]);
     }
   });
+
+  useEffect(() => {
+    getProduct({
+      variables: {
+        produto: changedProduct.length > 0 ? changedProduct : selectedProduct
+      }
+    });
+  }, [changedProduct, selectedProduct]);
 
   const steps = [
     'Dados de contato',
@@ -175,7 +184,12 @@ export default function Checkout() {
   return (
     <main className="pt-24">
       <FormStepper step={activeStep} />
-      {!isLastStep && <SelectedProduct values={productDetails?.attributes} />}
+      {!isLastStep && (
+        <SelectedProduct
+          setChangedProduct={setChangedProduct}
+          values={productDetails?.attributes}
+        />
+      )}
       {isLastStep && responseIugu && typePayment === 'boleto' && (
         <Boleto data={dataIugu} />
       )}
