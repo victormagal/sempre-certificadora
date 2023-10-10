@@ -411,13 +411,16 @@ export default function PaymentData({
                       >
                         <option value="">Selecione</option>
                         <option value="1">
-                          1x de {formatCurrency(valor / 1, 'BRL', 'pt-BR')}
+                          1x de{' '}
+                          {formatCurrency(valor_final / 1, 'BRL', 'pt-BR')}
                         </option>
                         <option value="2">
-                          2x de {formatCurrency(valor / 2, 'BRL', 'pt-BR')}
+                          2x de{' '}
+                          {formatCurrency(valor_final / 2, 'BRL', 'pt-BR')}
                         </option>
                         <option value="3">
-                          3x de {formatCurrency(valor / 3, 'BRL', 'pt-BR')}
+                          3x de{' '}
+                          {formatCurrency(valor_final / 3, 'BRL', 'pt-BR')}
                         </option>
                       </Field>
                       <SolidIcon

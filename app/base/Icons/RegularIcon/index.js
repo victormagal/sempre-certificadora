@@ -17,6 +17,7 @@ export default function RegularIcon({ icon, iconColor, newClasses }) {
     faLemon: Icon.faLemon,
     faLightbulb: Icon.faLightbulb,
     faMoneyBill1: Icon.faMoneyBill1,
+    faNoteSticky: Icon.faNoteSticky,
     faPaperPlane: Icon.faPaperPlane,
     faUser: Icon.faUser
   };

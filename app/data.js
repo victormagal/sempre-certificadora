@@ -1,30 +1,36 @@
 const doubts = [
   {
-    question: 'Posso utilizar mais de um CNPJ no sistema?',
+    question: 'Qual Certificado Digital devo comprar?',
     answer:
-      'Sim. Trabalhamos com o conceito de multi-notas que possibilita definir por qual CNPJ a nota será emitida, podendo ser configurado direto cadastro de cliente.'
+      'O certificado digital deve atender todas as necessidades do comprador, mas a escolha varia de pessoa para pessoa, já que o tempo deles e a usabilidade são distintos. Sendo assim, a melhor forma de descobrir qual o certificado supre suas necessidades é conversando com um dos especialistas da Sempre Tecnologia.'
   },
   {
-    question: 'Consigo controlar o estoque de mais de um depósito?',
+    question: 'É possível parcelar a compra do certificado digital?',
     answer:
-      'Com certeza. No sistema você poderá realizar o controle de vários locais de estoque.'
+      'Sim. O pagamento pode ser parcelado em até 3 vezes sem juros no cartão de crédito.'
   },
   {
-    question:
-      'Vendo por peso, unidade e caixa, tenho que cadastrar cada unidade de medida como um item?',
+    question: 'Qual a validade de um certificado digital?',
     answer:
-      'Não há necessidade. Nosso sistema trabalha com o conceito de unidade de medida, ou seja, com apenas um código de produto você cadastra diversas unidades de medida facilitando a gestão sem perder o controle do estoque. Comercialmente ainda ajuda a definir preços de venda para cada unidade, por exemplo, unitário por R$19,90 e caixa com 12 por R$ 199,00.'
-  },
-  {
-    question: 'Tem App de vendas?',
-    answer:
-      'Sim. Temos app na Google e Apple que comunicam diretamente com a base de dados permitindo realizar a transmissão de vendas, obter informações do histórico do cliente, além de relatórios de gestão como melhor vendedor, cliente e produto.'
+      'Existem dois tipos de validade. Certificado A1 – com validade de 1 ano e o Certificado A3 – com validade de 3 anos.'
   },
   {
     question:
-      'Como organizo as cargas de entrega da minha empresa com o sistema da Sempre?',
+      'Na solicitação do certificado digital, posso cadastrar qualquer e-mail?',
     answer:
-      'O módulo de carregamento facilita a rotina para separação de mercadorias, roteirização de entregas por área, emissão de boletos, notas fiscais e pedidos de venda de toda carga em uma única tela.'
+      'Sim, desde que não seja um e-mail de contabilidade e que a pessoa tenha acesso a ele.'
+  },
+  {
+    question:
+      'Recebi um voucher (vale-presente) para comprar um certificado digital. É necessário realizar a validação presencial?',
+    answer:
+      'Para toda e qualquer emissão de Certificado Digital é obrigatório a presença do responsável pela empresa ou do titular do certificado para a assinatura do termo de titularidade e a coleta da biometria. Estes processos são obrigatórios devido as normas do ITI – Instituto Nacional de Tecnologia da Informação.'
+  },
+  {
+    question:
+      'O responsável legal da empresa faleceu, é possível comprar um certificado digital e fazer uma nova validação?',
+    answer:
+      'Não. Para isso é fundamental criar um inventário de posse dele e alterar o contrato social da empresa. Além disso, é importante fazer a alteração do responsável junto a Receita Federal.'
   }
 ];
 

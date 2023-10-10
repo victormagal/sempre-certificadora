@@ -51,7 +51,7 @@ export default function CertificadoPJ() {
           </li>
           <li className="flex space-x-2 items-center">
             <RegularIcon
-              icon="faLemon"
+              icon="faNoteSticky"
               iconColor={red[900]}
               newClasses="h-5 w-5"
             />

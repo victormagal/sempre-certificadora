@@ -94,7 +94,7 @@ export default function ServiceData() {
           style={{ background: blue[200] }}
         >
           <Text appearance="p4" color={blue[900]}>
-            O valor do certificado pode varias de acordo com o modelo de
+            O valor do certificado pode variar de acordo com o modelo de
             atendimento escolhido
           </Text>
         </div>
@@ -144,7 +144,7 @@ export default function ServiceData() {
                   Videoconferência
                 </Title>
                 <Text appearance="p4" color={neutralDark[500]}>
-                  Fale com a nossa equipe por video com toda a comodidade.
+                  Fale com a nossa equipe por vídeo com toda a comodidade.
                 </Text>
               </div>
               <RegularIcon
@@ -231,7 +231,7 @@ export default function ServiceData() {
               </div>
               <div className="flex flex-col space-y-2">
                 <Title appearance="h6" color={neutralDark[500]}>
-                  Express
+                  Delivery
                 </Title>
                 <Text appearance="p4" color={neutralDark[500]}>
                   Não se preocupe! Para sua comodidade, nós vamos até você.
