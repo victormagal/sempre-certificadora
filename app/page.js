@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -251,7 +252,9 @@ export default function Certificadora() {
                 />
               </li>
             </Link>
-            <Link href="/">
+            <Link
+              href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
+            >
               <li
                 className="border flex items-center justify-center p-4 rounded-md space-x-3"
                 style={{ borderColor: neutralLight[600] }}

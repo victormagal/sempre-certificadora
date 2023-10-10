@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import Image from 'next/image';
 import Link from 'next/link';
 import Container from '../../Elements/Container';
@@ -60,21 +61,18 @@ export default function Footer() {
               </Title>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sobre`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Quem somos
                 </Text>
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <Text appearance="p4" color={neutralDark[500]}>
-                  Trabalhe conosco
-                </Text>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/noticias`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Blog
                 </Text>
@@ -97,35 +95,45 @@ export default function Footer() {
               </Title>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/distribuidores`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Distribuidores
                 </Text>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/pequenos-varejos`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Pequenos varejos
                 </Text>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/prestadores-de-servico`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Prestadores de serviço
                 </Text>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/recorrentes`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Recorrentes
                 </Text>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/documentos-fiscais`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Documentos fiscais
                 </Text>
@@ -148,14 +156,18 @@ export default function Footer() {
               </Title>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contador`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Programa de parceria com contadores
                 </Text>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/parceria`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Parceria em certificado digital
                 </Text>
@@ -171,30 +183,25 @@ export default function Footer() {
               </Title>
             </li>
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
+              >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Fale conosco
                 </Text>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="tel:08008416260">
                 <Text appearance="p4" color={neutralDark[500]}>
                   Central de atendimento
                 </Text>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="https://api.whatsapp.com/send?phone=556130839390">
                 <Text appearance="p4" color={neutralDark[500]}>
                   WhatsApp
-                </Text>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <Text appearance="p4" color={neutralDark[500]}>
-                  Agende uma ligação
                 </Text>
               </Link>
             </li>
@@ -209,23 +216,20 @@ export default function Footer() {
         </div>
         <ul className="col-span-12 lg:col-end-13 lg:col-span-3 flex justify-start lg:justify-end space-x-4">
           <li>
-            <Link href="/">
+            <Link
+              href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/termo`}
+            >
               <Text appearance="p3" color={neutralMid[500]}>
                 Termos
               </Text>
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link
+              href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/privacidade`}
+            >
               <Text appearance="p3" color={neutralMid[500]}>
                 Privacidade
-              </Text>
-            </Link>
-          </li>
-          <li>
-            <Link href="/">
-              <Text appearance="p3" color={neutralMid[500]}>
-                Cookies
               </Text>
             </Link>
           </li>

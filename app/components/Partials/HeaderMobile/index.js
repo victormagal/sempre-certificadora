@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -68,7 +69,18 @@ export default function HeaderMobile() {
               >
                 <ul className="flex flex-col space-y-6">
                   <li>
-                    <Link href="/">
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sobre`}
+                    >
+                      <Title appearance="h6" color={neutralDark[500]}>
+                        Quem somos
+                      </Title>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}`}
+                    >
                       <Title appearance="h6" color={neutralDark[500]}>
                         Sempre Tecnologia
                       </Title>
@@ -88,7 +100,9 @@ export default function HeaderMobile() {
                       </summary>
                       <article>
                         <ul className="flex flex-col space-y-6">
-                          <Link href="/">
+                          <Link
+                            href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contador`}
+                          >
                             <li className="flex space-x-4">
                               <div>
                                 <SolidIcon
@@ -99,7 +113,7 @@ export default function HeaderMobile() {
                               </div>
                               <div>
                                 <Title appearance="h7" color={neutralDark[500]}>
-                                  Programa de parceria para Contadores
+                                  Programa de parceria para contadores
                                 </Title>
                                 <Text appearance="p4" color={neutralMid[500]}>
                                   Conheça e aproveite benefícios exclusivos.
@@ -107,7 +121,9 @@ export default function HeaderMobile() {
                               </div>
                             </li>
                           </Link>
-                          <Link href="/">
+                          <Link
+                            href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/parceria`}
+                          >
                             <li className="flex space-x-4">
                               <div>
                                 <SolidIcon
@@ -132,7 +148,9 @@ export default function HeaderMobile() {
                     </details>
                   </li>
                   <li>
-                    <Link href="/">
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/noticias`}
+                    >
                       <Title appearance="h6" color={neutralDark[500]}>
                         Blog
                       </Title>
@@ -146,7 +164,9 @@ export default function HeaderMobile() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/">
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
+                    >
                       <Title appearance="h6" color={neutralDark[500]}>
                         Contato
                       </Title>

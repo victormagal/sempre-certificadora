@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -57,7 +58,18 @@ export default function Header() {
         <nav className="col-end-13 col-span-9">
           <ul className="flex items-center justify-end space-x-12">
             <li>
-              <Link href="/">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sobre`}
+              >
+                <Text appearance="p4" color={neutralMid[600]}>
+                  Quem somos
+                </Text>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}`}
+              >
                 <Text appearance="p4" color={neutralMid[600]}>
                   Sempre Tecnologia
                 </Text>
@@ -84,7 +96,9 @@ export default function Header() {
                 }}
                 style={{ backgroundColor: neutralLight[100] }}
               >
-                <Link href="/">
+                <Link
+                  href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contador`}
+                >
                   <li className="flex items-start mb-4 space-x-4">
                     <div>
                       <SolidIcon
@@ -95,7 +109,7 @@ export default function Header() {
                     </div>
                     <div>
                       <Title appearance="h7" color={neutralDark[500]}>
-                        Programa de parceria para Contadores
+                        Programa de parceria para contadores
                       </Title>
                       <Text appearance="p4" color={neutralMid[500]}>
                         Conheça e aproveite benefícios exclusivos.
@@ -103,7 +117,9 @@ export default function Header() {
                     </div>
                   </li>
                 </Link>
-                <Link href="/">
+                <Link
+                  href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/parceria`}
+                >
                   <li className="flex items-start space-x-4">
                     <div>
                       <SolidIcon
@@ -126,6 +142,15 @@ export default function Header() {
               </ul>
             </li>
             <li>
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/noticias`}
+              >
+                <Text appearance="p4" color={neutralMid[600]}>
+                  Blog
+                </Text>
+              </Link>
+            </li>
+            <li>
               <Link href="/">
                 <Text appearance="p4" color={neutralMid[600]}>
                   Suporte
@@ -133,7 +158,9 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/contato">
+              <Link
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
+              >
                 <Text appearance="p4" color={neutralMid[600]}>
                   Contato
                 </Text>
