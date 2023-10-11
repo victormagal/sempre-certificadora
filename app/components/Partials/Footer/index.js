@@ -72,6 +72,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sobre`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Quem somos
@@ -81,6 +82,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/noticias`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Blog
@@ -106,6 +108,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/distribuidores`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Distribuidores
@@ -115,6 +118,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/pequenos-varejos`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Pequenos varejos
@@ -124,6 +128,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/prestadores-de-servico`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Prestadores de serviço
@@ -133,6 +138,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/recorrentes`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Recorrentes
@@ -142,6 +148,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/documentos-fiscais`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Documentos fiscais
@@ -167,6 +174,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contador`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Programa de parceria com contadores
@@ -176,6 +184,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/parceria`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Parceria em certificado digital
@@ -194,6 +203,7 @@ export default function Footer() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
                   Fale conosco
@@ -227,6 +237,7 @@ export default function Footer() {
           <li>
             <Link
               href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/termo`}
+              target="_blank"
             >
               <Text appearance="p3" color={neutralMid[500]}>
                 Termos
@@ -236,6 +247,7 @@ export default function Footer() {
           <li>
             <Link
               href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/privacidade`}
+              target="_blank"
             >
               <Text appearance="p3" color={neutralMid[500]}>
                 Privacidade

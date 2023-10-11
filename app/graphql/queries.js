@@ -198,6 +198,7 @@ const getProductsById = gql`
             }
           }
           descricao
+          validade
         }
       }
     }
@@ -223,6 +224,7 @@ const getProductsByType = gql`
             }
           }
           descricao
+          validade
         }
       }
     }

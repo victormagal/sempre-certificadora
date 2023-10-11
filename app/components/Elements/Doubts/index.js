@@ -48,7 +48,7 @@ export default function Doubts({ doubts }) {
                   newClasses="h-5"
                 />
               </summary>
-              <Text appearance="p3" color={neutralMid[500]}>
+              <Text appearance="p3" className="w-5/6" color={neutralMid[500]}>
                 {answer}
               </Text>
             </details>

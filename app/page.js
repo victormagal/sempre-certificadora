@@ -12,7 +12,7 @@ import {
   Doubts,
   HeroPage
 } from './components/Elements';
-import { Testimonies } from './components/Partials';
+import { PartnersMobile, Partners, Testimonies } from './components/Partials';
 import { CertificadoPF, CertificadoPJ } from './components/Products';
 import { doubts } from './data';
 
@@ -209,7 +209,7 @@ export default function Certificadora() {
         />
         <CardFeature
           bgColor={neutralLight[200]}
-          description="Temos mais de 25 filiais para garantir que tenha uma mais próxima a você"
+          description="Temos mais de 20 filiais para garantir que tenha uma mais próxima a você"
           icon="faBuilding"
           iconColor={red[600]}
           iconSize="h-10"
@@ -292,58 +292,8 @@ export default function Certificadora() {
         </div>
       </Container>
       <Testimonies />
-      <Container newClasses="py-16">
-        <ul className="col-span-4 lg:col-span-12 flex flex-col md:flex-row items-center md:justify-between space-y-8 md:space-y-0">
-          <li>
-            <Image
-              alt="Litoral"
-              height={35}
-              src="/parceiros/litoral.png"
-              width={88}
-            />
-          </li>
-          <li>
-            <Image
-              alt="SmartFit"
-              height={35}
-              src="/parceiros/smart-fit.png"
-              width={98}
-            />
-          </li>
-          <li>
-            <Image
-              alt="Coco Bambu"
-              height={28}
-              src="/parceiros/coco-bambu.png"
-              width={134}
-            />
-          </li>
-          <li>
-            <Image
-              alt="Sebrae"
-              height={30}
-              src="/parceiros/sebrae.png"
-              width={56}
-            />
-          </li>
-          <li>
-            <Image
-              alt="Magic Color"
-              height={35}
-              src="/parceiros/magic-color.png"
-              width={56}
-            />
-          </li>
-          <li>
-            <Image
-              alt="Valor Ambiental"
-              height={38}
-              src="/parceiros/valor-ambiental.png"
-              width={37}
-            />
-          </li>
-        </ul>
-      </Container>
+      <PartnersMobile />
+      <Partners />
       <Doubts
         doubts={doubts}
         theme="#C48E39"

@@ -60,6 +60,7 @@ export default function Header() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sobre`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralMid[600]}>
                   Quem somos
@@ -69,6 +70,7 @@ export default function Header() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralMid[600]}>
                   Sempre Tecnologia
@@ -98,6 +100,7 @@ export default function Header() {
               >
                 <Link
                   href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contador`}
+                  target="_blank"
                 >
                   <li className="flex items-start mb-4 space-x-4">
                     <div>
@@ -119,6 +122,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/parceria`}
+                  target="_blank"
                 >
                   <li className="flex items-start space-x-4">
                     <div>
@@ -130,7 +134,7 @@ export default function Header() {
                     </div>
                     <div>
                       <Title appearance="h7" color={neutralDark[500]}>
-                        Seja um parceiro certificador
+                        Seja um parceiro Certificador
                       </Title>
                       <Text appearance="p4" color={neutralMid[500]}>
                         Programa de parceria para venda de Certificado Digital e
@@ -144,6 +148,7 @@ export default function Header() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/noticias`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralMid[600]}>
                   Blog
@@ -160,6 +165,7 @@ export default function Header() {
             <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
+                target="_blank"
               >
                 <Text appearance="p4" color={neutralMid[600]}>
                   Contato

@@ -71,6 +71,7 @@ export default function HeaderMobile() {
                   <li>
                     <Link
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sobre`}
+                      target="_blank"
                     >
                       <Title appearance="h6" color={neutralDark[500]}>
                         Quem somos
@@ -80,6 +81,7 @@ export default function HeaderMobile() {
                   <li>
                     <Link
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}`}
+                      target="_blank"
                     >
                       <Title appearance="h6" color={neutralDark[500]}>
                         Sempre Tecnologia
@@ -102,6 +104,7 @@ export default function HeaderMobile() {
                         <ul className="flex flex-col space-y-6">
                           <Link
                             href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contador`}
+                            target="_blank"
                           >
                             <li className="flex space-x-4">
                               <div>
@@ -123,6 +126,7 @@ export default function HeaderMobile() {
                           </Link>
                           <Link
                             href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/parceria`}
+                            target="_blank"
                           >
                             <li className="flex space-x-4">
                               <div>
@@ -134,7 +138,7 @@ export default function HeaderMobile() {
                               </div>
                               <div>
                                 <Title appearance="h7" color={neutralDark[500]}>
-                                  Seja um parceiro certificador
+                                  Seja um parceiro Certificador
                                 </Title>
                                 <Text appearance="p4" color={neutralMid[500]}>
                                   Programa de parceria para venda de Certificado
@@ -150,6 +154,7 @@ export default function HeaderMobile() {
                   <li>
                     <Link
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/noticias`}
+                      target="_blank"
                     >
                       <Title appearance="h6" color={neutralDark[500]}>
                         Blog
@@ -166,6 +171,7 @@ export default function HeaderMobile() {
                   <li>
                     <Link
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
+                      target="_blank"
                     >
                       <Title appearance="h6" color={neutralDark[500]}>
                         Contato

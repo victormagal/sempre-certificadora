@@ -132,7 +132,7 @@ export default function CertificadoPF({ setProduct }) {
             </main>
             <footer className="flex flex-col items-center space-y-4">
               <Text appearance="p4" color={neutralDark[500]}>
-                Validade de 12 meses
+                Validade de {product?.attributes?.validade} meses
               </Text>
             </footer>
           </div>

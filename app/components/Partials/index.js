@@ -5,6 +5,8 @@ import HeaderMobile from './HeaderMobile';
 import Iugu from './Iugu';
 import Locations from './Locations';
 import ModalForm from './ModalForm';
+import Partners from './Partners';
+import PartnersMobile from './PartnersMobile';
 import Testimonies from './Testimonies';
 
 export {
@@ -15,5 +17,7 @@ export {
   Iugu,
   Locations,
   ModalForm,
+  Partners,
+  PartnersMobile,
   Testimonies
 };

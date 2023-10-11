@@ -90,6 +90,11 @@ export default function Checkout() {
   };
 
   const handleBack = () => {
+    document.getElementById('stepper').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    });
     setActiveStep(activeStep - 1);
   };
 
@@ -185,6 +190,11 @@ export default function Checkout() {
     if (isLastStep) {
       submitForm(values, actions);
     } else {
+      document.getElementById('stepper').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      });
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);
