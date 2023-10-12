@@ -90,7 +90,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="https://api.whatsapp.com/send?phone=556130839390">
                 <Text appearance="p4" color={neutralDark[500]}>
                   Suporte
                 </Text>
@@ -187,7 +187,7 @@ export default function Footer() {
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
-                  Parceria em certificado digital
+                  Seja um parceiro Certificador
                 </Text>
               </Link>
             </li>

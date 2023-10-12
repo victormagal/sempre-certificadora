@@ -11,7 +11,6 @@ import { Text, Title } from '@/app/base/Typography';
 
 export default function HeaderMobile() {
   const [openModal, setOpenModal] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
 
   const burgerMenu = () => {
@@ -70,6 +69,7 @@ export default function HeaderMobile() {
                 <ul className="flex flex-col space-y-6">
                   <li>
                     <Link
+                      onClick={burgerMenu}
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sobre`}
                       target="_blank"
                     >
@@ -80,6 +80,7 @@ export default function HeaderMobile() {
                   </li>
                   <li>
                     <Link
+                      onClick={burgerMenu}
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}`}
                       target="_blank"
                     >
@@ -103,6 +104,7 @@ export default function HeaderMobile() {
                       <article>
                         <ul className="flex flex-col space-y-6">
                           <Link
+                            onClick={burgerMenu}
                             href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contador`}
                             target="_blank"
                           >
@@ -125,6 +127,7 @@ export default function HeaderMobile() {
                             </li>
                           </Link>
                           <Link
+                            onClick={burgerMenu}
                             href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/parceria`}
                             target="_blank"
                           >
@@ -153,6 +156,7 @@ export default function HeaderMobile() {
                   </li>
                   <li>
                     <Link
+                      onClick={burgerMenu}
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/noticias`}
                       target="_blank"
                     >
@@ -162,7 +166,10 @@ export default function HeaderMobile() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="https://api.whatsapp.com/send?phone=556130839390">
+                    <Link
+                      onClick={burgerMenu}
+                      href="https://api.whatsapp.com/send?phone=556130839390"
+                    >
                       <Title appearance="h6" color={neutralDark[500]}>
                         Suporte
                       </Title>
@@ -170,6 +177,7 @@ export default function HeaderMobile() {
                   </li>
                   <li>
                     <Link
+                      onClick={burgerMenu}
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
                       target="_blank"
                     >

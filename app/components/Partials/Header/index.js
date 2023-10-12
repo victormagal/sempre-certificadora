@@ -99,6 +99,7 @@ export default function Header() {
                 style={{ backgroundColor: neutralLight[100] }}
               >
                 <Link
+                  onClick={closeDropdownItens}
                   href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contador`}
                   target="_blank"
                 >
@@ -121,6 +122,7 @@ export default function Header() {
                   </li>
                 </Link>
                 <Link
+                  onClick={closeDropdownItens}
                   href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/parceria`}
                   target="_blank"
                 >
