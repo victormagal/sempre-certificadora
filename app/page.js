@@ -2,7 +2,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { neutralDark, neutralLight, neutralMid, red } from './base/Colors';
 import { RegularIcon } from './base/Icons';
 import { Overline, Text, Title } from './base/Typography';
@@ -15,9 +15,39 @@ import {
 import { PartnersMobile, Partners, Testimonies } from './components/Partials';
 import { CertificadoPF, CertificadoPJ } from './components/Products';
 import { doubts } from './data';
+import { getProducts } from './graphql/queries';
+import { useQuery } from '@apollo/client';
 
 export default function Certificadora() {
   const [showPF, setShowPF] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [initialPFProducts, setInitialPFProducts] = useState([]);
+  const [initialPJProducts, setInitialPJProducts] = useState([]);
+
+  useQuery(getProducts, {
+    onCompleted: (data) => {
+      const {
+        produto: {
+          data: {
+            attributes: { produto }
+          }
+        }
+      } = data;
+      setProducts(produto);
+    }
+  });
+
+  useEffect(() => {
+    products.map((product) => {
+      if (product.tipo_atendimento === 'videoconferencia') {
+        if (product.certificado === 'pessoa_fisica') {
+          setInitialPFProducts((prevState) => [...prevState, product]);
+        } else {
+          setInitialPJProducts((prevState) => [...prevState, product]);
+        }
+      }
+    });
+  }, [products]);
 
   const scrollTo = (element) => {
     document.getElementById(element).scrollIntoView({
@@ -134,7 +164,11 @@ export default function Certificadora() {
           </nav>
         </Container>
       </div>
-      {showPF ? <CertificadoPF /> : <CertificadoPJ />}
+      {showPF ? (
+        <CertificadoPF products={initialPFProducts} />
+      ) : (
+        <CertificadoPJ products={initialPJProducts} />
+      )}
       <Container newClasses="border-b border-t py-12">
         <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
           <div className="flex flex-col justify-center items-center">

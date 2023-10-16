@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   blue,
   neutralDark,
@@ -14,7 +14,7 @@ import { getAllBranches, getAllStates } from '@/app/graphql/queries';
 import { useQuery } from '@apollo/client';
 import { Field, useFormikContext } from 'formik';
 
-export default function ServiceData() {
+export default function ServiceData({ product, products, setService }) {
   const { errors, setFieldValue, values } = useFormikContext();
   const [states, setStates] = useState([]);
   const [stories, setStories] = useState([]);
@@ -83,6 +83,17 @@ export default function ServiceData() {
     });
   };
 
+  useEffect(() => {
+    const result = products.find(
+      (item) =>
+        item.nome === product.nome &&
+        item.validade === product.validade &&
+        item.certificado === product.certificado &&
+        item.tipo_atendimento === values.tipo_atendimento
+    );
+    setFieldValue('id_produto', result?.id_produto);
+  }, [values.tipo_atendimento]);
+
   return (
     <Container>
       <div className="border col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col my-6 py-8 px-6 lg:px-12 rounded space-y-6">
@@ -121,6 +132,7 @@ export default function ServiceData() {
               onClick={() => {
                 setFieldValue('has_atendimento', false);
                 setFieldValue('tipo_atendimento', 'videoconferencia');
+                setService('videoconferencia');
               }}
               style={{
                 borderColor:
@@ -166,6 +178,7 @@ export default function ServiceData() {
               onClick={() => {
                 setFieldValue('has_atendimento', true);
                 setFieldValue('tipo_atendimento', 'presencial');
+                setService('presencial');
               }}
               style={{
                 borderColor:
@@ -211,6 +224,7 @@ export default function ServiceData() {
               onClick={() => {
                 setFieldValue('has_atendimento', true);
                 setFieldValue('tipo_atendimento', 'express');
+                setService('express');
               }}
               style={{
                 borderColor:

@@ -179,6 +179,30 @@ const getPostsByCategory = gql`
   }
 `;
 
+const getProducts = gql`
+  query {
+    produto {
+      data {
+        attributes {
+          produto(pagination: { limit: 20 }) {
+            id_produto
+            codigo_interno
+            nome
+            valor
+            valor_desconto
+            percentual_desconto
+            valor_com_desconto
+            certificado
+            tipo_atendimento
+            descricao
+            validade
+          }
+        }
+      }
+    }
+  }
+`;
+
 const getProductsById = gql`
   query ($produto: String) {
     produtos(filters: { id_produto: { eq: $produto } }) {
@@ -254,6 +278,7 @@ export {
   getAllStates,
   getPost,
   getPostsByCategory,
+  getProducts,
   getProductsById,
   getProductsByType,
   getTestimonies

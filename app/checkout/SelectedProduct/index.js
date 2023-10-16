@@ -11,7 +11,12 @@ import { formatCurrency } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
 
-export default function SelectedProduct({ setChangedProduct, values }) {
+export default function SelectedProduct({
+  changeProduct,
+  initialPF,
+  initialPJ,
+  product
+}) {
   const [showPF, setShowPF] = useState(true);
   const [showProducts, setShowProducts] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
@@ -31,12 +36,12 @@ export default function SelectedProduct({ setChangedProduct, values }) {
               style={{ background: '#E6F8F2' }}
             >
               <Overline appearance="o1" color="#076E4F">
-                {values?.percentual_desconto}% off
+                {product?.percentual_desconto}% off
               </Overline>
             </div>
             <div>
               <Title appearance="h4" color={neutralDark[400]} extra>
-                {values?.nome}
+                {product?.nome}
               </Title>
             </div>
           </li>
@@ -46,14 +51,14 @@ export default function SelectedProduct({ setChangedProduct, values }) {
               color={neutralMid[600]}
               className="line-through"
             >
-              De {formatCurrency(values?.valor, 'BRL', 'pt-BR')} por
+              De {formatCurrency(product?.valor, 'BRL', 'pt-BR')} por
             </Text>
             <Title appearance="h2" color={neutralDark[500]} extra>
-              {formatCurrency(values?.valor_com_desconto, 'BRL', 'pt-BR')}
+              {formatCurrency(product?.valor_com_desconto, 'BRL', 'pt-BR')}
             </Title>
             <Text appearance="p3" color={neutralMid[600]}>
               3x de{' '}
-              {formatCurrency(values?.valor_com_desconto / 3, 'BRL', 'pt-BR')}{' '}
+              {formatCurrency(product?.valor_com_desconto / 3, 'BRL', 'pt-BR')}{' '}
               no crédito
             </Text>
             <Text
@@ -61,7 +66,7 @@ export default function SelectedProduct({ setChangedProduct, values }) {
               className="text-center lg:text-left"
               color={neutralDark[500]}
             >
-              Validade de {values?.validade} meses
+              Validade de {product?.validade} meses
             </Text>
           </li>
           <li className="flex items-center">
@@ -135,9 +140,15 @@ export default function SelectedProduct({ setChangedProduct, values }) {
           <Container>
             <div className="col-span-4 lg:col-span-8 xl:col-span-6 lg:col-start-3 xl:col-start-4 flex">
               {showPF ? (
-                <CertificadoPF setProduct={setSelectedProduct} />
+                <CertificadoPF
+                  initialProducts={initialPF}
+                  setProduct={setSelectedProduct}
+                />
               ) : (
-                <CertificadoPJ setProduct={setSelectedProduct} />
+                <CertificadoPJ
+                  initialProducts={initialPJ}
+                  setProduct={setSelectedProduct}
+                />
               )}
             </div>
             <div className="col-span-4 lg:col-span-8 xl:col-span-6 lg:col-start-3 xl:col-start-4 flex justify-center">
@@ -166,7 +177,7 @@ export default function SelectedProduct({ setChangedProduct, values }) {
                     } flex items-center justify-center py-4 rounded-md space-x-2 w-full`}
                     disabled={selectedProduct.length > 0 ? false : true}
                     onClick={() => {
-                      setChangedProduct(selectedProduct);
+                      changeProduct(selectedProduct);
                       setShowProducts(false);
                     }}
                     style={{ background: success[900] }}

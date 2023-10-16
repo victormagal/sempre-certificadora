@@ -6,7 +6,7 @@ import { SolidIcon } from '../base/Icons';
 import { Text } from '../base/Typography';
 import { removeNonDigits } from '../base/Utils';
 import { Container } from '../components/Elements';
-import { getProductsById } from '../graphql/queries';
+import { getProducts } from '../graphql/queries';
 import FormStepper from './FormStepper';
 import {
   ContactData,
@@ -17,35 +17,69 @@ import {
 import schema from './FormValidation/schema';
 import { Boleto, Cartao, Error, Pix } from './Payments';
 import SelectedProduct from './SelectedProduct';
-import { useLazyQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
 
 export default function Checkout() {
   const [dataIugu, setDataIugu] = useState({});
   const [loadingIugu, setLoadingIugu] = useState(false);
-  const [productDetails, setProductDetails] = useState({});
+  const [product, setProduct] = useState({});
+  const [products, setProducts] = useState([]);
+  const [initialPFProducts, setInitialPFProducts] = useState([]);
+  const [initialPJProducts, setInitialPJProducts] = useState([]);
   const [responseIugu, setResponseIugu] = useState(false);
   const [changedProduct, setChangedProduct] = useState('');
+  const [service, setService] = useState('');
   const [typePayment, setTypePayment] = useState('');
 
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedProduct = searchParams.get('product');
 
-  const [getProduct] = useLazyQuery(getProductsById, {
-    onCompleted: ({ produtos: { data } }) => {
-      setProductDetails(data[0]);
+  useQuery(getProducts, {
+    onCompleted: (data) => {
+      const {
+        produto: {
+          data: {
+            attributes: { produto }
+          }
+        }
+      } = data;
+      setProducts(produto);
     }
   });
 
   useEffect(() => {
-    getProduct({
-      variables: {
-        produto: changedProduct.length > 0 ? changedProduct : selectedProduct
+    products.map((product) => {
+      if (product.tipo_atendimento === 'videoconferencia') {
+        if (product.certificado === 'pessoa_fisica') {
+          setInitialPFProducts((prevState) => [...prevState, product]);
+        } else {
+          setInitialPJProducts((prevState) => [...prevState, product]);
+        }
       }
     });
-  }, [changedProduct, selectedProduct]);
+
+    const focusedProduct =
+      changedProduct.length > 0 ? changedProduct : selectedProduct;
+
+    const result = products.find(
+      (product) => product.id_produto === focusedProduct
+    );
+    setProduct(result);
+  }, [changedProduct, products]);
+
+  useEffect(() => {
+    const result = products.find(
+      (item) =>
+        item.nome === product.nome &&
+        item.validade === product.validade &&
+        item.certificado === product.certificado &&
+        item.tipo_atendimento === service
+    );
+    setProduct(result);
+  }, [service]);
 
   const steps = [
     'Dados de contato',
@@ -63,27 +97,17 @@ export default function Checkout() {
       case 0:
         return <ContactData />;
       case 1:
-        return <ServiceData />;
+        return (
+          <ServiceData
+            product={product}
+            products={products}
+            setService={setService}
+          />
+        );
       case 2:
-        return (
-          <PaymentData
-            desconto={productDetails?.attributes?.percentual_desconto}
-            valor={productDetails?.attributes?.valor}
-            valor_desconto={productDetails?.attributes?.valor_desconto}
-            valor_final={productDetails?.attributes?.valor_com_desconto}
-          />
-        );
+        return <PaymentData product={product} />;
       case 3:
-        return (
-          <SummaryData
-            desconto={productDetails?.attributes?.percentual_desconto}
-            description={productDetails?.attributes?.nome}
-            loading={loadingIugu}
-            valor={productDetails?.attributes?.valor}
-            valor_desconto={productDetails?.attributes?.valor_desconto}
-            valor_final={productDetails?.attributes?.valor_com_desconto}
-          />
-        );
+        return <SummaryData loading={loadingIugu} product={product} />;
       default:
         return <div>Vazio</div>;
     }
@@ -120,7 +144,7 @@ export default function Checkout() {
       email: values.mail,
       forma_pagamento: values.forma_pagamento,
       id_filial: values.filial,
-      id_produto: selectedProduct,
+      id_produto: values.id_produto,
       logradouro_cobranca: values.logradouro,
       nome_cobranca: values.name,
       numero_cobranca: values.address_number,
@@ -203,21 +227,6 @@ export default function Checkout() {
 
   return (
     <main className="pt-24" id="stepper">
-      <FormStepper step={activeStep} />
-      {!isLastStep && (
-        <SelectedProduct
-          setChangedProduct={setChangedProduct}
-          values={productDetails?.attributes}
-        />
-      )}
-      {isLastStep && responseIugu && typePayment === 'boleto' && (
-        <Boleto data={dataIugu} />
-      )}
-      {isLastStep && responseIugu && typePayment === 'pix' && (
-        <Pix data={dataIugu} />
-      )}
-      {isLastStep && responseIugu && typePayment === 'cartao' && <Cartao />}
-      {isLastStep && responseIugu && typePayment === 'error' && <Error />}
       <Formik
         initialValues={{
           address_number: '',
@@ -240,6 +249,7 @@ export default function Checkout() {
           forma_pagamento: '',
           has_atendimento: false,
           has_pagamento: false,
+          id_produto: selectedProduct,
           filial: '',
           logradouro: '',
           mail: '',
@@ -255,6 +265,23 @@ export default function Checkout() {
         validationSchema={currentSchema}
       >
         <Form>
+          <FormStepper step={activeStep} />
+          {!isLastStep && (
+            <SelectedProduct
+              initialPF={initialPFProducts}
+              initialPJ={initialPJProducts}
+              product={product}
+              changeProduct={setChangedProduct}
+            />
+          )}
+          {isLastStep && responseIugu && typePayment === 'boleto' && (
+            <Boleto data={dataIugu} />
+          )}
+          {isLastStep && responseIugu && typePayment === 'pix' && (
+            <Pix data={dataIugu} />
+          )}
+          {isLastStep && responseIugu && typePayment === 'cartao' && <Cartao />}
+          {isLastStep && responseIugu && typePayment === 'error' && <Error />}
           {renderStepContent(activeStep)}
           <Container>
             <div className="col-span-4 lg:col-span-10 lg:col-start-2 flex justify-between py-6">

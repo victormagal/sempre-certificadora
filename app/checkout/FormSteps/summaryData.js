@@ -1,19 +1,12 @@
 import Skeleton from 'react-loading-skeleton';
 import { neutralDark, neutralMid } from '@/app/base/Colors';
-import { formatCurrency } from '@/app/base/Masks';
+import { formatCurrency, maskPhoneNumber } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
 import { useFormikContext } from 'formik';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export default function SummaryData({
-  desconto,
-  description,
-  loading,
-  valor,
-  valor_desconto,
-  valor_final
-}) {
+export default function SummaryData({ loading, product }) {
   const { values } = useFormikContext();
   const date = new Date();
 
@@ -62,7 +55,7 @@ export default function SummaryData({
                 <Skeleton />
               ) : (
                 <Title appearance="h6" color={neutralDark[500]}>
-                  {values.phone}
+                  {maskPhoneNumber(values.phone)}
                 </Title>
               )}
             </li>
@@ -105,7 +98,7 @@ export default function SummaryData({
                 <Skeleton />
               ) : (
                 <Title appearance="h6" color={neutralDark[500]}>
-                  {description}
+                  {product?.descricao}
                 </Title>
               )}
             </li>
@@ -131,7 +124,7 @@ export default function SummaryData({
                 <Skeleton />
               ) : (
                 <Title appearance="h6" color={neutralDark[500]}>
-                  {formatCurrency(valor_final, 'BRL', 'pt-BR')}
+                  {formatCurrency(product?.valor_com_desconto, 'BRL', 'pt-BR')}
                 </Title>
               )}
             </li>
@@ -157,7 +150,7 @@ export default function SummaryData({
               Subtotal
             </Title>
             <Title appearance="h6" color={neutralDark[500]}>
-              {formatCurrency(valor, 'BRL', 'pt-BR')}
+              {formatCurrency(product?.valor, 'BRL', 'pt-BR')}
             </Title>
           </li>
           <li className="flex justify-between">
@@ -170,11 +163,11 @@ export default function SummaryData({
                 style={{ background: '#E6F8F2' }}
               >
                 <Overline appearance="o1" className="px-4" color="#076E4F">
-                  {desconto}% off
+                  {product?.percentual_desconto}% off
                 </Overline>
               </div>
               <Title appearance="h6" color={neutralDark[500]}>
-                {formatCurrency(valor_desconto, 'BRL', 'pt-BR')}
+                {formatCurrency(product?.valor_desconto, 'BRL', 'pt-BR')}
               </Title>
             </div>
           </li>
@@ -183,7 +176,7 @@ export default function SummaryData({
               Total
             </Title>
             <Title appearance="h3" color={neutralDark[500]}>
-              {formatCurrency(valor_final, 'BRL', 'pt-BR')}
+              {formatCurrency(product?.valor_com_desconto, 'BRL', 'pt-BR')}
             </Title>
           </li>
         </ul>

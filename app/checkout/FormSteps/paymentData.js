@@ -34,12 +34,7 @@ import { Container } from '@/app/components/Elements';
 import axios from 'axios';
 import { Field, useFormikContext } from 'formik';
 
-export default function PaymentData({
-  desconto,
-  valor,
-  valor_desconto,
-  valor_final
-}) {
+export default function PaymentData({ product }) {
   const Iugu = window.Iugu;
   const { errors, setFieldValue, values } = useFormikContext();
 
@@ -412,15 +407,27 @@ export default function PaymentData({
                         <option value="">Selecione</option>
                         <option value="1">
                           1x de{' '}
-                          {formatCurrency(valor_final / 1, 'BRL', 'pt-BR')}
+                          {formatCurrency(
+                            product?.valor_com_desconto / 1,
+                            'BRL',
+                            'pt-BR'
+                          )}
                         </option>
                         <option value="2">
                           2x de{' '}
-                          {formatCurrency(valor_final / 2, 'BRL', 'pt-BR')}
+                          {formatCurrency(
+                            product?.valor_com_desconto / 2,
+                            'BRL',
+                            'pt-BR'
+                          )}
                         </option>
                         <option value="3">
                           3x de{' '}
-                          {formatCurrency(valor_final / 3, 'BRL', 'pt-BR')}
+                          {formatCurrency(
+                            product?.valor_com_desconto / 3,
+                            'BRL',
+                            'pt-BR'
+                          )}
                         </option>
                       </Field>
                       <SolidIcon
@@ -452,7 +459,7 @@ export default function PaymentData({
                       Subtotal
                     </Title>
                     <Title appearance="h6" color={neutralDark[500]}>
-                      {formatCurrency(valor, 'BRL', 'pt-BR')}
+                      {formatCurrency(product?.valor, 'BRL', 'pt-BR')}
                     </Title>
                   </li>
                   <li className="flex justify-between">
@@ -469,11 +476,15 @@ export default function PaymentData({
                           className="px-4"
                           color="#076E4F"
                         >
-                          {desconto}% off
+                          {product?.percentual_desconto}% off
                         </Overline>
                       </div>
                       <Title appearance="h6" color={neutralDark[500]}>
-                        {formatCurrency(valor_desconto, 'BRL', 'pt-BR')}
+                        {formatCurrency(
+                          product?.valor_desconto,
+                          'BRL',
+                          'pt-BR'
+                        )}
                       </Title>
                     </div>
                   </li>
@@ -482,7 +493,11 @@ export default function PaymentData({
                       Total
                     </Title>
                     <Title appearance="h5" color={neutralDark[500]}>
-                      {formatCurrency(valor_final, 'BRL', 'pt-BR')}
+                      {formatCurrency(
+                        product?.valor_com_desconto,
+                        'BRL',
+                        'pt-BR'
+                      )}
                     </Title>
                   </li>
                 </ul>
