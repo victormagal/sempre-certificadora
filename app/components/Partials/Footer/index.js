@@ -177,7 +177,7 @@ export default function Footer() {
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
-                  Programa de parceria com contadores
+                  Programa para Contadores
                 </Text>
               </Link>
             </li>
@@ -187,7 +187,7 @@ export default function Footer() {
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
-                  Seja um parceiro Certificador
+                  Parceria em Certificado Digital
                 </Text>
               </Link>
             </li>
