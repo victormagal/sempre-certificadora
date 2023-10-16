@@ -99,7 +99,7 @@ export default function SelectedProduct({
                 <li
                   className={`cursor-pointer ${
                     showPF && 'drop-shadow'
-                  } py-4 px-4 lg:px-8 rounded`}
+                  } py-4 px-8 rounded`}
                   onClick={() => {
                     setShowPF(true);
                     setSelectedProduct('');
@@ -112,13 +112,13 @@ export default function SelectedProduct({
                     appearance="h7"
                     color={showPF ? neutralDark[500] : neutralMid[400]}
                   >
-                    Para você
+                    Para sua empresa
                   </Title>
                 </li>
                 <li
                   className={`cursor-pointer ${
                     !showPF && 'drop-shadow'
-                  } py-4 px-8 rounded`}
+                  } py-4 px-4 lg:px-8 rounded`}
                   onClick={() => {
                     setShowPF(false);
                     setSelectedProduct('');
@@ -131,7 +131,7 @@ export default function SelectedProduct({
                     appearance="h7"
                     color={!showPF ? neutralDark[500] : neutralMid[400]}
                   >
-                    Para sua empresa
+                    Para você
                   </Title>
                 </li>
               </ul>
@@ -139,7 +139,7 @@ export default function SelectedProduct({
           </Container>
           <Container>
             <div className="col-span-4 lg:col-span-8 xl:col-span-6 lg:col-start-3 xl:col-start-4 flex">
-              {showPF ? (
+              {!showPF ? (
                 <CertificadoPF
                   initialProducts={initialPF}
                   setProduct={setSelectedProduct}

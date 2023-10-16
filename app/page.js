@@ -130,22 +130,6 @@ export default function Certificadora() {
             >
               <li
                 className={`cursor-pointer ${
-                  !showPF && 'drop-shadow'
-                } py-4 px-4 lg:px-8 rounded`}
-                onClick={() => setShowPF(false)}
-                style={{
-                  background: !showPF ? neutralLight[100] : 'transparent'
-                }}
-              >
-                <Title
-                  appearance="h7"
-                  color={!showPF ? neutralDark[500] : neutralMid[400]}
-                >
-                  Para você
-                </Title>
-              </li>
-              <li
-                className={`cursor-pointer ${
                   showPF && 'drop-shadow'
                 } py-4 px-8 rounded`}
                 onClick={() => setShowPF(true)}
@@ -158,6 +142,22 @@ export default function Certificadora() {
                   color={showPF ? neutralDark[500] : neutralMid[400]}
                 >
                   Para sua empresa
+                </Title>
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  !showPF && 'drop-shadow'
+                } py-4 px-4 lg:px-8 rounded`}
+                onClick={() => setShowPF(false)}
+                style={{
+                  background: !showPF ? neutralLight[100] : 'transparent'
+                }}
+              >
+                <Title
+                  appearance="h7"
+                  color={!showPF ? neutralDark[500] : neutralMid[400]}
+                >
+                  Para você
                 </Title>
               </li>
             </ul>
