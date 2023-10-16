@@ -22,14 +22,15 @@ import axios from 'axios';
 import { Form, Formik } from 'formik';
 
 export default function Checkout() {
+  const [changedProduct, setChangedProduct] = useState('');
   const [dataIugu, setDataIugu] = useState({});
+  const [finishForm, setFinishForm] = useState(false);
+  const [initialPFProducts, setInitialPFProducts] = useState([]);
+  const [initialPJProducts, setInitialPJProducts] = useState([]);
   const [loadingIugu, setLoadingIugu] = useState(false);
   const [product, setProduct] = useState({});
   const [products, setProducts] = useState([]);
-  const [initialPFProducts, setInitialPFProducts] = useState([]);
-  const [initialPJProducts, setInitialPJProducts] = useState([]);
   const [responseIugu, setResponseIugu] = useState(false);
-  const [changedProduct, setChangedProduct] = useState('');
   const [service, setService] = useState('');
   const [typePayment, setTypePayment] = useState('');
 
@@ -170,6 +171,7 @@ export default function Checkout() {
           inline: 'nearest'
         });
         if (status === 200) {
+          setFinishForm(true);
           const { payable_with } = data;
           if (payable_with === 'bank_slip') {
             setTypePayment('boleto');
@@ -202,6 +204,7 @@ export default function Checkout() {
           inline: 'nearest'
         });
         console.log(error.response);
+        setFinishForm(false);
         setLoadingIugu(false);
         setResponseIugu(true);
         setTypePayment('error');
@@ -284,10 +287,14 @@ export default function Checkout() {
           {isLastStep && responseIugu && typePayment === 'error' && <Error />}
           {renderStepContent(activeStep)}
           <Container>
-            <div className="col-span-4 lg:col-span-10 lg:col-start-2 flex justify-between py-6">
-              {activeStep !== 0 ? (
+            <div
+              className={`col-span-4 lg:col-span-10 lg:col-start-2 flex flex-grow lg:flex-grow-0 ${
+                finishForm ? 'lg:justify-end' : 'lg:justify-between'
+              } py-6 space-x-4`}
+            >
+              {!finishForm && activeStep !== 0 ? (
                 <button
-                  className="border flex items-center py-3 px-4 rounded space-x-2"
+                  className="border flex flex-1 lg:flex-none items-center justify-center py-3 px-4 rounded space-x-2"
                   onClick={() => handleBack()}
                   style={{
                     background: neutralLight[100],
@@ -305,28 +312,46 @@ export default function Checkout() {
                   </Text>
                 </button>
               ) : (
+                !finishForm &&
+                activeStep === 0 && (
+                  <button
+                    className="border flex flex-1 lg:flex-none items-center justify-center py-3 px-4 rounded space-x-2"
+                    onClick={() => router.back()}
+                    style={{
+                      background: neutralLight[100],
+                      borderColor: neutralLight[500]
+                    }}
+                    type="button"
+                  >
+                    <SolidIcon
+                      icon="faChevronLeft"
+                      iconColor={neutralDark[500]}
+                      newClasses="h-3"
+                    />
+                    <Text appearance="p4" color={neutralDark[500]}>
+                      Voltar
+                    </Text>
+                  </button>
+                )
+              )}
+              {finishForm ? (
                 <button
-                  className="border flex items-center py-3 px-4 rounded space-x-2"
+                  className="flex items-center justify-center py-3 px-4 rounded space-x-2 w-full lg:w-auto"
                   onClick={() => router.back()}
-                  style={{
-                    background: neutralLight[100],
-                    borderColor: neutralLight[500]
-                  }}
-                  type="button"
+                  style={{ background: success[900] }}
                 >
+                  <Text appearance="p4" color={neutralLight[100]}>
+                    Ir para home
+                  </Text>
                   <SolidIcon
-                    icon="faChevronLeft"
-                    iconColor={neutralDark[500]}
+                    icon="faChevronRight"
+                    iconColor={neutralLight[100]}
                     newClasses="h-3"
                   />
-                  <Text appearance="p4" color={neutralDark[500]}>
-                    Voltar
-                  </Text>
                 </button>
-              )}
-              <div>
+              ) : (
                 <button
-                  className="flex items-center py-3 px-4 rounded space-x-2"
+                  className="flex flex-1 lg:flex-none items-center justify-center py-3 px-4 rounded space-x-2"
                   style={{ background: success[900] }}
                   type="submit"
                 >
@@ -339,7 +364,7 @@ export default function Checkout() {
                     newClasses="h-3"
                   />
                 </button>
-              </div>
+              )}
             </div>
           </Container>
         </Form>
