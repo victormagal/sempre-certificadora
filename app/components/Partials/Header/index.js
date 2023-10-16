@@ -113,10 +113,10 @@ export default function Header() {
                     </div>
                     <div>
                       <Title appearance="h7" color={neutralDark[500]}>
-                        Programa de parceria para contadores
+                        Programa para Contadores
                       </Title>
                       <Text appearance="p4" color={neutralMid[500]}>
-                        Conheça e aproveite benefícios exclusivos.
+                        Conheça e aproveite benefícios exclusivos
                       </Text>
                     </div>
                   </li>
@@ -136,11 +136,10 @@ export default function Header() {
                     </div>
                     <div>
                       <Title appearance="h7" color={neutralDark[500]}>
-                        Seja um parceiro Certificador
+                        Parceria em Certificado Digital
                       </Title>
                       <Text appearance="p4" color={neutralMid[500]}>
-                        Programa de parceria para venda de Certificado Digital e
-                        Sistemas Web de Gestão.
+                        Programa de parceria para venda de Certificado Digital
                       </Text>
                     </div>
                   </li>
