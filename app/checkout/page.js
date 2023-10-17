@@ -222,6 +222,9 @@ export default function Checkout() {
             });
           } else if (success) {
             setTypePayment('cartao');
+          } else if (!success) {
+            setLoadingIugu(false);
+            setTypePayment('error');
           }
         } else {
           setLoadingIugu(false);
@@ -263,9 +266,10 @@ export default function Checkout() {
     <main className="pt-24" id="stepper">
       <Formik
         initialValues={{
-          address_number: '',
-          address_state: '',
           address_city: '',
+          address_number: '',
+          address_story: '',
+          address_state: '',
           bairro: '',
           card_code: '',
           card_expiration_date: '',
