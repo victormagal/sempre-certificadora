@@ -23,7 +23,7 @@ export default function Certificadora() {
       <ModalVimeo
         open={openModalVimeo}
         onClose={() => setOpenModalVimeo(false)}
-        link="https://player.vimeo.com/video/554410663?h=75a44195db&title=0&byline=0&portrait=0"
+        link="https://player.vimeo.com/video/677139573?h=cd70bfdebc"
       />
       <HeroPage
         endGradient="#1D3E89"
