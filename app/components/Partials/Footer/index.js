@@ -155,13 +155,6 @@ export default function Footer() {
                 </Text>
               </Link>
             </li>
-            <li>
-              <Link href="/">
-                <Text appearance="p4" color={neutralDark[500]}>
-                  Certificado digital
-                </Text>
-              </Link>
-            </li>
           </ul>
         </div>
         <div className="col-span-2">
