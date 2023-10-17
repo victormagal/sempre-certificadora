@@ -5,7 +5,8 @@ export default function HeroPage({
   children,
   endGradient,
   gradient,
-  initGradient
+  initGradient,
+  newClasses
 }) {
   return (
     <section
@@ -18,7 +19,11 @@ export default function HeroPage({
       }}
       className="relative flex flex-col justify-center"
     >
-      <div className="container grid grid-cols-4 lg:grid-cols-12 gap-6 items-center mx-auto px-6">
+      <div
+        className={`container grid grid-cols-4 lg:grid-cols-12 gap-6 items-center mx-auto px-6 ${
+          newClasses && newClasses
+        }`}
+      >
         {children}
       </div>
     </section>

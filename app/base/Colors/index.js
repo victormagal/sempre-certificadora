@@ -11,6 +11,7 @@ import orange from './orange';
 import recorrencia from './recorrencia';
 import red from './red';
 import success from './success';
+import support from './support';
 import varejo from './varejo';
 import warning from './warning';
 
@@ -28,6 +29,7 @@ export {
   recorrencia,
   red,
   success,
+  support,
   varejo,
   warning
 };

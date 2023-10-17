@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { Container } from '../../Elements';
 import ModalForm from '../ModalForm';
 import { neutralDark, neutralLight, neutralMid, red } from '@/app/base/Colors';
-import { SolidIcon } from '@/app/base/Icons';
+import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { Text, Title } from '@/app/base/Typography';
 
 export default function Header() {
@@ -157,11 +157,68 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="https://api.whatsapp.com/send?phone=556130839390">
+              <button
+                className="flex items-center space-x-2"
+                onClick={toggleMenu}
+              >
                 <Text appearance="p4" color={neutralMid[600]}>
                   Suporte
                 </Text>
-              </Link>
+                <SolidIcon
+                  icon="faChevronDown"
+                  iconColor={neutralMid[600]}
+                  newClasses="h-3"
+                />
+              </button>
+              <ul
+                className="absolute dropDown drop-shadow hidden mt-4 p-6 w-[360px]"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                style={{ backgroundColor: neutralLight[100] }}
+              >
+                <Link onClick={closeDropdownItens} href="certificado-a1">
+                  <li className="flex items-start mb-4 space-x-4">
+                    <div>
+                      <SolidIcon
+                        icon="faDesktop"
+                        iconColor={red[600]}
+                        newClasses="h-6"
+                      />
+                    </div>
+                    <div>
+                      <Title appearance="h7" color={neutralDark[500]}>
+                        Certificado Digital A1
+                      </Title>
+                      <Text appearance="p4" color={neutralMid[500]}>
+                        Computador
+                      </Text>
+                    </div>
+                  </li>
+                </Link>
+                <Link
+                  onClick={closeDropdownItens}
+                  href="https://api.whatsapp.com/send?phone=556130839390"
+                >
+                  <li className="flex items-start space-x-4">
+                    <div>
+                      <RegularIcon
+                        icon="faHardDrive"
+                        iconColor={red[600]}
+                        newClasses="h-6"
+                      />
+                    </div>
+                    <div>
+                      <Title appearance="h7" color={neutralDark[500]}>
+                        Certificado Digital A3
+                      </Title>
+                      <Text appearance="p4" color={neutralMid[500]}>
+                        Cartão e Token
+                      </Text>
+                    </div>
+                  </li>
+                </Link>
+              </ul>
             </li>
             <li>
               <Link

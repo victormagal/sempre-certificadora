@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Container } from '../../Elements';
 import ModalForm from '../ModalForm';
 import { neutralDark, neutralMid, neutralLight, red } from '@/app/base/Colors';
-import { SolidIcon } from '@/app/base/Icons';
+import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { Text, Title } from '@/app/base/Typography';
 
 export default function HeaderMobile() {
@@ -166,14 +166,63 @@ export default function HeaderMobile() {
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      onClick={burgerMenu}
-                      href="https://api.whatsapp.com/send?phone=556130839390"
-                    >
-                      <Title appearance="h6" color={neutralDark[500]}>
-                        Suporte
-                      </Title>
-                    </Link>
+                    <details className="flex flex-col space-y-6">
+                      <summary className="flex items-center justify-between">
+                        <Title appearance="h6" color={neutralDark[500]}>
+                          Suporte
+                        </Title>
+                        <SolidIcon
+                          icon="faChevronDown"
+                          iconColor={neutralMid[500]}
+                          newClasses="h-4"
+                        />
+                      </summary>
+                      <article>
+                        <ul className="flex flex-col space-y-6">
+                          <Link onClick={burgerMenu} href="/certificado-a1">
+                            <li className="flex space-x-4">
+                              <div>
+                                <SolidIcon
+                                  icon="faDesktop"
+                                  iconColor={red[600]}
+                                  newClasses="h-6"
+                                />
+                              </div>
+                              <div>
+                                <Title appearance="h7" color={neutralDark[500]}>
+                                  Certificado Digital A1
+                                </Title>
+                                <Text appearance="p4" color={neutralMid[500]}>
+                                  Computador
+                                </Text>
+                              </div>
+                            </li>
+                          </Link>
+                          <Link
+                            onClick={burgerMenu}
+                            href="https://api.whatsapp.com/send?phone=556130839390"
+                          >
+                            <li className="flex space-x-4">
+                              <div>
+                                <RegularIcon
+                                  icon="faHardDrive"
+                                  iconColor={red[600]}
+                                  newClasses="h-6"
+                                />
+                              </div>
+                              <div>
+                                <Title appearance="h7" color={neutralDark[500]}>
+                                  Certificado Digital A3
+                                </Title>
+                                <Text appearance="p4" color={neutralMid[500]}>
+                                  Cartão e Token
+                                </Text>
+                              </div>
+                            </li>
+                          </Link>
+                        </ul>
+                      </article>
+                    </details>
                   </li>
                   <li>
                     <Link
