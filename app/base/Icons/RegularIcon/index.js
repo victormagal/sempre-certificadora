@@ -10,6 +10,7 @@ export default function RegularIcon({ icon, iconColor, newClasses }) {
     faCirclePlay: Icon.faCirclePlay,
     faComments: Icon.faComments,
     faCopy: Icon.faCopy,
+    faCreditCard: Icon.faCreditCard,
     faFaceSmile: Icon.faFaceSmile,
     faFaceSmileWink: Icon.faFaceSmileWink,
     faFile: Icon.faFile,

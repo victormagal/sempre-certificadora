@@ -15,7 +15,7 @@ import { Text, Title } from '../base/Typography';
 import { Container, HeroPage } from '../components/Elements';
 import { ModalVimeo } from '../components/Partials';
 
-export default function Certificadora() {
+export default function CertificadoA1() {
   const [openModalVimeo, setOpenModalVimeo] = useState(false);
 
   return (
