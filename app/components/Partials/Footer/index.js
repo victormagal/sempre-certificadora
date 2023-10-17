@@ -107,7 +107,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/distribuidores`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sempre-distribuidor`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -117,7 +117,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/pequenos-varejos`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/automacao-comercial`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -127,7 +127,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/prestadores-de-servico`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sistemas-web-para-gestao-empresarial`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -137,7 +137,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/recorrentes`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sempre-mensalidade`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -147,7 +147,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/documentos-fiscais`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sistemas-web-para-emissao-de-nota-eletronica`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
