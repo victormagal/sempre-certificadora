@@ -39,7 +39,6 @@ export default function PaymentData({ product }) {
   const { errors, setFieldValue, values } = useFormikContext();
 
   Iugu.setAccountID('3F2271FB480A40FD8F3ED24ED250A627');
-  Iugu.setTestMode(false);
 
   const filterCities = (value) => {
     const selectedCities = [];
