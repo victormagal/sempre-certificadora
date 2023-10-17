@@ -6,6 +6,14 @@ const nextConfig = {
   },
   experimental: {
     appDir: true
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/certificado-a1.html',
+        destination: '/certificado-a1'
+      }
+    ];
   }
 };
 
