@@ -96,7 +96,7 @@ export default function Checkout() {
 
         axios
           .get(
-            `https://bot-hom.sempretecnologia.com.br/index.php/comercial/scd/fatura/${idPayment}`,
+            `https://bot.sempretecnologia.com.br/index.php/comercial/scd/fatura/${idPayment}`,
             config
           )
           .then(({ data, status }) => {
@@ -188,7 +188,7 @@ export default function Checkout() {
 
     axios
       .post(
-        'https://bot-hom.sempretecnologia.com.br/index.php/comercial/scd/pagamento-transparente',
+        'https://bot.sempretecnologia.com.br/index.php/comercial/scd/pagamento-transparente',
         body,
         config
       )
@@ -290,7 +290,7 @@ export default function Checkout() {
           name: '',
           parcelas: '',
           phone: '',
-          tipo_atendimento: '',
+          tipo_atendimento: 'videoconferencia',
           token: ''
         }}
         onSubmit={handleSubmit}

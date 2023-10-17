@@ -331,6 +331,7 @@ export default function PaymentData({ product }) {
                       maxLength={EXPIRATION_DATE_MIN_LENGTH}
                       name="card_expiration_date"
                       onBlur={createToken}
+                      placeholder="MM/AAAA"
                       style={{
                         background: neutralLight[200],
                         borderColor: errors.card_expiration_date
