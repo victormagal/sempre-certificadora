@@ -15,7 +15,7 @@ import {
   SummaryData
 } from './FormSteps';
 import schema from './FormValidation/schema';
-import { Boleto, Cartao, Error, Pix } from './Payments';
+import { Boleto, Cartao, Error, Pix, PixFinished } from './Payments';
 import SelectedProduct from './SelectedProduct';
 import { useQuery } from '@apollo/client';
 import axios from 'axios';
@@ -25,6 +25,7 @@ export default function Checkout() {
   const [changedProduct, setChangedProduct] = useState('');
   const [dataIugu, setDataIugu] = useState({});
   const [finishForm, setFinishForm] = useState(false);
+  const [idPayment, setIdPayment] = useState('');
   const [initialPFProducts, setInitialPFProducts] = useState([]);
   const [initialPJProducts, setInitialPJProducts] = useState([]);
   const [loadingIugu, setLoadingIugu] = useState(false);
@@ -32,6 +33,7 @@ export default function Checkout() {
   const [products, setProducts] = useState([]);
   const [responseIugu, setResponseIugu] = useState(false);
   const [service, setService] = useState('');
+  const [statusPaymentPix, setStatusPaymentPix] = useState(false);
   const [typePayment, setTypePayment] = useState('');
 
   const router = useRouter();
@@ -81,6 +83,34 @@ export default function Checkout() {
     );
     setProduct(result);
   }, [service]);
+
+  useEffect(() => {
+    if (typePayment === 'pix') {
+      const interval = setInterval(() => {
+        const config = {
+          headers: {
+            'mz-integration': 'sempre',
+            'Content-Type': 'application/json'
+          }
+        };
+
+        axios
+          .get(
+            `https://bot-hom.sempretecnologia.com.br/index.php/comercial/scd/fatura/${idPayment}`,
+            config
+          )
+          .then(({ data, status }) => {
+            if (status === 200 && data.status === 'paid') {
+              setStatusPaymentPix(true);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, 10000);
+      return () => clearInterval(interval);
+    }
+  }, [typePayment]);
 
   const steps = [
     'Dados de contato',
@@ -185,6 +215,7 @@ export default function Checkout() {
             });
           } else if (payable_with === 'pix') {
             setTypePayment('pix');
+            setIdPayment(data.id);
             setDataIugu({
               codeImage: data.pix.qrcode,
               codeLine: data.pix.qrcode_text
@@ -280,9 +311,14 @@ export default function Checkout() {
           {isLastStep && responseIugu && typePayment === 'boleto' && (
             <Boleto data={dataIugu} />
           )}
-          {isLastStep && responseIugu && typePayment === 'pix' && (
-            <Pix data={dataIugu} />
-          )}
+          {isLastStep &&
+            responseIugu &&
+            typePayment === 'pix' &&
+            !statusPaymentPix && <Pix data={dataIugu} />}
+          {isLastStep &&
+            responseIugu &&
+            typePayment === 'pix' &&
+            statusPaymentPix && <PixFinished />}
           {isLastStep && responseIugu && typePayment === 'cartao' && <Cartao />}
           {isLastStep && responseIugu && typePayment === 'error' && <Error />}
           {renderStepContent(activeStep)}
