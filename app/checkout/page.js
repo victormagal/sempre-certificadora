@@ -202,7 +202,7 @@ export default function Checkout() {
         });
         if (status === 200) {
           setFinishForm(true);
-          const { payable_with } = data;
+          const { payable_with, success } = data;
           if (payable_with === 'bank_slip') {
             setTypePayment('boleto');
             setDataIugu({

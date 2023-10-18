@@ -6,7 +6,7 @@ import { neutralDark, neutralLight, red } from '../base/Colors';
 import { RegularIcon, SolidIcon } from '../base/Icons';
 import { Text, Title } from '../base/Typography';
 import { Container, HeroPage } from '../components/Elements';
-import { Sempre } from './Tokens';
+import { Cartoes, Epass, Mac, Safenet, Sempre } from './Tokens';
 
 export default function CertificadoA3() {
   const [selectedToken, setSelectedToken] = useState(1);
@@ -126,7 +126,11 @@ export default function CertificadoA3() {
           </ul>
         </div>
       </Container>
-      <Sempre />
+      {selectedToken === 1 && <Sempre />}
+      {selectedToken === 2 && <Safenet />}
+      {selectedToken === 3 && <Epass />}
+      {selectedToken === 4 && <Cartoes />}
+      {selectedToken === 5 && <Mac />}
     </main>
   );
 }

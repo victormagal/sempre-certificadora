@@ -226,7 +226,7 @@ export default function Footer() {
             © 2023 Sempre Tecnologia. Todos os direitos reservados.
           </Text>
         </div>
-        <ul className="col-span-12 lg:col-end-13 lg:col-span-3 flex justify-start lg:justify-end space-x-4">
+        {/* <ul className="col-span-12 lg:col-end-13 lg:col-span-3 flex justify-start lg:justify-end space-x-4">
           <li>
             <Link
               href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/termo`}
@@ -247,7 +247,7 @@ export default function Footer() {
               </Text>
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </Container>
     </>
   );

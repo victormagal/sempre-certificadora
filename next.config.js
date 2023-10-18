@@ -12,6 +12,10 @@ const nextConfig = {
       {
         source: '/certificado-a1.html',
         destination: '/certificado-a1'
+      },
+      {
+        source: '/certificado-a3.html',
+        destination: '/certificado-a3'
       }
     ];
   }

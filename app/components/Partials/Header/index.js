@@ -177,7 +177,7 @@ export default function Header() {
                 }}
                 style={{ backgroundColor: neutralLight[100] }}
               >
-                <Link onClick={closeDropdownItens} href="certificado-a1">
+                <Link onClick={closeDropdownItens} href="/certificado-a1">
                   <li className="flex items-start mb-4 space-x-4">
                     <div>
                       <SolidIcon
@@ -196,10 +196,7 @@ export default function Header() {
                     </div>
                   </li>
                 </Link>
-                <Link
-                  onClick={closeDropdownItens}
-                  href="https://api.whatsapp.com/send?phone=556130839390"
-                >
+                <Link onClick={closeDropdownItens} href="/certificado-a3">
                   <li className="flex items-start space-x-4">
                     <div>
                       <RegularIcon
