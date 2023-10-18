@@ -59,7 +59,7 @@ export default function Mac() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1_lnCtIZjmwEkz_DsLNNVOlhljd1l_Byn/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/SafeSign-IC-Standard-MacOS-3.7.0.1-AET.000-universal.zip"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
@@ -85,7 +85,7 @@ export default function Mac() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1pE5xPc-jTd3QoY_RC8Gk-FdPPnv43Gaa/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/SafeSignMacOS3.6.0.zip"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
@@ -111,7 +111,7 @@ export default function Mac() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1G2WRveQcz7VGxFhyNNrfkNuZZDZjrZF6/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/safesign-ic-standard-3.5.0.0-aet.000-macta-x86_64.app.zip"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
@@ -168,7 +168,7 @@ export default function Mac() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1X0H6Zqo35C0rUMlqvxLv1MbckRWgdIWJ/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/SafeNetAuthenticationClient.10.2.97.0%2B.dmg"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>

@@ -63,7 +63,7 @@ export default function Safenet() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/19GmhTkv2h7gBdFo0un_HsARtBxulUtVO/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/Safenet-x32-10.5.msi"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
@@ -79,7 +79,7 @@ export default function Safenet() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1Q_bzZ2PmchIIyprdyMm7NKGCX0NL-evY/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/Safenet-x64-10.5.msi"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>

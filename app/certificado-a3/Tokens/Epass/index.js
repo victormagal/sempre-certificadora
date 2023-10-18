@@ -58,7 +58,7 @@ export default function Epass() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1rJbjAGO1M4SR7cid6Lqf34acfhQkzIZx/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/ePass2003-Setup.exe"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>

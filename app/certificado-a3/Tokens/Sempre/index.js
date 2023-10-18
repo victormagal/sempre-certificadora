@@ -94,7 +94,7 @@ export default function Sempre() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1qKYEkTGfQcjyiPojuPb3fMwWsOUmu28e/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/GD_burti.exe"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
@@ -166,7 +166,7 @@ export default function Sempre() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1ozOjO9KRhL953gB4wEcrp9lOVX0IoFPC/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/SafeSign_Windows_x86_3.5.0.0_ADMIN.exe"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
@@ -182,7 +182,7 @@ export default function Sempre() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1fP1taXM6L8I94mAheYQgAZ6J1519C4OP/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/SafeSign_Windows_x64_3.5.0.0_ADMIN.exe"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
@@ -208,7 +208,7 @@ export default function Sempre() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1FLZapeyN1NyHZFGiluy9zJlNNuZHkQFd/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/SafeSign%2B3.0.124%2B-%2B32-bits.msi"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
@@ -224,7 +224,7 @@ export default function Sempre() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/12ntpvksJr9j0TzEzv0PGminzBBxPDPQp/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/SafeSign%2B%2B3.0.124%2B-%2B64-bits.msi"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>

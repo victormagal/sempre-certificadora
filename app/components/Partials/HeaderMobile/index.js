@@ -224,7 +224,7 @@ export default function HeaderMobile() {
                       </article>
                     </details>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       onClick={burgerMenu}
                       href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
@@ -234,7 +234,7 @@ export default function HeaderMobile() {
                         Contato
                       </Title>
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </Container>

@@ -217,7 +217,7 @@ export default function Header() {
                 </Link>
               </ul>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
                 target="_blank"
@@ -226,7 +226,7 @@ export default function Header() {
                   Contato
                 </Text>
               </Link>
-            </li>
+            </li> */}
             <li>
               <button
                 className="px-8 py-3 rounded"
