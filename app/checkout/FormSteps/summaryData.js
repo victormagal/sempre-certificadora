@@ -92,13 +92,13 @@ export default function SummaryData({ loading, product }) {
             </li>
             <li className="flex-1">
               <Text appearance="p3" color={neutralMid[600]}>
-                Descrição
+                Produto
               </Text>
               {loading ? (
                 <Skeleton />
               ) : (
                 <Title appearance="h6" color={neutralDark[500]}>
-                  {product?.descricao}
+                  {product?.nome}
                 </Title>
               )}
             </li>
@@ -112,7 +112,11 @@ export default function SummaryData({ loading, product }) {
                 <Skeleton />
               ) : (
                 <Title appearance="h6" color={neutralDark[500]}>
-                  {values.forma_pagamento}
+                  {values.forma_pagamento === 'pix'
+                    ? 'Pix'
+                    : values.forma_pagamento === 'boleto'
+                    ? 'Boleto bancário'
+                    : 'Cartão de crédito'}
                 </Title>
               )}
             </li>

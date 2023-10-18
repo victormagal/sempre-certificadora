@@ -272,8 +272,8 @@ export default function ServiceData({ product, products, setService }) {
                 <li>
                   <Text appearance="p3" color={neutralMid[500]}>
                     <b>Observação:</b> Para atendimento via videoconferência é
-                    necessário ter computador, câmera e conexão com internet de
-                    boa qualidade.
+                    necessário ter smartphone, tablet ou computador com câmera e
+                    conexão com internet de boa qualidade.
                   </Text>
                 </li>
                 <li>

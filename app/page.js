@@ -108,17 +108,19 @@ export default function Certificadora() {
           >
             Certificado Digital:
           </Title>
-          <Title
-            appearance="h1"
-            className="text-center"
-            color={neutralDark[500]}
-            extra
-          >
-            adquira o ideal pra você
-          </Title>
+          <div id="listProducts">
+            <Title
+              appearance="h1"
+              className="text-center"
+              color={neutralDark[500]}
+              extra
+            >
+              adquira o ideal pra você
+            </Title>
+          </div>
         </div>
       </Container>
-      <div id="listProducts">
+      <div>
         <Container newClasses="pb-16">
           <nav className="col-span-4 lg:col-span-6 lg:col-start-4 flex justify-center">
             <ul

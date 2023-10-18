@@ -362,7 +362,7 @@ export default function Cartoes() {
               <td className="border-r p-3 lg:p-6">
                 <Link
                   className="flex items-center space-x-3"
-                  href="https://drive.google.com/file/d/1trs4_k1AEu9qamkLqmNclJtVKU2uU5s9/view?usp=share_link"
+                  href="https://ststg002.s3.us-east-1.amazonaws.com/scd/dl/Driver-Leitora-Gemalto.exe"
                   target="_blank"
                 >
                   <Text appearance="p3" color={blue[800]}>
