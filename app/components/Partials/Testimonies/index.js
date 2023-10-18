@@ -54,6 +54,8 @@ export default function Testimonies() {
     setCurrentIndex(newIndex);
   };
 
+  console.log(testimonies);
+
   return (
     <>
       <div className="hidden lg:block">
@@ -166,10 +168,10 @@ export default function Testimonies() {
                         </div>
                         <div>
                           <Title appearance="h5" color={neutralDark[500]}>
-                            {testimonies[currentIndex]?.name}
+                            {testimony?.name}
                           </Title>
                           <Text appearance="p3" color={neutralMid[500]}>
-                            {testimonies[currentIndex]?.rule}
+                            {testimony?.rule}
                           </Text>
                         </div>
                       </div>
