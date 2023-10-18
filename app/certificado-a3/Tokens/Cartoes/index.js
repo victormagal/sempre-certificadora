@@ -88,7 +88,11 @@ export default function Cartoes() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1ozOjO9KRhL953gB4wEcrp9lOVX0IoFPC/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -100,7 +104,11 @@ export default function Cartoes() {
                 </Link>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1fP1taXM6L8I94mAheYQgAZ6J1519C4OP/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -122,7 +130,11 @@ export default function Cartoes() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1FLZapeyN1NyHZFGiluy9zJlNNuZHkQFd/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -134,7 +146,11 @@ export default function Cartoes() {
                 </Link>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/12ntpvksJr9j0TzEzv0PGminzBBxPDPQp/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -205,7 +221,11 @@ export default function Cartoes() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1RiPkBuwNoLxtCxnwNSf8gV9jBtQGO0x6/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -265,7 +285,11 @@ export default function Cartoes() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1U0YiPC07Oo5Npl7rpS9ghlkuR_SIQuT4/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -277,7 +301,11 @@ export default function Cartoes() {
                 </Link>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1rYj6BPCuxeuWFsQ1_8_b8kTimdmvaNbd/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -332,7 +360,11 @@ export default function Cartoes() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1trs4_k1AEu9qamkLqmNclJtVKU2uU5s9/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>

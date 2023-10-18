@@ -57,7 +57,11 @@ export default function Mac() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1_lnCtIZjmwEkz_DsLNNVOlhljd1l_Byn/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -79,7 +83,11 @@ export default function Mac() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1pE5xPc-jTd3QoY_RC8Gk-FdPPnv43Gaa/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -101,7 +109,11 @@ export default function Mac() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1G2WRveQcz7VGxFhyNNrfkNuZZDZjrZF6/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
@@ -154,7 +166,11 @@ export default function Mac() {
                 </Text>
               </td>
               <td className="border-r p-3 lg:p-6">
-                <Link className="flex items-center space-x-3" href="/">
+                <Link
+                  className="flex items-center space-x-3"
+                  href="https://drive.google.com/file/d/1X0H6Zqo35C0rUMlqvxLv1MbckRWgdIWJ/view?usp=share_link"
+                  target="_blank"
+                >
                   <Text appearance="p3" color={blue[800]}>
                     Download
                   </Text>
