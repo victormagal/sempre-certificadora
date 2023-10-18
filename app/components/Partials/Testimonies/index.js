@@ -54,8 +54,6 @@ export default function Testimonies() {
     setCurrentIndex(newIndex);
   };
 
-  console.log(testimonies);
-
   return (
     <>
       <div className="hidden lg:block">
