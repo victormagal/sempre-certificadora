@@ -51,7 +51,10 @@ export default function CertificadoA1() {
             Assistente de Certificado Digital A1
           </Text>
           <ul className="flex flex-col space-y-2 w-full">
-            <Link href="https://res.cloudinary.com/delhbbobv/raw/upload/v1697571612/Assistente_Certificado_Digital_8ab51c4daf.application">
+            <Link
+              href="https://res.cloudinary.com/delhbbobv/raw/upload/v1697571612/Assistente_Certificado_Digital_8ab51c4daf.application"
+              target="_blank"
+            >
               <li
                 className="flex items-center justify-center p-4 rounded-md space-x-3"
                 style={{ background: red[1000] }}
