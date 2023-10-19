@@ -95,7 +95,7 @@ export default function ModalForm({ open, onClose }) {
               name: Yup.string().required('Obrigatório'),
               phone: Yup.string()
                 .required('Obrigatório')
-                .min(12, 'Telefone inválido'),
+                .min(10, 'Telefone inválido'),
               subject: Yup.string().required('Obrigatório')
             })}
             validateOnBlur={false}
@@ -201,7 +201,7 @@ export default function ModalForm({ open, onClose }) {
                       <>
                         <Field
                           className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                          maxLength="13"
+                          maxLength="15"
                           name="phone"
                           style={{
                             background: neutralLight[200],
