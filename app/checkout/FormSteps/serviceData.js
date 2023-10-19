@@ -284,8 +284,7 @@ export default function ServiceData({ product, products, setService }) {
                 </li>
               </ul>
             )}
-            {(values.tipo_atendimento === 'presencial' ||
-              values.tipo_atendimento === 'express') && (
+            {values.tipo_atendimento === 'presencial' && (
               <>
                 <ul className="flex flex-col lg:flex-row mb-6 lg:space-x-6 space-y-6 lg:space-y-0">
                   <li className="flex-1">
@@ -382,59 +381,178 @@ export default function ServiceData({ product, products, setService }) {
                     )}
                   </li>
                 </ul>
-                {values.tipo_atendimento === 'presencial' &&
-                  Object.keys(values?.detailed_story).length !== 0 && (
-                    <div
-                      className="flex p-8 rounded space-x-6"
-                      style={{ backgroundColor: neutralLight[200] }}
-                    >
-                      <div className="flex flex-col space-y-4">
-                        <Title appearance="h5" color={neutralDark[500]}>
-                          Loja Sempre Tecnologia{' '}
-                          {values?.detailed_story?.cidade}
-                        </Title>
-                        <Text appearance="p4" color={neutralDark[500]}>
-                          {values?.detailed_story?.telefone}
-                          {' / '}
-                          {values?.detailed_story?.celular}
-                        </Text>
-                        <Text appearance="p3" color={neutralMid[500]}>
-                          {values?.detailed_story?.endereco}
-                        </Text>
-                        <Link
-                          href={values?.detailed_story?.mapa || `/`}
-                          target="_blank"
+                {Object.keys(values?.detailed_story).length !== 0 && (
+                  <div
+                    className="flex p-8 rounded space-x-6"
+                    style={{ backgroundColor: neutralLight[200] }}
+                  >
+                    <div className="flex flex-col space-y-4">
+                      <Title appearance="h5" color={neutralDark[500]}>
+                        Loja Sempre Tecnologia {values?.detailed_story?.cidade}
+                      </Title>
+                      <Text appearance="p4" color={neutralDark[500]}>
+                        {values?.detailed_story?.telefone}
+                        {' / '}
+                        {values?.detailed_story?.celular}
+                      </Text>
+                      <Text appearance="p3" color={neutralMid[500]}>
+                        {values?.detailed_story?.endereco}
+                      </Text>
+                      <Link
+                        href={values?.detailed_story?.mapa || `/`}
+                        target="_blank"
+                      >
+                        <button
+                          className="flex items-center space-x-3"
+                          type="button"
                         >
-                          <button
-                            className="flex items-center space-x-3"
-                            type="button"
-                          >
-                            <Text appearance="p3" color={blue[800]}>
-                              Ver no mapa
-                            </Text>
-                            <SolidIcon
-                              icon="faChevronRight"
-                              iconColor={blue[800]}
-                              newClasses="h-3"
-                            />
-                          </button>
-                        </Link>
-                      </div>
-                      <div>
-                        <RegularIcon
-                          icon="faCircleDot"
-                          iconColor={red[600]}
-                          newClasses="h-6"
-                        />
-                      </div>
+                          <Text appearance="p3" color={blue[800]}>
+                            Ver no mapa
+                          </Text>
+                          <SolidIcon
+                            icon="faChevronRight"
+                            iconColor={blue[800]}
+                            newClasses="h-3"
+                          />
+                        </button>
+                      </Link>
                     </div>
-                  )}
-                {values.tipo_atendimento === 'express' && (
-                  <Text appearance="p3" color={neutralMid[500]}>
-                    <b>Atenção:</b> Um de nossos especialistas entrará em
-                    contato após a confirmação de pagamento.
-                  </Text>
+                    <div>
+                      <RegularIcon
+                        icon="faCircleDot"
+                        iconColor={red[600]}
+                        newClasses="h-6"
+                      />
+                    </div>
+                  </div>
                 )}
+              </>
+            )}
+            {values.tipo_atendimento === 'express' && (
+              <>
+                <ul className="flex flex-col lg:flex-row mb-6 lg:space-x-6 space-y-6 lg:space-y-0">
+                  <li className="flex-1">
+                    <Text
+                      appearance="p4"
+                      className="mb-2"
+                      color={neutralDark[500]}
+                    >
+                      Estado
+                    </Text>
+                    <div className="flex items-center">
+                      <Field
+                        as="select"
+                        className="appearance-none border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                        name="estado"
+                        onChange={(e) => {
+                          setFieldValue('estado', e.target.value);
+                        }}
+                        style={{
+                          background: neutralLight[200],
+                          borderColor: errors.estado
+                            ? red[900]
+                            : neutralLight[400],
+                          color: neutralMid[500]
+                        }}
+                        value={values.estado}
+                      >
+                        <option value="">Selecione</option>
+                        <option value="df">Distrito Federal</option>
+                      </Field>
+                      <SolidIcon
+                        icon="faChevronDown"
+                        iconColor={neutralMid[500]}
+                        newClasses="h-4 -ml-10"
+                      />
+                    </div>
+                    {errors.estado && (
+                      <Text appearance="p4" className="mt-2" color={red[900]}>
+                        {errors.estado}
+                      </Text>
+                    )}
+                  </li>
+                  <li className="flex-1">
+                    <Text
+                      appearance="p4"
+                      className="mb-2"
+                      color={neutralDark[500]}
+                    >
+                      Unidade
+                    </Text>
+                    <div className="flex items-center">
+                      <Field
+                        as="select"
+                        className="appearance-none border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
+                        name="cidade"
+                        onChange={(e) => {
+                          setFieldValue('cidade', e.target.value);
+                        }}
+                        style={{
+                          background: neutralLight[200],
+                          borderColor: errors.cidade
+                            ? red[900]
+                            : neutralLight[400],
+                          color: neutralMid[500]
+                        }}
+                        value={values.cidade}
+                      >
+                        <option value="">Selecione</option>
+                        <option value="Águas Claras">Águas Claras</option>
+                        <option value="Arniqueiras">Arniqueiras</option>
+                        <option value="Candangolândia">Candangolândia</option>
+                        <option value="Ceilândia">Ceilândia</option>
+                        <option value="Cruzeiro">Cruzeiro</option>
+                        <option value="Gama">Gama</option>
+                        <option value="Guará">Guará</option>
+                        <option value="Itapoã">Itapoã</option>
+                        <option value="Jardim Botânico">Jardim Botânico</option>
+                        <option value="Lago Norte">Lago Norte</option>
+                        <option value="Lago Sul">Lago Sul</option>
+                        <option value="Núcleo Bandeirante">
+                          Núcleo Bandeirante
+                        </option>
+                        <option value="Paranoá">Paranoá</option>
+                        <option value="Park Way">Park Way</option>
+                        <option value="Plano Piloto">Plano Piloto</option>
+                        <option value="Recanto das Emas">
+                          Recanto das Emas
+                        </option>
+                        <option value="Riacho Fundo I">Riacho Fundo I</option>
+                        <option value="Riacho Fundo II">Riacho Fundo II</option>
+                        <option value="Samambaia">Samambaia</option>
+                        <option value="Santa Maria">Santa Maria</option>
+                        <option value="São Sebastião">São Sebastião</option>
+                        <option value="Scia/Estrutural">Scia/Estrutural</option>
+                        <option value="Sia">Sia</option>
+                        <option value="Sobradinho">Sobradinho</option>
+                        <option value="Sobradinho II">Sobradinho II</option>
+                        <option value="Sol Nascente e Pôr do Sol">
+                          Sol Nascente e Pôr do Sol
+                        </option>
+                        <option value="Sudoeste/Octogonal">
+                          Sudoeste/Octogonal
+                        </option>
+                        <option value="Taguatinga">Taguatinga</option>
+                        <option value="Varjão">Varjão</option>
+                        <option value="Vicente Pires">Vicente Pires</option>
+                      </Field>
+                      <SolidIcon
+                        icon="faChevronDown"
+                        iconColor={neutralMid[500]}
+                        newClasses="h-4 -ml-10"
+                      />
+                    </div>
+                    {errors.cidade && (
+                      <Text appearance="p4" className="mt-2" color={red[900]}>
+                        {errors.cidade}
+                      </Text>
+                    )}
+                  </li>
+                </ul>
+                <Text appearance="p3" color={neutralMid[500]}>
+                  <b>Atenção:</b> Um de nossos especialistas entrará em contato
+                  após a confirmação de pagamento.
+                </Text>
               </>
             )}
           </div>
