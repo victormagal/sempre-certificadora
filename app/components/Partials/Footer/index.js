@@ -90,9 +90,16 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="https://api.whatsapp.com/send?phone=556130839390">
+              <Link href="/certificado-a1">
                 <Text appearance="p4" color={neutralDark[500]}>
-                  Suporte
+                  Suporte A1
+                </Text>
+              </Link>
+            </li>
+            <li>
+              <Link href="/certificado-a3">
+                <Text appearance="p4" color={neutralDark[500]}>
+                  Suporte A3
                 </Text>
               </Link>
             </li>
@@ -107,7 +114,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sempre-distribuidor`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/distribuidores`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -117,7 +124,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/automacao-comercial`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/pequenos-varejos`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -127,7 +134,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sistemas-web-para-gestao-empresarial`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/prestadores-de-servico`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -137,7 +144,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sempre-mensalidade`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/recorrentes`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -147,7 +154,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/sistemas-web-para-emissao-de-nota-eletronica`}
+                href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/documentos-fiscais`}
                 target="_blank"
               >
                 <Text appearance="p4" color={neutralDark[500]}>
@@ -226,7 +233,7 @@ export default function Footer() {
             © 2023 Sempre Tecnologia. Todos os direitos reservados.
           </Text>
         </div>
-        {/* <ul className="col-span-12 lg:col-end-13 lg:col-span-3 flex justify-start lg:justify-end space-x-4">
+        <ul className="col-span-12 lg:col-end-13 lg:col-span-3 flex justify-start lg:justify-end space-x-4">
           <li>
             <Link
               href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/termo`}
@@ -247,7 +254,7 @@ export default function Footer() {
               </Text>
             </Link>
           </li>
-        </ul> */}
+        </ul>
       </Container>
     </>
   );
