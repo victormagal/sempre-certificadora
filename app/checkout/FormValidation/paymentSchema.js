@@ -73,5 +73,9 @@ export default Yup.object({
     is: 'boleto',
     then: () =>
       Yup.string().required('Obrigatório').min(CEP_MIN_LENGTH, 'CEP inválido')
+  }),
+  midia_obrigatorio: Yup.string().when('has_midia', {
+    is: true,
+    then: () => Yup.boolean().oneOf([true], 'Você deve estar ciente disto')
   })
 });

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { neutralDark, neutralLight, neutralMid, red } from './base/Colors';
-import { RegularIcon } from './base/Icons';
+import { RegularIcon, SolidIcon } from './base/Icons';
 import { Overline, Text, Title } from './base/Typography';
 import {
   CardFeature,
@@ -284,7 +284,10 @@ export default function Certificadora() {
             Confira o passo a passo para instalação do seu Certificado Digital.
           </Text>
           <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-4 lg:space-y-0">
-            {/* <Link href="/">
+            <Link
+              href="https://res.cloudinary.com/delhbbobv/raw/upload/v1697571612/Assistente_Certificado_Digital_8ab51c4daf.application"
+              target="_blank"
+            >
               <li
                 className="flex items-center justify-center p-4 rounded-md space-x-3"
                 style={{ background: red[1000] }}
@@ -298,7 +301,7 @@ export default function Certificadora() {
                   newClasses="h-4"
                 />
               </li>
-            </Link> */}
+            </Link>
             <Link
               href={`${process.env.NEXT_PUBLIC_SEMPRE_INSTITUCIONAL_URL}/contato`}
             >

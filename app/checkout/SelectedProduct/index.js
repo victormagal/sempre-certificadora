@@ -77,6 +77,7 @@ export default function SelectedProduct({
                 background: neutralLight[100],
                 borderColor: neutralLight[500]
               }}
+              type="button"
             >
               <Title appearance="h7" color={neutralDark[500]}>
                 Trocar certificado

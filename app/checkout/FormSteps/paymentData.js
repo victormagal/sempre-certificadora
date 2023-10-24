@@ -91,6 +91,10 @@ export default function PaymentData({ product }) {
   };
 
   useEffect(() => {
+    setFieldValue('has_midia', product.midia);
+  }, [product]);
+
+  useEffect(() => {
     filterCities(values.address_state);
   }, [values.address_state]);
 
@@ -136,7 +140,10 @@ export default function PaymentData({ product }) {
           <ul className="flex flex-col space-y-4 w-full lg:w-2/5" role="group">
             <li
               className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
-              onClick={() => setFieldValue('forma_pagamento', 'cartao')}
+              onClick={() => {
+                setFieldValue('forma_pagamento', 'cartao');
+                setFieldValue('has_pagamento', true);
+              }}
               style={{
                 borderColor:
                   values.forma_pagamento === 'cartao'
@@ -177,6 +184,7 @@ export default function PaymentData({ product }) {
               className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
               onClick={() => {
                 setFieldValue('forma_pagamento', 'boleto');
+                setFieldValue('has_pagamento', true);
               }}
               style={{
                 borderColor:
@@ -216,7 +224,10 @@ export default function PaymentData({ product }) {
             </li>
             <li
               className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
-              onClick={() => setFieldValue('forma_pagamento', 'pix')}
+              onClick={() => {
+                setFieldValue('forma_pagamento', 'pix');
+                setFieldValue('has_pagamento', true);
+              }}
               style={{
                 borderColor:
                   values.forma_pagamento === 'pix'
@@ -792,6 +803,41 @@ export default function PaymentData({ product }) {
                   </ul>
                 )}
               </>
+            )}
+            {product.midia && (
+              <ul className="flex flex-col mt-3 space-y-3">
+                <li className="flex flex-col space-y-3">
+                  <Title appearance="h5" color={neutralDark[500]}>
+                    Atenção
+                  </Title>
+                  <Text appearance="p3" color={neutralMid[500]}>
+                    Este produto não acompanha uma mídia criptografada do tipo
+                    smartcard ou token, essa mídia é necessária para seu correto
+                    funcionamento.
+                  </Text>
+                  <Text appearance="p3" color={neutralMid[500]}>
+                    Produtos do tipo A3 sem mídia são mais comuns para situações
+                    de renovação de certificado digital uma vez que a mídia pode
+                    ser reaproveitada.
+                  </Text>
+                </li>
+                <li className="flex items-start space-x-2">
+                  <Field
+                    className="mt-1.5"
+                    name="midia_obrigatorio"
+                    type="checkbox"
+                  />
+                  <Title appearance="h6" color={neutralDark[500]}>
+                    Ao continuar, você afirma já possuir uma mídia para o devido
+                    funcionamento do certificado digital.
+                  </Title>
+                </li>
+                {errors.midia_obrigatorio && (
+                  <Text appearance="p4" color={red[900]}>
+                    {errors.midia_obrigatorio}
+                  </Text>
+                )}
+              </ul>
             )}
           </div>
         </div>

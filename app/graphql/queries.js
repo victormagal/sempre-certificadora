@@ -196,6 +196,7 @@ const getProducts = gql`
             tipo_atendimento
             descricao
             validade
+            midia
           }
         }
       }
