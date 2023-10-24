@@ -105,7 +105,7 @@ export default function Checkout() {
             }
           })
           .catch((error) => {
-            console.log(error);
+            return error;
           });
       }, 10000);
       return () => clearInterval(interval);
@@ -238,11 +238,13 @@ export default function Checkout() {
           block: 'start',
           inline: 'nearest'
         });
-        console.log(error.response);
+
         setFinishForm(false);
         setLoadingIugu(false);
         setResponseIugu(true);
         setTypePayment('error');
+
+        return error.response;
       });
 
     actions.setSubmitting(false);
