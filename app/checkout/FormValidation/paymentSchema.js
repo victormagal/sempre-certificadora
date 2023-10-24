@@ -1,4 +1,5 @@
 import {
+  BAIRRO_MIN_LENGTH,
   CARD_MIN_LENGTH,
   CARD_CODE_MIN_LENGTH,
   CEP_MIN_LENGTH,
@@ -72,7 +73,9 @@ export default Yup.object({
   bairro: Yup.string().when('forma_pagamento', {
     is: 'boleto',
     then: () =>
-      Yup.string().required('Obrigatório').min(CEP_MIN_LENGTH, 'CEP inválido')
+      Yup.string()
+        .required('Obrigatório')
+        .min(BAIRRO_MIN_LENGTH, 'CEP inválido')
   }),
   midia_obrigatorio: Yup.string().when('has_midia', {
     is: true,

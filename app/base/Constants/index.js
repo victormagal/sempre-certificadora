@@ -1,4 +1,5 @@
 export const ADDRESS_NUMBER_MAX_LENGTH = 5;
+export const BAIRRO_MIN_LENGTH = 3;
 export const CARD_CODE_MAX_LENGTH = 4;
 export const CARD_CODE_MIN_LENGTH = 3;
 export const CARD_MIN_LENGTH = 19;
