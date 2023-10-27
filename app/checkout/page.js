@@ -153,47 +153,35 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
-  const submitForm = (actions, values) => {
+  const submitForm = async (actions, values) => {
     setLoadingIugu(true);
-    const config = {
-      headers: {
-        'mz-integration': 'sempre',
-        'Content-Type': 'application/json'
-      }
-    };
-
-    const body = JSON.stringify({
-      bairro_cobranca: values.bairro,
-      cep_cobranca: removeNonDigits(values.cep),
-      cidade_cobranca: values.address_story,
-      complemento_cobranca: values.complemento,
-      cpf_certificado: '',
-      cpf_cnpj_cobranca: removeNonDigits(values.document),
-      cupom_desconto: '',
-      ddd_telefone_cobranca: removeNonDigits(values.phone).slice(0, 2),
-      dn_certificado: '',
-      email: values.mail,
-      forma_pagamento: values.forma_pagamento,
-      id_filial: values.filial,
-      id_produto: values.id_produto,
-      logradouro_cobranca: values.logradouro,
-      midia_obrigatorio: values.midia_obrigatorio,
-      nome_cobranca: values.name,
-      numero_cobranca: values.address_number,
-      qtd_parcelas: values.parcelas,
-      telefone_cobranca: removeNonDigits(values.phone).slice(2),
-      tipo_atendimento: values.tipo_atendimento,
-      token: values.token,
-      uf_cobranca: values.address_state
-    });
 
     axios
-      .post(
-        'https://bot.sempretecnologia.com.br/index.php/comercial/scd/pagamento-transparente',
-        body,
-        config
-      )
-      .then(({ data, status }) => {
+      .post('../api/checkout', {
+        bairro_cobranca: values.bairro,
+        cep_cobranca: removeNonDigits(values.cep),
+        cidade_cobranca: values.address_story,
+        complemento_cobranca: values.complemento,
+        cpf_certificado: '',
+        cpf_cnpj_cobranca: removeNonDigits(values.document),
+        cupom_desconto: '',
+        ddd_telefone_cobranca: removeNonDigits(values.phone).slice(0, 2),
+        dn_certificado: '',
+        email: values.mail,
+        forma_pagamento: values.forma_pagamento,
+        id_filial: values.filial,
+        id_produto: values.id_produto,
+        logradouro_cobranca: values.logradouro,
+        midia_obrigatorio: values.midia_obrigatorio,
+        nome_cobranca: values.name,
+        numero_cobranca: values.address_number,
+        qtd_parcelas: values.parcelas,
+        telefone_cobranca: removeNonDigits(values.phone).slice(2),
+        tipo_atendimento: values.tipo_atendimento,
+        token: values.token,
+        uf_cobranca: values.address_state
+      })
+      .then(({ data: { data: responseData }, status }) => {
         setLoadingIugu(false);
         setResponseIugu(true);
         document.getElementById('stepper').scrollIntoView({
@@ -203,23 +191,23 @@ export default function Checkout() {
         });
         if (status === 200) {
           setFinishForm(true);
-          const { payable_with, success } = data;
+          const { payable_with, success } = responseData;
           if (payable_with === 'bank_slip') {
             setTypePayment('boleto');
             setDataIugu({
-              codeImage: data.bank_slip.barcode,
-              codeLine: data.bank_slip.digitable_line,
-              email: data.payer_email,
-              url: data.secure_url,
-              value: data.total,
-              vencimento: data.due_date
+              codeImage: responseData.bank_slip.barcode,
+              codeLine: responseData.bank_slip.digitable_line,
+              email: responseData.payer_email,
+              url: responseData.secure_url,
+              value: responseData.total,
+              vencimento: responseData.due_date
             });
           } else if (payable_with === 'pix') {
             setTypePayment('pix');
-            setIdPayment(data.id);
+            setIdPayment(responseData.id);
             setDataIugu({
-              codeImage: data.pix.qrcode,
-              codeLine: data.pix.qrcode_text
+              codeImage: responseData.pix.qrcode,
+              codeLine: responseData.pix.qrcode_text
             });
           } else if (success) {
             setTypePayment('cartao');
