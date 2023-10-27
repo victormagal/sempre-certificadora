@@ -4,7 +4,7 @@ export async function POST(request) {
   const body = await request.json();
 
   const res = await fetch(
-    'https://bot-hom.sempretecnologia.com.br/index.php/comercial/scd/pagamento-transparente',
+    'https://bot.sempretecnologia.com.br/index.php/comercial/scd/pagamento-transparente',
     {
       method: 'POST',
       headers: {
