@@ -7,6 +7,9 @@ export async function GET() {
       headers: {
         'Content-Type': 'application/json',
         'mz-integration': 'sempre'
+      },
+      next: {
+        revalidate: 60
       }
     }
   );
