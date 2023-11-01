@@ -300,8 +300,8 @@ export default function Certificadora() {
             className="text-center lg:text-left"
             color={neutralMid[500]}
           >
-            Este site é protegido pelo XXXXXX e as Políticas de Privacidade e
-            Termos de Serviço do mesmo se aplicam.
+            Este site é protegido pela Sempre Certificadora e as Políticas de
+            Privacidade e Termos de Serviço do mesmo se aplicam.
           </Text>
           <ul className="flex flex-col items-center space-y-1">
             <li>
@@ -310,7 +310,7 @@ export default function Certificadora() {
                 className="text-center lg:text-left"
                 color={neutralMid[500]}
               >
-                Sempre Tecnologia – CNPJ 00.00.000/00000-00 - CEP 0000-000
+                Sempre Certificadora - CNPJ 15.590.921/0001-29 - CEP 71200-045
               </Text>
             </li>
             <li>
@@ -319,7 +319,8 @@ export default function Certificadora() {
                 className="text-center lg:text-left"
                 color={neutralMid[500]}
               >
-                Sede administrativa: Endereço XXXXXXX – Brasília
+                Sede administrativa: SIA Quadra 4C Lote 51 - Loja 5 Ed. SIA
+                Center II - Zona Industrial Guará - Brasília
               </Text>
             </li>
             <li>

@@ -1,10 +1,11 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { neutralDark, neutralLight, success } from '../base/Colors';
+import { neutralDark, neutralLight, neutralMid, success } from '../base/Colors';
 import { SolidIcon } from '../base/Icons';
-import { Text } from '../base/Typography';
+import { Text, Title } from '../base/Typography';
 import { removeNonDigits } from '../base/Utils';
 import { Container } from '../components/Elements';
 import {
@@ -413,18 +414,83 @@ export default function Checkout() {
           </Form>
         </Formik>
       </main>
-      <Locations />
-      <Footer />
-      <Link
-        href="https://api.whatsapp.com/send?phone=556130839390"
-        target="_blank"
-        className="fixed bg-[#25D366] bottom-4 drop-shadow-xl h-16 right-4 rounded-full w-16"
-      >
-        <FontAwesomeIcon
-          className="text-white h-10 w-10 mt-3 ml-3"
-          icon={faWhatsapp}
-        />
-      </Link>
+      {cupom ? (
+        <>
+          <Container newClasses="border-b">
+            <div className="col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col lg:flex-row items-center justify-between py-12 space-y-4 lg:space-y-0">
+              <Link href="/">
+                <Image
+                  alt="Sempre Tecnologia"
+                  height={46}
+                  src="/logo-positiva.svg"
+                  width={172}
+                />
+              </Link>
+              <Title appearance="h6" color={neutralDark[600]} extra>
+                Precisando de ajuda? 0800 941 6260
+              </Title>
+            </div>
+          </Container>
+          <Container>
+            <div className="col-span-4 lg:col-span-8 lg:col-start-3 flex flex-col items-center py-12 space-y-6">
+              <Text
+                appearance="p3"
+                className="text-center lg:text-left"
+                color={neutralMid[500]}
+              >
+                Este site é protegido pela Sempre Certificadora e as Políticas
+                de Privacidade e Termos de Serviço do mesmo se aplicam.
+              </Text>
+              <ul className="flex flex-col items-center space-y-1">
+                <li>
+                  <Text
+                    appearance="p3"
+                    className="text-center lg:text-left"
+                    color={neutralMid[500]}
+                  >
+                    Sempre Certificadora - CNPJ 15.590.921/0001-29 - CEP
+                    71200-045
+                  </Text>
+                </li>
+                <li>
+                  <Text
+                    appearance="p3"
+                    className="text-center lg:text-left"
+                    color={neutralMid[500]}
+                  >
+                    Sede administrativa: SIA Quadra 4C Lote 51 - Loja 5 Ed. SIA
+                    Center II - Zona Industrial Guará - Brasília
+                  </Text>
+                </li>
+                <li>
+                  <Text
+                    appearance="p3"
+                    className="text-center lg:text-left"
+                    color={neutralMid[500]}
+                  >
+                    contato@sempretecnologia.com.br
+                  </Text>
+                </li>
+              </ul>
+            </div>
+          </Container>
+        </>
+      ) : (
+        <>
+          <Locations />
+          <Footer />
+          <Link
+            href="https://api.whatsapp.com/send?phone=556130839390"
+            target="_blank"
+            className="fixed bg-[#25D366] bottom-4 drop-shadow-xl h-16 right-4 rounded-full w-16"
+          >
+            <FontAwesomeIcon
+              className="text-white h-10 w-10 mt-3 ml-3"
+              icon={faWhatsapp}
+            />
+          </Link>
+        </>
+      )}
     </>
   );
 }
