@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import {
   blue,
@@ -10,14 +11,18 @@ import {
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
-import { getAllBranches, getAllStates } from '@/app/graphql/queries';
+import { getAllStates } from '@/app/graphql/queries';
 import { useQuery } from '@apollo/client';
+import axios from 'axios';
 import { Field, useFormikContext } from 'formik';
 
 export default function ServiceData({ product, products, setService }) {
   const { errors, setFieldValue, values } = useFormikContext();
   const [states, setStates] = useState([]);
   const [stories, setStories] = useState([]);
+
+  const searchParams = useSearchParams();
+  const cupom = searchParams.get('cupom');
 
   useQuery(getAllStates, {
     onCompleted: ({ estados: { data } }) => {
@@ -30,44 +35,23 @@ export default function ServiceData({ product, products, setService }) {
       });
     }
   });
-  useQuery(getAllBranches, {
-    onCompleted: ({ filiais: { data } }) => {
-      data.map(
-        ({
-          attributes: {
-            label,
-            telefone,
-            celular,
-            endereco,
-            mapa,
-            estado: {
-              data: {
-                attributes: { label: labelState, uf }
-              }
-            },
-            id_filial
-          }
-        }) => {
-          const node = {
-            endereco: endereco,
-            estado: labelState,
-            cidade: label,
-            mapa: mapa,
-            telefone: telefone,
-            celular: celular,
-            uf: uf,
-            id: id_filial
-          };
-          setStories((prevState) => [...prevState, node]);
-        }
-      );
-    }
-  });
+
+  useEffect(() => {
+    axios
+      .get(`../api/filiais${cupom && `/${cupom}`}`)
+      .then(({ data: { data: response } }) => {
+        const { Filiais: stories } = response;
+        setStories(stories);
+      })
+      .catch((error) => {
+        return error;
+      });
+  }, []);
 
   const filterStories = (value) => {
     const selectedStories = [];
     stories.map((story) => {
-      if (story.uf === value) {
+      if (story.estado.toLowerCase() === value) {
         selectedStories.push(story);
       }
     });
@@ -87,11 +71,11 @@ export default function ServiceData({ product, products, setService }) {
     const result = products.find(
       (item) =>
         item.nome === product.nome &&
-        item.validade === product.validade &&
-        item.certificado === product.certificado &&
+        item.validade_certificado === product.validade_certificado &&
+        item.tipo_certificado === product.tipo_certificado &&
         item.tipo_atendimento === values.tipo_atendimento
     );
-    setFieldValue('id_produto', result?.id_produto);
+    setFieldValue('id_produto', result?.id);
   }, [values.tipo_atendimento]);
 
   return (
@@ -391,15 +375,20 @@ export default function ServiceData({ product, products, setService }) {
                         Loja Sempre Tecnologia {values?.detailed_story?.cidade}
                       </Title>
                       <Text appearance="p4" color={neutralDark[500]}>
-                        {values?.detailed_story?.telefone}
+                        {values?.detailed_story?.telefone_fixo}
                         {' / '}
-                        {values?.detailed_story?.celular}
+                        {values?.detailed_story?.telefone_celular}
                       </Text>
                       <Text appearance="p3" color={neutralMid[500]}>
-                        {values?.detailed_story?.endereco}
+                        {values?.detailed_story?.logradouro},{' '}
+                        {values?.detailed_story?.numero} -{' '}
+                        {values?.detailed_story?.complemento} -{' '}
+                        {values?.detailed_story?.bairro},{' '}
+                        {values?.detailed_story?.nome},{' '}
+                        {values?.detailed_story?.cep}
                       </Text>
                       <Link
-                        href={values?.detailed_story?.mapa || `/`}
+                        href={values?.detailed_story?.link_mapa || `/`}
                         target="_blank"
                       >
                         <button

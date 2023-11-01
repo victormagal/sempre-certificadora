@@ -25,17 +25,15 @@ export default function CertificadoPF({ initialProducts, setProduct }) {
       {initialProducts?.map((product) => (
         <div
           className="border cursor-pointer flex flex-col space-y-8 py-8 px-6 rounded-2xl w-full lg:w-1/2"
-          key={product?.id_produto}
+          key={product?.id}
           onClick={() => {
-            setProduct(product?.id_produto);
-            setProductFocused(product?.id_produto);
+            setProduct(product?.id);
+            setProductFocused(product?.id);
           }}
           style={{
             background: neutralLight[100],
             borderColor:
-              productFocused === product?.id_produto
-                ? red[600]
-                : neutralLight[400]
+              productFocused === product?.id ? red[600] : neutralLight[400]
           }}
         >
           <header className="flex flex-col space-y-3">
@@ -50,14 +48,10 @@ export default function CertificadoPF({ initialProducts, setProduct }) {
               </div>
               <RegularIcon
                 icon={`${
-                  productFocused === product?.id_produto
-                    ? 'faCircleDot'
-                    : 'faCircle'
+                  productFocused === product?.id ? 'faCircleDot' : 'faCircle'
                 }`}
                 iconColor={
-                  productFocused === product?.id_produto
-                    ? red[600]
-                    : neutralLight[500]
+                  productFocused === product?.id ? red[600] : neutralLight[500]
                 }
                 newClasses="h-6"
               />
@@ -112,7 +106,7 @@ export default function CertificadoPF({ initialProducts, setProduct }) {
           </main>
           <footer className="flex flex-col items-center space-y-4">
             <Text appearance="p4" color={neutralDark[500]}>
-              Validade de {product?.validade} meses
+              Validade de {product?.validade_certificado}
             </Text>
           </footer>
         </div>

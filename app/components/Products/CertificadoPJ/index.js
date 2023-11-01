@@ -6,7 +6,12 @@ import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { formatCurrency } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 
-export default function CertificadoPJ({ products }) {
+export default function CertificadoPJ({
+  cupom,
+  partnerBackground,
+  partnerIcon,
+  products
+}) {
   const openPopover = (e) => {
     const element = e.currentTarget.nextElementSibling;
 
@@ -24,11 +29,13 @@ export default function CertificadoPJ({ products }) {
       <div className="col-span-4 xl:col-start-2 flex flex-col space-y-8">
         <div
           className="h-14 flex items-center justify-center rounded-full w-14"
-          style={{ background: red[100] }}
+          style={{
+            background: partnerBackground ? partnerBackground : red[100]
+          }}
         >
           <RegularIcon
             icon="faBuilding"
-            iconColor={red[900]}
+            iconColor={partnerIcon ? partnerIcon : red[900]}
             newClasses="h-6"
           />
         </div>
@@ -43,7 +50,7 @@ export default function CertificadoPJ({ products }) {
           <li className="flex space-x-2 items-center">
             <RegularIcon
               icon="faMoneyBill1"
-              iconColor={red[900]}
+              iconColor={partnerIcon ? partnerIcon : red[900]}
               newClasses="h-5 w-5"
             />
             <Text appearance="p3" color={neutralMid[600]}>
@@ -53,7 +60,7 @@ export default function CertificadoPJ({ products }) {
           <li className="flex space-x-2 items-center">
             <SolidIcon
               icon="faLeaf"
-              iconColor={red[900]}
+              iconColor={partnerIcon ? partnerIcon : red[900]}
               newClasses="h-5 w-5"
             />
             <Text appearance="p3" color={neutralMid[600]}>
@@ -63,7 +70,7 @@ export default function CertificadoPJ({ products }) {
           <li className="flex space-x-2 items-center">
             <RegularIcon
               icon="faPaperPlane"
-              iconColor={red[900]}
+              iconColor={partnerIcon ? partnerIcon : red[900]}
               newClasses="h-5 w-5"
             />
             <Text appearance="p3" color={neutralMid[600]}>
@@ -76,7 +83,7 @@ export default function CertificadoPJ({ products }) {
         products?.map((product) => (
           <div
             className="border col-span-4 xl:col-span-3 flex flex-col space-y-8 py-8 px-6 rounded-2xl"
-            key={product?.id_produto}
+            key={product?.id}
             style={{
               background: neutralLight[100],
               borderColor: neutralLight[400]
@@ -145,7 +152,7 @@ export default function CertificadoPJ({ products }) {
             </main>
             <footer className="flex flex-col items-center space-y-4">
               <Text appearance="p4" color={neutralDark[500]}>
-                Validade de {product?.validade} meses
+                Validade de {product?.validade_certificado}
               </Text>
               <button
                 className="py-4 rounded-md w-full"
@@ -153,7 +160,13 @@ export default function CertificadoPJ({ products }) {
               >
                 <Link
                   className="flex items-center justify-center space-x-3"
-                  href={`/checkout?product=${product?.id_produto}`}
+                  href={{
+                    pathname: 'checkout',
+                    query: {
+                      product: product?.id,
+                      cupom: cupom
+                    }
+                  }}
                 >
                   <Text appearance="p4" color={neutralLight[100]}>
                     Comprar agora

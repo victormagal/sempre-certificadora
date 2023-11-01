@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { neutralDark, neutralLight, success } from '../base/Colors';
@@ -6,7 +7,12 @@ import { SolidIcon } from '../base/Icons';
 import { Text } from '../base/Typography';
 import { removeNonDigits } from '../base/Utils';
 import { Container } from '../components/Elements';
-import { getProducts } from '../graphql/queries';
+import {
+  Header,
+  HeaderMobile,
+  Footer,
+  Locations
+} from '../components/Partials';
 import FormStepper from './FormStepper';
 import {
   ContactData,
@@ -17,7 +23,8 @@ import {
 import schema from './FormValidation/schema';
 import { Boleto, Cartao, Error, Pix, PixFinished } from './Payments';
 import SelectedProduct from './SelectedProduct';
-import { useQuery } from '@apollo/client';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
 
@@ -39,24 +46,24 @@ export default function Checkout() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedProduct = searchParams.get('product');
+  const cupom = searchParams.get('cupom');
 
-  useQuery(getProducts, {
-    onCompleted: (data) => {
-      const {
-        produto: {
-          data: {
-            attributes: { produto }
-          }
-        }
-      } = data;
-      setProducts(produto);
-    }
-  });
+  useEffect(() => {
+    axios
+      .get(`../api/products${cupom && `/${cupom}`}`)
+      .then(({ data: { data: response } }) => {
+        const { Produtos: products } = response;
+        setProducts(products);
+      })
+      .catch((error) => {
+        return error;
+      });
+  }, []);
 
   useEffect(() => {
     products.map((product) => {
       if (product.tipo_atendimento === 'videoconferencia') {
-        if (product.certificado === 'pessoa_fisica') {
+        if (product.tipo_certificado === 'pessoa_fisica') {
           setInitialPFProducts((prevState) => [...prevState, product]);
         } else {
           setInitialPJProducts((prevState) => [...prevState, product]);
@@ -67,9 +74,7 @@ export default function Checkout() {
     const focusedProduct =
       changedProduct.length > 0 ? changedProduct : selectedProduct;
 
-    const result = products.find(
-      (product) => product.id_produto === focusedProduct
-    );
+    const result = products.find((product) => product.id === focusedProduct);
     setProduct(result);
   }, [changedProduct, products]);
 
@@ -78,7 +83,7 @@ export default function Checkout() {
       (item) =>
         item.nome === product.nome &&
         item.validade === product.validade &&
-        item.certificado === product.certificado &&
+        item.tipo_certificado === product.tipo_certificado &&
         item.tipo_atendimento === service
     );
     setProduct(result);
@@ -157,7 +162,7 @@ export default function Checkout() {
     setLoadingIugu(true);
 
     axios
-      .post('../api/checkout', {
+      .post(`../api/checkout${cupom && `/${cupom}`}`, {
         bairro_cobranca: values.bairro,
         cep_cobranca: removeNonDigits(values.cep),
         cidade_cobranca: values.address_story,
@@ -254,102 +259,86 @@ export default function Checkout() {
   };
 
   return (
-    <main className="pt-24" id="stepper">
-      <Formik
-        initialValues={{
-          address_city: '',
-          address_number: '',
-          address_story: '',
-          address_state: '',
-          bairro: '',
-          card_code: '',
-          card_expiration_date: '',
-          card_name: '',
-          card_number: '',
-          cep: '',
-          cidade: '',
-          cities: [],
-          complemento: '',
-          detailed_story: {},
-          document: '',
-          estado: '',
-          filtered_stories: [],
-          filtered_stories_payment: [],
-          forma_pagamento: '',
-          has_atendimento: false,
-          has_midia: false,
-          has_pagamento: false,
-          id_produto: selectedProduct,
-          filial: '',
-          logradouro: '',
-          mail: '',
-          midia_obrigatorio: false,
-          name: '',
-          parcelas: '',
-          phone: '',
-          tipo_atendimento: 'videoconferencia',
-          token: ''
-        }}
-        onSubmit={handleSubmit}
-        validateOnBlur={false}
-        validateOnChange={false}
-        validationSchema={currentSchema}
-      >
-        <Form>
-          <FormStepper step={activeStep} />
-          {!isLastStep && (
-            <SelectedProduct
-              initialPF={initialPFProducts}
-              initialPJ={initialPJProducts}
-              product={product}
-              changeProduct={setChangedProduct}
-            />
-          )}
-          {isLastStep && responseIugu && typePayment === 'boleto' && (
-            <Boleto data={dataIugu} />
-          )}
-          {isLastStep &&
-            responseIugu &&
-            typePayment === 'pix' &&
-            !statusPaymentPix && <Pix data={dataIugu} />}
-          {isLastStep &&
-            responseIugu &&
-            typePayment === 'pix' &&
-            statusPaymentPix && <PixFinished />}
-          {isLastStep && responseIugu && typePayment === 'cartao' && <Cartao />}
-          {isLastStep && responseIugu && typePayment === 'error' && <Error />}
-          {renderStepContent(activeStep)}
-          <Container>
-            <div
-              className={`col-span-4 lg:col-span-10 lg:col-start-2 flex flex-grow lg:flex-grow-0 ${
-                finishForm ? 'lg:justify-end' : 'lg:justify-between'
-              } py-6 space-x-4`}
-            >
-              {!finishForm && activeStep !== 0 ? (
-                <button
-                  className="border flex flex-1 lg:flex-none items-center justify-center py-3 px-4 rounded space-x-2"
-                  onClick={() => handleBack()}
-                  style={{
-                    background: neutralLight[100],
-                    borderColor: neutralLight[500]
-                  }}
-                  type="button"
-                >
-                  <SolidIcon
-                    icon="faChevronLeft"
-                    iconColor={neutralDark[500]}
-                    newClasses="h-3"
-                  />
-                  <Text appearance="p4" color={neutralDark[500]}>
-                    Voltar
-                  </Text>
-                </button>
-              ) : (
-                !finishForm &&
-                activeStep === 0 && (
+    <>
+      <Header />
+      <HeaderMobile />
+      <main className="pt-24" id="stepper">
+        <Formik
+          initialValues={{
+            address_city: '',
+            address_number: '',
+            address_story: '',
+            address_state: '',
+            bairro: '',
+            card_code: '',
+            card_expiration_date: '',
+            card_name: '',
+            card_number: '',
+            cep: '',
+            cidade: '',
+            cities: [],
+            complemento: '',
+            detailed_story: {},
+            document: '',
+            estado: '',
+            filtered_stories: [],
+            filtered_stories_payment: [],
+            forma_pagamento: '',
+            has_atendimento: false,
+            has_midia: false,
+            has_pagamento: false,
+            id_produto: selectedProduct,
+            filial: '',
+            logradouro: '',
+            mail: '',
+            midia_obrigatorio: false,
+            name: '',
+            parcelas: '',
+            phone: '',
+            tipo_atendimento: 'videoconferencia',
+            token: ''
+          }}
+          onSubmit={handleSubmit}
+          validateOnBlur={false}
+          validateOnChange={false}
+          validationSchema={currentSchema}
+        >
+          <Form>
+            <FormStepper step={activeStep} />
+            {!isLastStep && (
+              <SelectedProduct
+                initialPF={initialPFProducts}
+                initialPJ={initialPJProducts}
+                product={product}
+                changeProduct={setChangedProduct}
+              />
+            )}
+            {isLastStep && responseIugu && typePayment === 'boleto' && (
+              <Boleto data={dataIugu} />
+            )}
+            {isLastStep &&
+              responseIugu &&
+              typePayment === 'pix' &&
+              !statusPaymentPix && <Pix data={dataIugu} />}
+            {isLastStep &&
+              responseIugu &&
+              typePayment === 'pix' &&
+              statusPaymentPix && <PixFinished />}
+            {isLastStep && responseIugu && typePayment === 'cartao' && (
+              <Cartao />
+            )}
+            {isLastStep && responseIugu && typePayment === 'error' && <Error />}
+            {renderStepContent(activeStep)}
+            <Container>
+              <div
+                className={`col-span-4 lg:col-span-10 lg:col-start-2 flex flex-grow lg:flex-grow-0 ${
+                  finishForm ? 'lg:justify-end' : 'lg:justify-between'
+                } py-6 space-x-4`}
+              >
+                {!finishForm && activeStep !== 0 ? (
                   <button
                     className="border flex flex-1 lg:flex-none items-center justify-center py-3 px-4 rounded space-x-2"
-                    onClick={() => router.back()}
+                    onClick={() => handleBack()}
                     style={{
                       background: neutralLight[100],
                       borderColor: neutralLight[500]
@@ -365,43 +354,77 @@ export default function Checkout() {
                       Voltar
                     </Text>
                   </button>
-                )
-              )}
-              {finishForm ? (
-                <button
-                  className="flex items-center justify-center py-3 px-4 rounded space-x-2 w-full lg:w-auto"
-                  onClick={() => router.back()}
-                  style={{ background: success[900] }}
-                >
-                  <Text appearance="p4" color={neutralLight[100]}>
-                    Ir para home
-                  </Text>
-                  <SolidIcon
-                    icon="faChevronRight"
-                    iconColor={neutralLight[100]}
-                    newClasses="h-3"
-                  />
-                </button>
-              ) : (
-                <button
-                  className="flex flex-1 lg:flex-none items-center justify-center py-3 px-4 rounded space-x-2"
-                  style={{ background: success[900] }}
-                  type="submit"
-                >
-                  <Text appearance="p4" color={neutralLight[100]}>
-                    {isLastStep ? 'Finalizar' : 'Continuar'}
-                  </Text>
-                  <SolidIcon
-                    icon="faChevronRight"
-                    iconColor={neutralLight[100]}
-                    newClasses="h-3"
-                  />
-                </button>
-              )}
-            </div>
-          </Container>
-        </Form>
-      </Formik>
-    </main>
+                ) : (
+                  !finishForm &&
+                  activeStep === 0 && (
+                    <button
+                      className="border flex flex-1 lg:flex-none items-center justify-center py-3 px-4 rounded space-x-2"
+                      onClick={() => router.back()}
+                      style={{
+                        background: neutralLight[100],
+                        borderColor: neutralLight[500]
+                      }}
+                      type="button"
+                    >
+                      <SolidIcon
+                        icon="faChevronLeft"
+                        iconColor={neutralDark[500]}
+                        newClasses="h-3"
+                      />
+                      <Text appearance="p4" color={neutralDark[500]}>
+                        Voltar
+                      </Text>
+                    </button>
+                  )
+                )}
+                {finishForm ? (
+                  <button
+                    className="flex items-center justify-center py-3 px-4 rounded space-x-2 w-full lg:w-auto"
+                    onClick={() => router.back()}
+                    style={{ background: success[900] }}
+                  >
+                    <Text appearance="p4" color={neutralLight[100]}>
+                      Ir para home
+                    </Text>
+                    <SolidIcon
+                      icon="faChevronRight"
+                      iconColor={neutralLight[100]}
+                      newClasses="h-3"
+                    />
+                  </button>
+                ) : (
+                  <button
+                    className="flex flex-1 lg:flex-none items-center justify-center py-3 px-4 rounded space-x-2"
+                    style={{ background: success[900] }}
+                    type="submit"
+                  >
+                    <Text appearance="p4" color={neutralLight[100]}>
+                      {isLastStep ? 'Finalizar' : 'Continuar'}
+                    </Text>
+                    <SolidIcon
+                      icon="faChevronRight"
+                      iconColor={neutralLight[100]}
+                      newClasses="h-3"
+                    />
+                  </button>
+                )}
+              </div>
+            </Container>
+          </Form>
+        </Formik>
+      </main>
+      <Locations />
+      <Footer />
+      <Link
+        href="https://api.whatsapp.com/send?phone=556130839390"
+        target="_blank"
+        className="fixed bg-[#25D366] bottom-4 drop-shadow-xl h-16 right-4 rounded-full w-16"
+      >
+        <FontAwesomeIcon
+          className="text-white h-10 w-10 mt-3 ml-3"
+          icon={faWhatsapp}
+        />
+      </Link>
+    </>
   );
 }

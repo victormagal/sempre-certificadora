@@ -66,7 +66,7 @@ export default function SelectedProduct({
               className="text-center lg:text-left"
               color={neutralDark[500]}
             >
-              Validade de {product?.validade} meses
+              Validade de {product?.validade_certificado}
             </Text>
           </li>
           <li className="flex items-center">

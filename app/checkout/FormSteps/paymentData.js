@@ -91,7 +91,10 @@ export default function PaymentData({ product }) {
   };
 
   useEffect(() => {
-    setFieldValue('has_midia', product.midia);
+    setFieldValue(
+      'has_midia',
+      product.midia_obrigatorio === 'sim' ? true : false
+    );
   }, [product]);
 
   useEffect(() => {
@@ -804,7 +807,7 @@ export default function PaymentData({ product }) {
                 )}
               </>
             )}
-            {product.midia && (
+            {product.midia_obrigatorio === 'sim' && (
               <ul className="flex flex-col mt-3 space-y-3">
                 <li className="flex flex-col space-y-3">
                   <Title appearance="h5" color={neutralDark[500]}>
