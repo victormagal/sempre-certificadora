@@ -2,7 +2,6 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { neutralDark, neutralLight, neutralMid, red } from './base/Colors';
 import { RegularIcon, SolidIcon } from './base/Icons';
 import { Overline, Text, Title } from './base/Typography';
@@ -21,41 +20,25 @@ import {
   Partners,
   Testimonies
 } from './components/Partials';
-import { CertificadoPF, CertificadoPJ } from './components/Products';
+import Products from './components/Products';
 import { doubts } from './data';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
 
-export default function Certificadora() {
-  const [showPF, setShowPF] = useState(true);
-  const [products, setProducts] = useState([]);
-  const [initialPFProducts, setInitialPFProducts] = useState([]);
-  const [initialPJProducts, setInitialPJProducts] = useState([]);
+async function getData() {
+  const res = await fetch('http://localhost:3000/api/products', {
+    method: 'GET'
+  });
 
-  useEffect(() => {
-    axios
-      .get('../api/products')
-      .then(({ data: { data: response } }) => {
-        const { Produtos: products } = response;
-        setProducts(products);
-      })
-      .catch((error) => {
-        return error;
-      });
-  }, []);
+  if (!res.ok) {
+    throw new Error('Falha ao carregar os produtos');
+  }
 
-  useEffect(() => {
-    products.map((product) => {
-      if (product.tipo_atendimento === 'videoconferencia') {
-        if (product.tipo_certificado === 'pessoa_fisica') {
-          setInitialPFProducts((prevState) => [...prevState, product]);
-        } else {
-          setInitialPJProducts((prevState) => [...prevState, product]);
-        }
-      }
-    });
-  }, [products]);
+  return res.json();
+}
+
+export default async function Certificadora() {
+  const dataProducts = await getData();
 
   const scrollTo = (element) => {
     document.getElementById(element).scrollIntoView({
@@ -131,57 +114,7 @@ export default function Certificadora() {
             </div>
           </div>
         </Container>
-        <div>
-          <Container newClasses="pb-16">
-            <nav className="col-span-4 lg:col-span-6 lg:col-start-4 flex justify-center">
-              <ul
-                className="border flex p-2 rounded space-x-4"
-                style={{
-                  background: neutralLight[200],
-                  borderColor: neutralLight[400]
-                }}
-              >
-                <li
-                  className={`cursor-pointer ${
-                    showPF && 'drop-shadow'
-                  } py-4 px-8 rounded`}
-                  onClick={() => setShowPF(true)}
-                  style={{
-                    background: showPF ? neutralLight[100] : 'transparent'
-                  }}
-                >
-                  <Title
-                    appearance="h7"
-                    color={showPF ? neutralDark[500] : neutralMid[400]}
-                  >
-                    Para sua empresa
-                  </Title>
-                </li>
-                <li
-                  className={`cursor-pointer ${
-                    !showPF && 'drop-shadow'
-                  } py-4 px-4 lg:px-8 rounded`}
-                  onClick={() => setShowPF(false)}
-                  style={{
-                    background: !showPF ? neutralLight[100] : 'transparent'
-                  }}
-                >
-                  <Title
-                    appearance="h7"
-                    color={!showPF ? neutralDark[500] : neutralMid[400]}
-                  >
-                    Para você
-                  </Title>
-                </li>
-              </ul>
-            </nav>
-          </Container>
-        </div>
-        {!showPF ? (
-          <CertificadoPF products={initialPFProducts} />
-        ) : (
-          <CertificadoPJ products={initialPJProducts} />
-        )}
+        <Products products={dataProducts} />
         <Container newClasses="border-b border-t py-12">
           <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
             <div className="flex flex-col justify-center items-center">
