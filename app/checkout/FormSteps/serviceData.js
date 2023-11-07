@@ -76,7 +76,7 @@ export default function ServiceData({ product, products, setService }) {
     setFieldValue('id_produto', result?.id);
   }, [values.tipo_atendimento]);
 
-  console(states);
+  console.log(states);
 
   return (
     <Container>
