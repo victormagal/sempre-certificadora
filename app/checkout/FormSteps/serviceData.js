@@ -11,8 +11,6 @@ import {
 import { RegularIcon, SolidIcon } from '@/app/base/Icons';
 import { Text, Title } from '@/app/base/Typography';
 import { Container } from '@/app/components/Elements';
-import { getAllStates } from '@/app/graphql/queries';
-import { useQuery } from '@apollo/client';
 import axios from 'axios';
 import { Field, useFormikContext } from 'formik';
 
@@ -24,23 +22,23 @@ export default function ServiceData({ product, products, setService }) {
   const searchParams = useSearchParams();
   const cupom = searchParams.get('cupom');
 
-  useQuery(getAllStates, {
-    onCompleted: ({ estados: { data } }) => {
-      data.map(({ attributes: { label, uf } }) => {
-        const node = {
-          estado: label,
-          uf: uf
-        };
-        setStates((prevState) => [...prevState, node]);
-      });
-    }
-  });
-
   useEffect(() => {
     axios
       .get(`../api/filiais${cupom && `/${cupom}`}`)
       .then(({ data: { data: response } }) => {
         const { Filiais: stories } = response;
+        const initialStates = [];
+        stories.map(({ estado_nome, estado }) => {
+          const node = {
+            estado: estado_nome,
+            uf: estado.toLowerCase()
+          };
+          initialStates.push(node);
+        });
+        const finalStates = [
+          ...new Map(initialStates.map((e) => [e.uf, e])).values()
+        ];
+        setStates(finalStates);
         setStories(stories);
       })
       .catch((error) => {
