@@ -29,6 +29,7 @@ export default function ServiceData({ product, products, setService }) {
         const { Filiais: stories } = response;
         const initialStates = [];
         stories.map(({ estado_nome, estado }) => {
+          console.log(estado_nome);
           const node = {
             estado: estado_nome,
             uf: estado.toLowerCase()
