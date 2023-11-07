@@ -7,7 +7,7 @@ import CertificadoPJ from '../Products/CertificadoPJ';
 import { neutralDark, neutralLight, neutralMid } from '@/app/base/Colors';
 import { Title } from '@/app/base/Typography';
 
-export default function Products({ products }) {
+export default function Products({ cupom, products }) {
   const [showPF, setShowPF] = useState(true);
   const [initialPFProducts, setInitialPFProducts] = useState([]);
   const [initialPJProducts, setInitialPJProducts] = useState([]);
@@ -78,14 +78,14 @@ export default function Products({ products }) {
       </div>
       {!showPF ? (
         <CertificadoPF
-          cupom="WGOVKQRO"
+          cupom={cupom}
           partnerBackground="#FFF072"
           partnerIcon="C3931D"
           products={initialPFProducts}
         />
       ) : (
         <CertificadoPJ
-          cupom="WGOVKQRO"
+          cupom={cupom}
           partnerBackground="#FFF072"
           partnerIcon="C3931D"
           products={initialPJProducts}

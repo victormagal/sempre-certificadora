@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use client';
 import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
@@ -71,7 +72,7 @@ export default function ModalForm({ open, onClose }) {
 
               axios
                 .post(
-                  'https://bot.sempretecnologia.com.br/index.php/fila/criaMensagem',
+                  `${process.env.NEXT_PUBLIC_API}/fila/criaMensagem`,
                   body,
                   config
                 )

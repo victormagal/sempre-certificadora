@@ -114,7 +114,7 @@ export default async function Certificadora() {
             </div>
           </div>
         </Container>
-        <Products products={dataProducts} />
+        <Products cupom="" products={dataProducts} />
         <Container newClasses="border-b border-t py-12">
           <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
             <div className="flex flex-col justify-center items-center">

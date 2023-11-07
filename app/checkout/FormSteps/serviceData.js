@@ -203,52 +203,54 @@ export default function ServiceData({ product, products, setService }) {
                 newClasses="h-6"
               />
             </li>
-            <li
-              className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
-              onClick={() => {
-                setFieldValue('has_atendimento', true);
-                setFieldValue('tipo_atendimento', 'express');
-                setService('express');
-              }}
-              style={{
-                borderColor:
-                  values.tipo_atendimento === 'express'
-                    ? red[600]
-                    : neutralLight[400]
-              }}
-            >
-              <div
-                className="h-8 flex items-center justify-center rounded-full w-10"
-                style={{ background: red[100] }}
+            {!cupom && (
+              <li
+                className="border cursor-pointer flex items-center justify-between space-x-6 p-6 rounded"
+                onClick={() => {
+                  setFieldValue('has_atendimento', true);
+                  setFieldValue('tipo_atendimento', 'express');
+                  setService('express');
+                }}
+                style={{
+                  borderColor:
+                    values.tipo_atendimento === 'express'
+                      ? red[600]
+                      : neutralLight[400]
+                }}
               >
+                <div
+                  className="h-8 flex items-center justify-center rounded-full w-10"
+                  style={{ background: red[100] }}
+                >
+                  <RegularIcon
+                    icon="faUser"
+                    iconColor={red[900]}
+                    newClasses="h-4"
+                  />
+                </div>
+                <div className="flex flex-col space-y-2">
+                  <Title appearance="h6" color={neutralDark[500]}>
+                    Delivery
+                  </Title>
+                  <Text appearance="p4" color={neutralDark[500]}>
+                    Não se preocupe! Para sua comodidade, nós vamos até você.
+                  </Text>
+                </div>
                 <RegularIcon
-                  icon="faUser"
-                  iconColor={red[900]}
-                  newClasses="h-4"
+                  icon={`${
+                    values.tipo_atendimento === 'express'
+                      ? 'faCircleDot'
+                      : 'faCircle'
+                  }`}
+                  iconColor={
+                    values.tipo_atendimento === 'express'
+                      ? red[600]
+                      : neutralLight[500]
+                  }
+                  newClasses="h-6"
                 />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <Title appearance="h6" color={neutralDark[500]}>
-                  Delivery
-                </Title>
-                <Text appearance="p4" color={neutralDark[500]}>
-                  Não se preocupe! Para sua comodidade, nós vamos até você.
-                </Text>
-              </div>
-              <RegularIcon
-                icon={`${
-                  values.tipo_atendimento === 'express'
-                    ? 'faCircleDot'
-                    : 'faCircle'
-                }`}
-                iconColor={
-                  values.tipo_atendimento === 'express'
-                    ? red[600]
-                    : neutralLight[500]
-                }
-                newClasses="h-6"
-              />
-            </li>
+              </li>
+            )}
           </ul>
           <div className="mt-6 lg:mt-0 w-full lg:w-3/5">
             {values.tipo_atendimento === 'videoconferencia' && (

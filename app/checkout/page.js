@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -102,7 +103,7 @@ export default function Checkout() {
 
         axios
           .get(
-            `https://bot.sempretecnologia.com.br/index.php/comercial/scd/fatura/${idPayment}`,
+            `${process.env.NEXT_PUBLIC_API}/comercial/scd/fatura/${idPayment}`,
             config
           )
           .then(({ data, status }) => {

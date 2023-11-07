@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   const body = await request.json();
 
   const res = await fetch(
-    'https://bot.sempretecnologia.com.br/index.php/comercial/scd/pagamento-transparente',
+    `${process.env.NEXT_PUBLIC_API}/comercial/scd/pagamento-transparente`,
     {
       method: 'POST',
       headers: {

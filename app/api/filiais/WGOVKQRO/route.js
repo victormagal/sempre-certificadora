@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 import { NextResponse } from 'next/server';
 
 export async function GET() {
   const res = await fetch(
-    'https://bot.sempretecnologia.com.br/index.php/comercial/scd/filiais/WGOVKQRO',
+    `${process.env.NEXT_PUBLIC_API}/comercial/scd/filiais/WGOVKQRO`,
     {
       headers: {
         'Content-Type': 'application/json',
