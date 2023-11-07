@@ -76,6 +76,8 @@ export default function ServiceData({ product, products, setService }) {
     setFieldValue('id_produto', result?.id);
   }, [values.tipo_atendimento]);
 
+  console(states);
+
   return (
     <Container>
       <div className="border col-span-4 lg:col-span-10 lg:col-start-2 flex flex-col my-6 py-8 px-6 lg:px-12 rounded space-y-6">
