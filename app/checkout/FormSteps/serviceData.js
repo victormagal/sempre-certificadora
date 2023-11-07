@@ -298,9 +298,9 @@ export default function ServiceData({ product, products, setService }) {
                         value={values.estado}
                       >
                         <option value="">Selecione</option>
-                        {states?.map((state) => (
-                          <option key={state?.uf} value={state?.uf}>
-                            {state?.estado}
+                        {states?.map(({ estado, uf }) => (
+                          <option key={uf} value={uf}>
+                            {estado}
                           </option>
                         ))}
                       </Field>
