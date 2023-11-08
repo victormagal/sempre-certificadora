@@ -54,17 +54,17 @@ export default async function Certificadora() {
       <HeaderMobile />
       <main className="pt-24">
         <HeroPage
-          endGradient="#1D3E89"
+          endGradient="#000000"
           gradient={true}
-          initGradient="#3A1078"
-          newClasses="items-center pt-8 lg:pt-0"
+          initGradient="#07031C"
+          newClasses="items-center py-24"
         >
-          <div className="col-span-4 lg:col-span-5 flex flex-col space-y-10">
+          <div className="col-span-4 lg:col-span-5 flex flex-col space-y-4">
             <Title appearance="h2" color={neutralLight[100]} extra>
-              Certificado Digital: adquira um perfeito para você.
+              Desconto de 25% Emissão de seu Certificado Digital
             </Title>
             <Text appearance="p3" color={neutralLight[100]}>
-              Com a comodidade e segurança que você merece sem sair de casa.
+              Aproveite HOJE mesmo!
             </Text>
             <button
               className="py-4 px-8 rounded w-full lg:w-2/4"
