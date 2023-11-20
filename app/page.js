@@ -53,6 +53,7 @@ export default async function Certificadora() {
       <Header />
       <HeaderMobile />
       <main className="pt-24">
+        <Products cupom="" products={dataProducts} />
         <HeroPage
           endGradient="#000000"
           gradient={true}
@@ -66,16 +67,6 @@ export default async function Certificadora() {
             <Text appearance="p3" color={neutralLight[100]}>
               Aproveite HOJE mesmo!
             </Text>
-            <button
-              className="py-4 px-8 rounded w-full lg:w-2/4"
-              onClick={() => scrollTo('listProducts')}
-              style={{ background: red[1000] }}
-              type="button"
-            >
-              <Text appearance="p4" color={neutralLight[100]}>
-                Adquirir o meu
-              </Text>
-            </button>
           </div>
           <div className="lg:col-end-13 col-span-4 lg:col-span-6 flex justify-end">
             <Image
@@ -86,35 +77,6 @@ export default async function Certificadora() {
             />
           </div>
         </HeroPage>
-        <Container newClasses="my-16">
-          <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-0">
-            <Image
-              alt="Certificado Digital - Emita o seu de onde estiver"
-              height={33}
-              src="/logos/certificadora.svg"
-              width={172}
-            />
-            <Title
-              appearance="h1"
-              className="text-center"
-              color={red[1000]}
-              extra
-            >
-              Certificado Digital:
-            </Title>
-            <div id="listProducts">
-              <Title
-                appearance="h1"
-                className="text-center"
-                color={neutralDark[500]}
-                extra
-              >
-                adquira o ideal pra você
-              </Title>
-            </div>
-          </div>
-        </Container>
-        <Products cupom="" products={dataProducts} />
         <Container newClasses="border-b border-t py-12">
           <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
             <div className="flex flex-col justify-center items-center">
