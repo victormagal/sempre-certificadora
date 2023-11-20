@@ -40,14 +40,6 @@ async function getData() {
 export default async function Certificadora() {
   const dataProducts = await getData();
 
-  const scrollTo = (element) => {
-    document.getElementById(element).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'nearest'
-    });
-  };
-
   return (
     <>
       <Header />
