@@ -20,9 +20,12 @@ import Products from '../components/Products';
 import { doubts } from '../data';
 
 async function getData() {
-  const res = await fetch('../api/products/WGOVKQRO', {
-    method: 'GET'
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/products/WGOVKQRO`,
+    {
+      method: 'GET'
+    }
+  );
 
   if (!res.ok) {
     throw new Error('Falha ao carregar os produtos');
