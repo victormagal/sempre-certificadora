@@ -26,7 +26,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`, {
+  const res = await fetch('./api/products', {
     method: 'GET'
   });
 
