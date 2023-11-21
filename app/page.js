@@ -45,6 +45,34 @@ export default async function Certificadora() {
       <Header />
       <HeaderMobile />
       <main className="pt-24">
+        <Container newClasses="mt-16">
+          <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-0">
+            <Image
+              alt="Certificado Digital - Emita o seu de onde estiver"
+              height={33}
+              src="/logos/certificadora.svg"
+              width={172}
+            />
+            <Title
+              appearance="h1"
+              className="text-center"
+              color={red[1000]}
+              extra
+            >
+              Certificado Digital:
+            </Title>
+            <div id="listProducts">
+              <Title
+                appearance="h1"
+                className="text-center"
+                color={neutralDark[500]}
+                extra
+              >
+                adquira o ideal pra você
+              </Title>
+            </div>
+          </div>
+        </Container>
         <Products cupom="" products={dataProducts} />
         <HeroPage
           endGradient="#000000"
