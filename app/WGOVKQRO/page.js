@@ -215,7 +215,7 @@ export default async function Certificadora() {
             />
           </Link>
           <Title appearance="h6" color={neutralDark[600]} extra>
-            Precisando de ajuda? 0800 941 6260
+            Precisando de ajuda? (61) 3246-2687 / (61) 98292-0102
           </Title>
         </div>
       </Container>
