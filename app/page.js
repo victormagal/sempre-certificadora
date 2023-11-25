@@ -82,7 +82,7 @@ export default async function Certificadora() {
         >
           <div className="col-span-4 lg:col-span-5 flex flex-col space-y-4">
             <Title appearance="h2" color={neutralLight[100]} extra>
-              Desconto de 25% Emissão de seu Certificado Digital
+              Desconto de 50% Emissão de seu Certificado Digital
             </Title>
             <Text appearance="p3" color={neutralLight[100]}>
               Aproveite HOJE mesmo!
@@ -101,7 +101,7 @@ export default async function Certificadora() {
           <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
             <div className="flex flex-col justify-center items-center">
               <Title appearance="h3" color={neutralDark[500]} extra>
-                +250 mil
+                +280 mil
               </Title>
               <Title appearance="h6" color={neutralMid[600]}>
                 certificados emitidos
@@ -125,7 +125,7 @@ export default async function Certificadora() {
             </div>
             <div className="flex flex-col justify-center items-center">
               <Title appearance="h3" color={neutralDark[500]} extra>
-                85%
+                97%
               </Title>
               <Title appearance="h6" color={neutralMid[600]}>
                 de satisfação no atendimento
