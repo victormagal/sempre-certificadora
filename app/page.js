@@ -40,53 +40,12 @@ async function getData() {
 export default async function Certificadora() {
   const dataProducts = await getData();
 
-  const scrollTo = (element) => {
-    document.getElementById(element).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'nearest'
-    });
-  };
-
   return (
     <>
       <Header />
       <HeaderMobile />
       <main className="pt-24">
-        <HeroPage
-          endGradient="#000000"
-          gradient={true}
-          initGradient="#07031C"
-          newClasses="items-center py-24"
-        >
-          <div className="col-span-4 lg:col-span-5 flex flex-col space-y-4">
-            <Title appearance="h2" color={neutralLight[100]} extra>
-              Desconto de 25% Emissão de seu Certificado Digital
-            </Title>
-            <Text appearance="p3" color={neutralLight[100]}>
-              Aproveite HOJE mesmo!
-            </Text>
-            <button
-              className="py-4 px-8 rounded w-full lg:w-2/4"
-              onClick={() => scrollTo('listProducts')}
-              style={{ background: red[1000] }}
-              type="button"
-            >
-              <Text appearance="p4" color={neutralLight[100]}>
-                Adquirir o meu
-              </Text>
-            </button>
-          </div>
-          <div className="lg:col-end-13 col-span-4 lg:col-span-6 flex justify-end">
-            <Image
-              alt="Certificado Digital - Emita o seu de onde estiver"
-              height={606}
-              src="/avatar-certificadora.png"
-              width={539}
-            />
-          </div>
-        </HeroPage>
-        <Container newClasses="my-16">
+        <Container newClasses="mt-16">
           <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-0">
             <Image
               alt="Certificado Digital - Emita o seu de onde estiver"
@@ -115,6 +74,29 @@ export default async function Certificadora() {
           </div>
         </Container>
         <Products cupom="" products={dataProducts} />
+        <HeroPage
+          endGradient="#000000"
+          gradient={true}
+          initGradient="#07031C"
+          newClasses="items-center py-24"
+        >
+          <div className="col-span-4 lg:col-span-5 flex flex-col space-y-4">
+            <Title appearance="h2" color={neutralLight[100]} extra>
+              Desconto de 50% Emissão de seu Certificado Digital
+            </Title>
+            <Text appearance="p3" color={neutralLight[100]}>
+              Aproveite HOJE mesmo!
+            </Text>
+          </div>
+          <div className="lg:col-end-13 col-span-4 lg:col-span-6 flex justify-end">
+            <Image
+              alt="Certificado Digital - Emita o seu de onde estiver"
+              height={606}
+              src="/avatar-certificadora.png"
+              width={539}
+            />
+          </div>
+        </HeroPage>
         <Container newClasses="border-b border-t py-12">
           <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
             <div className="flex flex-col justify-center items-center">

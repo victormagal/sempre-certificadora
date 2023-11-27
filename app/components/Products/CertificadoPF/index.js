@@ -1,17 +1,11 @@
 'use client';
 import Link from 'next/link';
-import { Container } from '../../Elements';
 import { neutralDark, neutralLight, neutralMid, red } from '@/app/base/Colors';
-import { RegularIcon, SolidIcon } from '@/app/base/Icons';
+import { SolidIcon } from '@/app/base/Icons';
 import { formatCurrency } from '@/app/base/Masks';
 import { Overline, Text, Title } from '@/app/base/Typography';
 
-export default function CertificadoPF({
-  cupom,
-  partnerBackground,
-  partnerIcon,
-  products
-}) {
+export default function CertificadoPF({ cupom, products }) {
   const openPopover = (e) => {
     const element = e.currentTarget.nextElementSibling;
 
@@ -25,63 +19,10 @@ export default function CertificadoPF({
   };
 
   return (
-    <Container newClasses="pb-16">
-      <div className="col-span-4 xl:col-start-2 flex flex-col space-y-8">
-        <div
-          className="h-14 flex items-center justify-center rounded-full w-14"
-          style={{
-            background: partnerBackground ? partnerBackground : red[100]
-          }}
-        >
-          <RegularIcon
-            icon="faUser"
-            iconColor={partnerIcon ? partnerIcon : red[900]}
-            newClasses="h-6"
-          />
-        </div>
-        <Title appearance="h3" color={neutralDark[500]}>
-          Para você
-        </Title>
-        <Text appearance="p3" color={neutralMid[600]}>
-          O e-CPF é a sua identidade virtual e te oferece ainda mais segurança
-          ao assinar documentos em qualquer lugar.
-        </Text>
-        <ul className="flex flex-col space-y-3">
-          <li className="flex space-x-2 items-center">
-            <RegularIcon
-              icon="faLightbulb"
-              iconColor={partnerIcon ? partnerIcon : red[900]}
-              newClasses="h-5 w-5"
-            />
-            <Text appearance="p3" color={neutralMid[600]}>
-              Agilidade
-            </Text>
-          </li>
-          <li className="flex space-x-2 items-center">
-            <RegularIcon
-              icon="faCircleCheck"
-              iconColor={partnerIcon ? partnerIcon : red[900]}
-              newClasses="h-5 w-5"
-            />
-            <Text appearance="p3" color={neutralMid[600]}>
-              Segurança
-            </Text>
-          </li>
-          <li className="flex space-x-2 items-center">
-            <RegularIcon
-              icon="faFaceSmile"
-              iconColor={partnerIcon ? partnerIcon : red[900]}
-              newClasses="h-5 w-5"
-            />
-            <Text appearance="p3" color={neutralMid[600]}>
-              Comodidade
-            </Text>
-          </li>
-        </ul>
-      </div>
+    <>
       {products?.map((product) => (
         <div
-          className="border col-span-4 xl:col-span-3 flex flex-col space-y-8 py-8 px-6 rounded-2xl"
+          className="border col-span-4 lg:col-span-6 xl:col-span-3 flex flex-col space-y-8 py-8 px-6 rounded-2xl"
           key={product?.id}
           style={{
             background: neutralLight[100],
@@ -176,6 +117,6 @@ export default function CertificadoPF({
           </footer>
         </div>
       ))}
-    </Container>
+    </>
   );
 }

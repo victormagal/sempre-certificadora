@@ -82,7 +82,7 @@ export default async function Certificadora() {
             />
           </div>
         </HeroPage>
-        <Container newClasses="my-16">
+        <Container newClasses="mt-16">
           <div
             className="col-span-4 lg:col-span-10 lg:col-start-2 mb-8 p-4 rounded"
             style={{ background: blue[200] }}
