@@ -82,7 +82,7 @@ export default async function Certificadora() {
         >
           <div className="col-span-4 lg:col-span-5 flex flex-col space-y-4">
             <Title appearance="h2" color={neutralLight[100]} extra>
-              Desconto de 50% Emissão de seu Certificado Digital
+              Desconto de 25% Emissão de seu Certificado Digital
             </Title>
             <Text appearance="p3" color={neutralLight[100]}>
               Aproveite HOJE mesmo!
