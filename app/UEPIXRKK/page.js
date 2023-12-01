@@ -130,7 +130,7 @@ export default async function Certificadora() {
             </div>
           </div>
         </Container>
-        <Products cupom="WGOVKQRO" products={dataProducts} />
+        <Products cupom="UEPIXRKK" products={dataProducts} />
         <Container newClasses="pb-16">
           <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-4">
             <Overline appearance="o1" color={red[700]}>
