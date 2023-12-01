@@ -21,7 +21,7 @@ import { doubts } from '../data';
 
 async function getData() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/products/WGOVKQRO`,
+    `${process.env.NEXT_PUBLIC_URL}/api/products/UEPIXRKK`,
     {
       method: 'GET'
     }
