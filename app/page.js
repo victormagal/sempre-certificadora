@@ -75,17 +75,17 @@ export default async function Certificadora() {
         </Container>
         <Products cupom="" products={dataProducts} />
         <HeroPage
-          endGradient="#000000"
+          endGradient="#3A1078"
           gradient={true}
-          initGradient="#07031C"
+          initGradient="#1D3E89"
           newClasses="items-center py-24"
         >
           <div className="col-span-4 lg:col-span-5 flex flex-col space-y-4">
             <Title appearance="h2" color={neutralLight[100]} extra>
-              Desconto de 25% Emissão de seu Certificado Digital
+              Emita ou Renove seu Certificado Digital
             </Title>
             <Text appearance="p3" color={neutralLight[100]}>
-              Aproveite HOJE mesmo!
+              Segurança, agilidade e praticidade!
             </Text>
           </div>
           <div className="lg:col-end-13 col-span-4 lg:col-span-6 flex justify-end">
