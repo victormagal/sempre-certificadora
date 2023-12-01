@@ -473,7 +473,7 @@ export default function PaymentData({ product }) {
                       Subtotal
                     </Title>
                     <Title appearance="h6" color={neutralDark[500]}>
-                      {formatCurrency(product?.valor, 'BRL', 'pt-BR')}
+                      {formatCurrency(product?.valor / 1, 'BRL', 'pt-BR')}
                     </Title>
                   </li>
                   <li className="flex justify-between">
@@ -495,7 +495,7 @@ export default function PaymentData({ product }) {
                       </div>
                       <Title appearance="h6" color={neutralDark[500]}>
                         {formatCurrency(
-                          product?.valor_desconto,
+                          product?.valor_desconto / 1,
                           'BRL',
                           'pt-BR'
                         )}
@@ -508,7 +508,7 @@ export default function PaymentData({ product }) {
                     </Title>
                     <Title appearance="h5" color={neutralDark[500]}>
                       {formatCurrency(
-                        product?.valor_com_desconto,
+                        product?.valor_com_desconto / 1,
                         'BRL',
                         'pt-BR'
                       )}

@@ -128,7 +128,11 @@ export default function SummaryData({ loading, product }) {
                 <Skeleton />
               ) : (
                 <Title appearance="h6" color={neutralDark[500]}>
-                  {formatCurrency(product?.valor_com_desconto, 'BRL', 'pt-BR')}
+                  {formatCurrency(
+                    product?.valor_com_desconto / 1,
+                    'BRL',
+                    'pt-BR'
+                  )}
                 </Title>
               )}
             </li>
@@ -154,7 +158,7 @@ export default function SummaryData({ loading, product }) {
               Subtotal
             </Title>
             <Title appearance="h6" color={neutralDark[500]}>
-              {formatCurrency(product?.valor, 'BRL', 'pt-BR')}
+              {formatCurrency(product?.valor / 1, 'BRL', 'pt-BR')}
             </Title>
           </li>
           <li className="flex justify-between">
@@ -171,7 +175,7 @@ export default function SummaryData({ loading, product }) {
                 </Overline>
               </div>
               <Title appearance="h6" color={neutralDark[500]}>
-                {formatCurrency(product?.valor_desconto, 'BRL', 'pt-BR')}
+                {formatCurrency(product?.valor_desconto / 1, 'BRL', 'pt-BR')}
               </Title>
             </div>
           </li>
@@ -180,7 +184,7 @@ export default function SummaryData({ loading, product }) {
               Total
             </Title>
             <Title appearance="h3" color={neutralDark[500]}>
-              {formatCurrency(product?.valor_com_desconto, 'BRL', 'pt-BR')}
+              {formatCurrency(product?.valor_com_desconto / 1, 'BRL', 'pt-BR')}
             </Title>
           </li>
         </ul>

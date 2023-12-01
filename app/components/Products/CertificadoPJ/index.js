@@ -76,10 +76,14 @@ export default function CertificadoPJ({ cupom, products }) {
                 color={neutralMid[600]}
                 className="line-through"
               >
-                De {formatCurrency(product?.valor, 'BRL', 'pt-BR')} por
+                De {formatCurrency(product?.valor / 1, 'BRL', 'pt-BR')} por
               </Text>
               <Title appearance="h2" color={neutralDark[500]} extra>
-                {formatCurrency(product?.valor_com_desconto, 'BRL', 'pt-BR')}
+                {formatCurrency(
+                  product?.valor_com_desconto / 1,
+                  'BRL',
+                  'pt-BR'
+                )}
               </Title>
               <Text appearance="p3" color={neutralMid[600]}>
                 3x de{' '}
