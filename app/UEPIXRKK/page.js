@@ -49,9 +49,9 @@ export default async function Certificadora() {
     <>
       <main>
         <HeroPage
-          endGradient="#8D0823"
+          endGradient="#012669"
           gradient={true}
-          initGradient="#DE0A36"
+          initGradient="#023797"
           newClasses="items-center py-16"
         >
           <div className="col-span-4 lg:col-span-5 flex flex-col space-y-10">
@@ -59,13 +59,13 @@ export default async function Certificadora() {
               Certificado Digital: 100% online e com a segurança!
             </Title>
             <Text appearance="p3" color={neutralLight[100]}>
-              Sempre Tecnologia e Consciente: juntos para te oferecer um
-              atendimento diferenciado sempre!
+              Sempre Tecnologia e Consciente Contabilidade: juntos para te
+              oferecer um atendimento diferenciado sempre!
             </Text>
             <button
               className="py-4 px-8 rounded w-full lg:w-2/4"
               onClick={() => scrollTo('listProducts')}
-              style={{ background: '#00349B' }}
+              style={{ background: '#910D28' }}
               type="button"
             >
               <Text appearance="p4" color={neutralLight[100]}>
@@ -76,9 +76,9 @@ export default async function Certificadora() {
           <div className="lg:col-end-13 col-span-4 lg:col-span-6 flex justify-center lg:justify-end">
             <Image
               alt="Certificado Digital - Emita o seu de onde estiver"
-              height={92}
+              height={138}
               src="/consciente-logo.png"
-              width={300}
+              width={450}
             />
           </div>
         </HeroPage>
