@@ -109,7 +109,7 @@ export default async function Certificadora() {
             </div>
             <div className="flex flex-col justify-center items-center">
               <Title appearance="h3" color={neutralDark[500]} extra>
-                +20
+                +15
               </Title>
               <Title appearance="h6" color={neutralMid[600]}>
                 filiais abertas pelo país
