@@ -58,7 +58,7 @@ export default async function Certificadora() {
             <Title appearance="h2" color={neutralLight[100]} extra>
               Certificado Digital: 100% online e com a segurança!
             </Title>
-            <Text appearance="p3" color={neutralLight[100]}>
+            <Text appearance="p1" color={neutralLight[100]}>
               Sempre Tecnologia e VCON Serviços Contábeis: juntos para te
               oferecer um atendimento diferenciado sempre!
             </Text>
