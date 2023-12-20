@@ -49,16 +49,16 @@ export default async function Certificadora() {
     <>
       <main>
         <HeroPage
-          endGradient="#636363"
+          endGradient="#FFFFFF"
           gradient={true}
-          initGradient="#EEEEEE"
+          initGradient="#FFFFFF"
           newClasses="items-center py-16"
         >
           <div className="col-span-4 lg:col-span-5 flex flex-col space-y-10">
-            <Title appearance="h2" color={neutralLight[100]} extra>
+            <Title appearance="h2" color={neutralDark[100]} extra>
               Certificado Digital: 100% online e com a segurança!
             </Title>
-            <Text appearance="p3" color={neutralLight[100]}>
+            <Text appearance="p3" color={neutralDark[100]}>
               Sempre Tecnologia e Prestacon: juntos para te oferecer um
               atendimento diferenciado sempre!
             </Text>
