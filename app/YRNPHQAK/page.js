@@ -49,9 +49,9 @@ export default async function Certificadora() {
     <>
       <main>
         <HeroPage
-          endGradient="#F89B25"
+          endGradient="#9D9D9C"
           gradient={true}
-          initGradient="#0453A1"
+          initGradient="#5A5A5A"
           newClasses="items-center py-16"
         >
           <div className="col-span-4 lg:col-span-5 flex flex-col space-y-10">
@@ -59,7 +59,7 @@ export default async function Certificadora() {
               Certificado Digital: 100% online e com a segurança!
             </Title>
             <Text appearance="p1" color={neutralLight[100]}>
-              Sempre Tecnologia e VCON Serviços Contábeis: juntos para te
+              VCON Serviços Contábeis e Sempre Tecnologia: juntos para te
               oferecer um atendimento diferenciado sempre!
             </Text>
             <button
