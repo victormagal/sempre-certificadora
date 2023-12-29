@@ -24,7 +24,7 @@ async function getData() {
     `${process.env.NEXT_PUBLIC_URL}/api/products/WZQMOWZY`,
     {
       method: 'GET',
-      next: { revalidate: 60 }
+      next: { revalidate: 3600 }
     }
   );
 
