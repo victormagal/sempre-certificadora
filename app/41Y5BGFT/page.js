@@ -23,7 +23,8 @@ async function getData() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/products/41Y5BGFT`,
     {
-      method: 'GET'
+      method: 'GET',
+      next: { revalidate: 60 }
     }
   );
 

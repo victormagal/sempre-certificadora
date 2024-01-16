@@ -27,7 +27,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 async function getData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`, {
-    method: 'GET'
+    method: 'GET',
+    next: { revalidate: 60 }
   });
 
   if (!res.ok) {
