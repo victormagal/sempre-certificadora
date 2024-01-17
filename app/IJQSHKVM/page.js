@@ -21,7 +21,7 @@ import { doubts } from '../data';
 
 async function getData() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/products/41Y5BGFT`,
+    `${process.env.NEXT_PUBLIC_URL}/api/products/IJQSHKVM`,
     {
       method: 'GET',
       next: { revalidate: 60 }
@@ -50,9 +50,9 @@ export default async function Certificadora() {
     <>
       <main>
         <HeroPage
-          endGradient="#9D8A36"
+          endGradient="#0E0E0E"
           gradient={true}
-          initGradient="#857325"
+          initGradient="#484848"
           newClasses="items-center py-16"
         >
           <div className="col-span-4 lg:col-span-5 flex flex-col space-y-10">
@@ -60,13 +60,13 @@ export default async function Certificadora() {
               Certificado Digital: 100% online e com a segurança!
             </Title>
             <Text appearance="p1" color={neutralLight[100]}>
-              Ourives Contabilidade e Sempre Tecnologia: juntos para te oferecer
+              Suprema Contabilidade e Sempre Tecnologia: juntos para te oferecer
               um atendimento diferenciado sempre!
             </Text>
             <button
               className="py-4 px-8 rounded w-full lg:w-2/4"
               onClick={() => scrollTo('listProducts')}
-              style={{ background: '#C7022B' }}
+              style={{ background: '#E60121' }}
               type="button"
             >
               <Text appearance="p4" color={neutralLight[100]}>
@@ -78,7 +78,7 @@ export default async function Certificadora() {
             <Image
               alt="Certificado Digital - Emita o seu de onde estiver"
               height={138}
-              src="/ourives-logo.svg"
+              src="/suprema-contabilidade.svg"
               width={400}
             />
           </div>
@@ -131,7 +131,7 @@ export default async function Certificadora() {
             </div>
           </div>
         </Container>
-        <Products cupom="41Y5BGFT" products={dataProducts} />
+        <Products cupom="IJQSHKVM" products={dataProducts} />
         <Container newClasses="pb-16">
           <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-4">
             <Overline appearance="o1" color={red[700]}>
@@ -216,7 +216,7 @@ export default async function Certificadora() {
             />
           </Link>
           <Title appearance="h6" color={neutralDark[600]} extra>
-            Precisando de ajuda? (61) 3045-5090 / (61) 99314-8813
+            Precisando de ajuda? (61) 3246-2689 / (61) 99879-0483
           </Title>
         </div>
       </Container>
