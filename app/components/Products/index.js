@@ -27,17 +27,17 @@ export default function Products({ cupom, products }) {
 
   return (
     <Container newClasses="py-16">
-      <CertificadoPF
-        cupom={cupom}
-        partnerBackground="#FFF072"
-        partnerIcon="C3931D"
-        products={initialPFProducts}
-      />
       <CertificadoPJ
         cupom={cupom}
         partnerBackground="#FFF072"
         partnerIcon="C3931D"
         products={initialPJProducts}
+      />
+      <CertificadoPF
+        cupom={cupom}
+        partnerBackground="#FFF072"
+        partnerIcon="C3931D"
+        products={initialPFProducts}
       />
     </Container>
   );
