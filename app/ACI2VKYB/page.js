@@ -21,7 +21,7 @@ import { doubts } from '../data';
 
 async function getData() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/products/IJQSHKVM`,
+    `${process.env.NEXT_PUBLIC_URL}/api/products/ACI2VKYB`,
     {
       method: 'GET',
       next: { revalidate: 60 }
@@ -50,9 +50,9 @@ export default async function Certificadora() {
     <>
       <main>
         <HeroPage
-          endGradient="#0E0E0E"
+          endGradient="#11172a"
           gradient={true}
-          initGradient="#484848"
+          initGradient="#080c17"
           newClasses="items-center py-16"
         >
           <div className="col-span-4 lg:col-span-5 flex flex-col space-y-10">
@@ -60,13 +60,13 @@ export default async function Certificadora() {
               Certificado Digital: 100% online e com a segurança!
             </Title>
             <Text appearance="p1" color={neutralLight[100]}>
-              Suprema Contabilidade e Sempre Tecnologia: juntos para te oferecer
-              um atendimento diferenciado sempre!
+              Gestão Contadores e Sempre Tecnologia: juntos para te oferecer um
+              atendimento diferenciado sempre!
             </Text>
             <button
               className="py-4 px-8 rounded w-full lg:w-2/4"
               onClick={() => scrollTo('listProducts')}
-              style={{ background: '#E60121' }}
+              style={{ background: '#EC681D' }}
               type="button"
             >
               <Text appearance="p4" color={neutralLight[100]}>
@@ -78,8 +78,8 @@ export default async function Certificadora() {
             <Image
               alt="Certificado Digital - Emita o seu de onde estiver"
               height={200}
-              src="/suprema-contabilidade.svg"
-              width={356}
+              src="/gestao-contadores.png"
+              width={500}
             />
           </div>
         </HeroPage>
@@ -131,7 +131,7 @@ export default async function Certificadora() {
             </div>
           </div>
         </Container>
-        <Products cupom="IJQSHKVM" products={dataProducts} />
+        <Products cupom="ACI2VKYB" products={dataProducts} />
         <Container newClasses="pb-16">
           <div className="col-span-4 lg:col-span-6 lg:col-start-4 flex flex-col items-center space-y-4">
             <Overline appearance="o1" color={red[700]}>
@@ -216,7 +216,7 @@ export default async function Certificadora() {
             />
           </Link>
           <Title appearance="h6" color={neutralDark[600]} extra>
-            Precisando de ajuda? (61) 3246-2689 / (61) 99879-0483
+            Precisando de ajuda? (61) 3044-6090 / (61) 99816-6261
           </Title>
         </div>
       </Container>
