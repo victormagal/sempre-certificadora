@@ -53,7 +53,7 @@ export default function ModalForm({ open, onClose }) {
             />
           </header>
           <Formik
-            initialValues={{ mail: '', name: '', phone: '', subject: '' }}
+            initialValues={{ mail: '', name: '', phone: '' }}
             onSubmit={(values) => {
               setLoading(true);
               const config = {
@@ -96,8 +96,7 @@ export default function ModalForm({ open, onClose }) {
               name: Yup.string().required('Obrigatório'),
               phone: Yup.string()
                 .required('Obrigatório')
-                .min(10, 'Telefone inválido'),
-              subject: Yup.string().required('Obrigatório')
+                .min(10, 'Telefone inválido')
             })}
             validateOnBlur={false}
             validateOnChange={false}
@@ -105,35 +104,6 @@ export default function ModalForm({ open, onClose }) {
             {({ errors, values }) => (
               <Form>
                 <ul className="flex flex-col mt-8 space-y-6">
-                  <li className="flex flex-col space-y-2">
-                    <Text appearance="p4" color={neutralDark[500]}>
-                      Assunto
-                    </Text>
-                    {loading ? (
-                      <Skeleton />
-                    ) : (
-                      <>
-                        <Field
-                          className="border p-3 placeholder:text-neutral-mid-400 rounded text-neutral-mid-400 w-full"
-                          name="subject"
-                          style={{
-                            background: neutralLight[200],
-                            borderColor: errors.subject
-                              ? red[900]
-                              : neutralLight[400],
-                            color: neutralMid[500]
-                          }}
-                          type="text"
-                          value={values.subject}
-                        />
-                        {errors.subject && (
-                          <Text appearance="p4" color={red[900]}>
-                            {errors.subject}
-                          </Text>
-                        )}
-                      </>
-                    )}
-                  </li>
                   <li className="flex flex-col space-y-2">
                     <Text appearance="p4" color={neutralDark[500]}>
                       Nome
