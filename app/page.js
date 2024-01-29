@@ -5,12 +5,7 @@ import Link from 'next/link';
 import { neutralDark, neutralLight, neutralMid, red } from './base/Colors';
 import { RegularIcon, SolidIcon } from './base/Icons';
 import { Overline, Text, Title } from './base/Typography';
-import {
-  CardFeature,
-  Container,
-  Doubts,
-  HeroPage
-} from './components/Elements';
+import { CardFeature, Container, Doubts } from './components/Elements';
 import {
   Footer,
   Header,
@@ -75,29 +70,6 @@ export default async function Certificadora() {
           </div>
         </Container>
         <Products cupom="" products={dataProducts} />
-        <HeroPage
-          endGradient="#3A1078"
-          gradient={true}
-          initGradient="#1D3E89"
-          newClasses="items-center py-24"
-        >
-          <div className="col-span-4 lg:col-span-5 flex flex-col space-y-4">
-            <Title appearance="h2" color={neutralLight[100]} extra>
-              Emita ou Renove seu Certificado Digital
-            </Title>
-            <Text appearance="p3" color={neutralLight[100]}>
-              Segurança, agilidade e praticidade!
-            </Text>
-          </div>
-          <div className="lg:col-end-13 col-span-4 lg:col-span-6 flex justify-end">
-            <Image
-              alt="Certificado Digital - Emita o seu de onde estiver"
-              height={606}
-              src="/avatar-certificadora.png"
-              width={539}
-            />
-          </div>
-        </HeroPage>
         <Container newClasses="border-b border-t py-12">
           <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
             <div className="flex flex-col justify-center items-center">
