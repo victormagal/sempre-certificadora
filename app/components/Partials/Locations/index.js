@@ -103,7 +103,7 @@ export default function Locations() {
             Temos uma unidade perto de você.
           </Title>
           <Text appearance="p1" color={neutralMid[500]}>
-            São mais de 20 unidades para atendimento.
+            São mais de 15 unidades para atendimento.
           </Text>
         </div>
       </Container>
