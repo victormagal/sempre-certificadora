@@ -89,8 +89,8 @@ export default function CertificadoA1() {
               className="cursor-pointer"
               height={388}
               onClick={() => setOpenModalVimeo(true)}
-              src="/bg-play-home-quem-somos.png"
-              width={1151}
+              src="/bg-play-certificado-a1.png"
+              width={1152}
             />
           </div>
         </Container>
