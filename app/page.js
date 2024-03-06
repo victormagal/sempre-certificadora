@@ -74,7 +74,7 @@ export default async function Certificadora() {
           <div className="col-span-4 lg:col-span-12 flex flex-col lg:flex-row justify-between xl:px-16 space-y-8 lg:space-y-0">
             <div className="flex flex-col justify-center items-center">
               <Title appearance="h3" color={neutralDark[500]} extra>
-                +280 mil
+                +300 mil
               </Title>
               <Title appearance="h6" color={neutralMid[600]}>
                 certificados emitidos
